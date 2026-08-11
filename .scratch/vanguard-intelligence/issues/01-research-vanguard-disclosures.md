@@ -1,7 +1,7 @@
 # 01 — Research: Vanguard's public financial disclosures
 
 Type: research
-Status: open
+Status: claimed
 Blocked by:
 
 ## Question
@@ -14,3 +14,5 @@ Identify and document:
 - **Gaps**: what is *not* published — segment / line-of-business profitability, technology spend, client-owned equity treatment, anything the map's RoE analysis would need.
 
 Produce a markdown summary as a linked asset: one row per metric — metric, source, years available, notes. This ticket grounds the core metric set decision, so precision on gaps matters more than completeness of prose.
+
+**Linked asset:** `../assets/01-vanguard-public-disclosures.md`
