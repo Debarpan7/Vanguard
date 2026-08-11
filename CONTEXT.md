@@ -16,3 +16,4 @@ Glossary for the Vanguard client intelligence effort. Terms resolve here as they
 - **Line of business (LoB)** — Vanguard's operating lines (e.g., investment management, retirement, brokerage, advice), defined by the products & services taxonomy.
 - **Benchmarking** — comparing Vanguard's metrics against the peer set.
 - **Improvement opportunity** — an area where the analysis indicates Vanguard can improve, surfaced for internal reference; the improvement lens is broad business performance, with technology one possible lever among many.
+- **Cost ratio** — Vanguard's published expense measure: asset-weighted average US fund expenses as a share of prior-year average net US assets (0.09% 2020–21 → 0.08% 2022–23 → 0.07% 2024–25). Distinct from the 0.06% fund-lineup average cited in 2026 press materials (different measure — compare like-for-like before quoting). One of the 5 headline metrics (decision: ticket 03).
