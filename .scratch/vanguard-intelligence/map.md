@@ -24,6 +24,7 @@ A working internal-reference website presenting an LLM-produced intelligence ana
 <!-- one line per closed ticket: title + gist; detail lives in the ticket -->
 
 - [Task: site scaffold — stack, shell, navigation](issues/11-task-site-scaffold.md) — site boots on Next.js 16 App Router + React 19 + TS + Tailwind 4; full nav to all 7 sections with stable placeholders; About states internal-reference-only + how-to-read + data-as-of; stack + environment pinning documented in `docs/adr/0001-site-stack.md`; E2E green (commit `fc05b09`).
+- [Research: Vanguard's public financial disclosures](issues/01-research-vanguard-disclosures.md) — asset `assets/01-vanguard-public-disclosures.md`: Vanguard publishes no firm-level statements (mutual, no 10-K); published: cost ratios 0.09%→0.07% (2020–2025), client counts (2021–2025, 2023 methodology break), fund counts, crew; AUM public only through H1 2022 (FY2022–25 in Form ADV, unread); gaps: revenue/expenses/income/equity, LoB profitability, tech spend → RoE not computable from published data (ticket 03 follow-up: ADV PDF) (commit `64854e8`).
 
 ## Not yet specified
 
