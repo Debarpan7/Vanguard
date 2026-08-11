@@ -6,6 +6,8 @@ import {
   allFirms,
   firmMeta,
   primarySourceFor,
+  auditedMetrics,
+  isAuditedMetric,
 } from "../src/data/fact-base";
 
 // Seam 2 — fact base provenance. Expected values are literal facts from the
@@ -110,6 +112,16 @@ test("Vanguard revenue and RoE are explicit gaps — never invented", () => {
   }
   expect(latestPublishedPoint("revenue", "vanguard")).toBeUndefined();
   expect(latestPublishedPoint("roe", "vanguard")).toBeUndefined();
+});
+
+test("audited metrics are exactly revenue and roe — the Fidelity exclusion scope", () => {
+  expect(auditedMetrics).toEqual(["revenue", "roe"]);
+  for (const metric of auditedMetrics) {
+    expect(isAuditedMetric(metric)).toBe(true);
+  }
+  for (const metric of ["aum", "clients", "cost-ratio"] as const) {
+    expect(isAuditedMetric(metric)).toBe(false);
+  }
 });
 
 test("every headline metric exists for Vanguard and every peer with full year coverage", () => {

@@ -35,4 +35,17 @@ Five-axis review (correctness, readability, architecture, security, performance)
 
 **Accepted judgement calls:** the firm filter is client state while the metric filter is URL state (spec: metric filter must be shareable; firm search is an on-page convenience); `parseMetric` casts `value as MetricId` after an allowlist `includes` check (standard narrowing workaround, no unchecked string reaches the view); CSV cells quote per RFC-4180 and content comes only from the fact base (no user input, no formula-injection surface).
 
-Post-review verification: `npx tsc --noEmit` clean, `npm run lint` clean, `npm run test:unit` 10/10, full `npm run test:e2e` 13/13.
+### Follow-up: Fidelity audited-metric exclusion fixed (spec finding (c)1)
+
+The page stated "Fidelity is dropped from audited-metric comparisons (e.g., RoE) and shown as voluntary side data" but still rendered a normal Fidelity "Pending collection" row in every table, including RoE — a contradiction with the ticket-04 peer-set rule. Fixed:
+
+- `src/data/fact-base.ts` — `auditedMetrics` (`["revenue", "roe"]` — exactly the metrics `metricMeta` defines as coming from audited statements) + `isAuditedMetric(metric)`.
+- `src/components/benchmark-table.tsx` — Fidelity's row is dropped from audited-metric tables (`firm !== "fidelity" || !isAuditedMetric(metric)`); a footnote (`voluntarySideDataNote`, testid `voluntary-note-{metric}`) renders under revenue/roe tables so a reader never infers false comparability. CSV rows were also re-keyed by year (`Map(year → cellText)`) instead of index-coupling to `points[i]`, and `cellText` now delegates to `formatValue` for all non-pending-collection nulls (kills the "Not published" duplication).
+- `src/lib/peer-set.ts` — `voluntarySideDataNote` extracted; `peerSetAvailabilityNote` reuses it (rendered text unchanged).
+- Tests: Seam 2 — new fact-base test "audited metrics are exactly revenue and roe"; Seam 1 — new benchmarking E2E "Fidelity is excluded from audited-metric comparisons and flagged as voluntary side data" (no `benchmark-row-fidelity` in revenue/roe, footnote visible; row present in aum/clients/cost-ratio with voluntary text).
+
+This also preempts the ticket-17 data landing: a Fidelity RoE number would otherwise have appeared in a comparison it shouldn't.
+
+**Deferred — charts (recorded, not fixed):** "What to build" mentions comparison tables **and charts**; the checkboxes and build never included charts. All peer series are `pending-collection` and Vanguard revenue/RoE are explicit gaps, so charting would draw lines through empty data. Revisit when ticket 17 lands peer data (add a map.md line when built).
+
+Post-review verification (after follow-up): `npx tsc --noEmit` clean, `npm run lint` clean, `npm run test:unit` 11/11, full `npm run test:e2e` 14/14.

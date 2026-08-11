@@ -22,9 +22,14 @@ export const peerSetBasisOfComparison: string =
   "(converted at period FX, with the FX date noted); Fidelity publishes voluntary statistics only and is excluded from " +
   "audited-metric comparisons (e.g., RoE), shown as voluntary side data instead.";
 
+/** Fidelity's per-metric availability (ticket 04) — rendered under audited
+ * comparison tables so a reader never infers a false comparability. */
+export const voluntarySideDataNote: string =
+  "Fidelity is dropped from audited-metric comparisons (e.g., RoE) and shown as voluntary side data";
+
 /** Per-metric availability notes, so a reader never infers a false comparability. */
 export const peerSetAvailabilityNote: string =
-  "Per-metric availability: Fidelity is dropped from audited-metric comparisons (e.g., RoE) and shown as voluntary side data; " +
+  `Per-metric availability: ${voluntarySideDataNote}; ` +
   "State Street is always isolated to its SSGA asset-management segment.";
 
 /** The ownership caveat — displayed wherever Vanguard is compared (spec story 12). */

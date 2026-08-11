@@ -81,6 +81,32 @@ test("comparison tables render seeded values for Vanguard and pending-collection
   );
 });
 
+test("Fidelity is excluded from audited-metric comparisons and flagged as voluntary side data", async ({
+  page,
+}) => {
+  await page.goto("/benchmarking");
+
+  // Revenue and RoE are audited-statement metrics (ticket 04): Fidelity is
+  // dropped from these comparisons, and the table says so explicitly.
+  for (const metric of ["revenue", "roe"]) {
+    const table = page.getByTestId(`benchmark-table-${metric}`);
+    await expect(table.getByTestId("benchmark-row-fidelity")).toHaveCount(0);
+    await expect(
+      table.getByTestId(`voluntary-note-${metric}`),
+    ).toContainText(/voluntary side data/);
+  }
+
+  // AUM, clients, and cost-ratio are published/voluntary figures — Fidelity
+  // stays in those tables with its voluntary-data caveat.
+  for (const metric of ["aum", "clients", "cost-ratio"]) {
+    const table = page.getByTestId(`benchmark-table-${metric}`);
+    await expect(table.getByTestId("benchmark-row-fidelity")).toBeVisible();
+    await expect(table.getByTestId("benchmark-row-fidelity")).toContainText(
+      /voluntary/i,
+    );
+  }
+});
+
 test("ownership caveat is displayed alongside every comparison", async ({
   page,
 }) => {

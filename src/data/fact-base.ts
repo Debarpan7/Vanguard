@@ -60,6 +60,17 @@ export const headlineMetrics: readonly MetricId[] = [
   "roe",
 ];
 
+/** Metrics whose values come from audited statements (ticket 04). Peer firms
+ * without audited statements (Fidelity) are excluded from these comparisons
+ * and shown as voluntary side data instead. */
+export const auditedMetrics: readonly MetricId[] = ["revenue", "roe"];
+
+/** True for audited-statement metrics — Fidelity is excluded from these
+ * comparisons per the ticket-04 peer-set rule. */
+export function isAuditedMetric(metric: MetricId): boolean {
+  return auditedMetrics.includes(metric);
+}
+
 /** The 5-year window — latest fiscal year as the primary view. */
 export const trendYears: readonly number[] = [2021, 2022, 2023, 2024, 2025];
 

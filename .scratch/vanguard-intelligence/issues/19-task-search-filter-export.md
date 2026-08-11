@@ -29,4 +29,11 @@
 
 Covered in the ticket 14 review (tickets 14 + 19 reviewed as one unit, shipped in the same session). Approved with no blocking findings; non-blocking notes: duplicated search-input markup and duplicated button className (both two-occurrence, not worth abstracting yet).
 
-Post-review verification: `npx tsc --noEmit` clean, `npm run lint` clean, `npm run test:unit` 10/10, full `npm run test:e2e` 13/13.
+### Follow-up: accepted behaviors recorded (spec findings, no code change)
+
+- **Filtered CSV exports the on-screen (filtered) rows only** — accepted: the export mirrors what the table shows; the filter is part of the view state the user exported. Not a bug.
+- **Firm filter is client-only state while the metric filter is URL state** — accepted design: the spec requires a shareable metric filter; firm search is an on-page convenience (summary of the ticket-14 accepted judgement call).
+- **Cross-view search / drill-down (spec stories 25/16) partial** — `/roe-comparison`, `/roe-tree`, `/products` remain placeholders; the search/filter work lands per-view as their build tickets ship. Deferred, not dropped.
+- The ticket-14 follow-up (Fidelity audited-metric exclusion, CSV rows keyed by year) also touches the benchmarking CSV path — same verification.
+
+Post-review verification (after follow-up): `npx tsc --noEmit` clean, `npm run lint` clean, `npm run test:unit` 11/11, full `npm run test:e2e` 14/14.

@@ -3,6 +3,7 @@
 import {
   allFirms,
   firmMeta,
+  isAuditedMetric,
   metricMeta,
   seriesFor,
   trendYears,
@@ -10,7 +11,11 @@ import {
   type SeriesPoint,
 } from "@/data/fact-base";
 import { formatValue } from "@/lib/format";
-import { ownershipCaveat, ownershipLabel } from "@/lib/peer-set";
+import {
+  ownershipCaveat,
+  ownershipLabel,
+  voluntarySideDataNote,
+} from "@/lib/peer-set";
 import { CsvExportButton } from "@/components/csv-export-button";
 import { CopyLinkButton } from "@/components/copy-link-button";
 
@@ -23,10 +28,10 @@ interface BenchmarkTableProps {
 /** Cell text distinguishes the two gap kinds: peers are pending collection
  * (ticket 17 pipeline), Vanguard gaps are not published. Never invented. */
 function cellText(metric: MetricId, point: SeriesPoint): string {
-  if (point.value !== null) return formatValue(metric, point.value);
-  return point.verification === "pending-collection"
-    ? "Pending collection"
-    : "Not published";
+  if (point.value === null && point.verification === "pending-collection") {
+    return "Pending collection";
+  }
+  return formatValue(metric, point.value);
 }
 
 /**
@@ -38,17 +43,26 @@ function cellText(metric: MetricId, point: SeriesPoint): string {
 export function BenchmarkTable({ metric, firmFilter }: BenchmarkTableProps) {
   const meta = metricMeta[metric];
   const query = firmFilter.trim().toLowerCase();
-  const firms = allFirms.filter((firm) =>
-    firmMeta[firm].name.toLowerCase().includes(query),
+  const firms = allFirms.filter(
+    (firm) =>
+      // Fidelity publishes voluntary statistics only — excluded from
+      // audited-metric comparisons (ticket 04), shown as side data instead.
+      (firm !== "fidelity" || !isAuditedMetric(metric)) &&
+      firmMeta[firm].name.toLowerCase().includes(query),
   );
 
   const csvHeaders = ["Firm", "Ownership", ...trendYears.map((y) => `FY${y}`)];
   const csvRows = firms.map((firm) => {
     const series = seriesFor(metric, firm);
+    // Key by year rather than index — points stay aligned however the fact
+    // base is reordered (review note: index coupling).
+    const cellByYear = new Map(
+      series.points.map((point) => [point.year, cellText(metric, point)]),
+    );
     return [
       firmMeta[firm].name,
       ownershipLabel[firmMeta[firm].ownership],
-      ...trendYears.map((year, i) => cellText(metric, series.points[i])),
+      ...trendYears.map((year) => cellByYear.get(year) ?? ""),
     ];
   });
 
@@ -140,6 +154,15 @@ export function BenchmarkTable({ metric, firmFilter }: BenchmarkTableProps) {
           </tbody>
         </table>
       </div>
+
+      {isAuditedMetric(metric) && (
+        <p
+          data-testid={`voluntary-note-${metric}`}
+          className="mt-3 text-xs leading-5 text-zinc-500 dark:text-zinc-400"
+        >
+          {voluntarySideDataNote}.
+        </p>
+      )}
 
       <p className="mt-3 text-xs leading-5 text-zinc-500 dark:text-zinc-400">
         {ownershipCaveat}
