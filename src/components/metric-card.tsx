@@ -1,0 +1,136 @@
+import {
+  latestPublishedPoint,
+  metricMeta,
+  seriesFor,
+  type MetricId,
+} from "@/data/fact-base";
+
+/** Formats a value for display per its metric's unit. Null is always the
+ * explicit gap label — the site never shows an invented number. */
+function formatValue(metric: MetricId, value: number | null): string {
+  if (value === null) return "Not published";
+  switch (metric) {
+    case "aum":
+      return `$${value.toFixed(1)}T`;
+    case "clients":
+      return `${value}M+`;
+    case "cost-ratio":
+      return `${value.toFixed(2)}%`;
+    case "revenue":
+      return `$${value.toFixed(1)}B`;
+    case "roe":
+      return `${value.toFixed(1)}%`;
+  }
+}
+
+function formatAsOf(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/**
+ * A headline metric card: latest published value (with as-of), the metric
+ * definition, and the 5-year trend — every row traceable to its source.
+ * Data comes from the fact base (src/data/fact-base.ts), never hardcoded here.
+ */
+export function MetricCard({ metric }: { metric: MetricId }) {
+  const meta = metricMeta[metric];
+  const series = seriesFor(metric, "vanguard");
+  const latest = latestPublishedPoint(metric, "vanguard");
+
+  return (
+    <section
+      data-testid={`metric-card-${metric}`}
+      className="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+    >
+      <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+        {meta.name}
+        <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">
+          {meta.unit}
+        </span>
+      </h2>
+      <p className="mt-1 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+        {series.definition}
+      </p>
+
+      <div className="mt-4">
+        {latest ? (
+          <>
+            <span
+              data-testid="metric-value"
+              className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+            >
+              {formatValue(metric, latest.value)}
+            </span>
+            <span className="ml-2 text-sm text-zinc-500 dark:text-zinc-400">
+              {latest.asOf
+                ? `As of ${formatAsOf(latest.asOf)}`
+                : `Fiscal year ${latest.year}`}
+            </span>
+          </>
+        ) : (
+          <span
+            data-testid="metric-value"
+            className="text-2xl font-semibold tracking-tight text-zinc-400 dark:text-zinc-500"
+          >
+            Not published
+          </span>
+        )}
+      </div>
+
+      <table className="mt-4 w-full text-left text-sm">
+        <caption className="sr-only">
+          {meta.name} 5-year trend with sources
+        </caption>
+        <thead>
+          <tr className="border-b border-zinc-200 text-xs uppercase tracking-wide text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+            <th scope="col" className="py-2 pr-4 font-medium">
+              Fiscal year
+            </th>
+            <th scope="col" className="py-2 pr-4 font-medium">
+              Value
+            </th>
+            <th scope="col" className="py-2 font-medium">
+              Source
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {series.points.map((point) => (
+            <tr
+              key={point.year}
+              data-testid={`trend-${point.year}`}
+              className="border-b border-zinc-100 align-top dark:border-zinc-900"
+            >
+              <td className="py-2 pr-4 whitespace-nowrap text-zinc-600 dark:text-zinc-400">
+                FY{point.year}
+              </td>
+              <td className="py-2 pr-4 font-medium text-zinc-900 dark:text-zinc-100">
+                {formatValue(metric, point.value)}
+              </td>
+              <td className="py-2 text-zinc-500 dark:text-zinc-400">
+                <a
+                  href={point.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-zinc-300 underline-offset-2 hover:text-zinc-800 dark:decoration-zinc-700 dark:hover:text-zinc-200"
+                >
+                  {point.source}
+                </a>
+                {point.note ? (
+                  <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+                    {point.note}
+                  </p>
+                ) : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
