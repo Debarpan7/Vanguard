@@ -63,6 +63,21 @@ export const headlineMetrics: readonly MetricId[] = [
 /** The 5-year window — latest fiscal year as the primary view. */
 export const trendYears: readonly number[] = [2021, 2022, 2023, 2024, 2025];
 
+/**
+ * The core peer set (decision: ticket 04), in display order. Vanguard is
+ * benchmarked against exactly these firms — membership is decided, not derived.
+ */
+export const peerFirms: readonly Exclude<FirmId, "vanguard">[] = [
+  "blackrock",
+  "fidelity",
+  "state-street",
+  "invesco",
+  "amundi",
+];
+
+/** Display order for comparisons: Vanguard first, then the peer set. */
+export const allFirms: readonly FirmId[] = ["vanguard", ...peerFirms];
+
 export const metricMeta: Record<
   MetricId,
   { name: string; unit: string; definition: string }
@@ -96,6 +111,49 @@ export const metricMeta: Record<
     unit: "%",
     definition:
       "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+  },
+};
+
+/** Ownership class of a firm — shapes the comparability caveats (ticket 04). */
+export type Ownership = "mutual" | "listed" | "private";
+
+/**
+ * Per-firm display metadata. Notes carry the ticket-04 availability caveats
+ * so every comparison surface renders them consistently.
+ */
+export const firmMeta: Record<
+  FirmId,
+  { name: string; ownership: Ownership; note: string }
+> = {
+  vanguard: {
+    name: "Vanguard",
+    ownership: "mutual",
+    note: "Client-owned (mutual). RoE is a labeled proxy — no net income or equity published.",
+  },
+  blackrock: {
+    name: "BlackRock",
+    ownership: "listed",
+    note: "Revenue includes Aladdin technology fees — revenue-model caveat.",
+  },
+  fidelity: {
+    name: "Fidelity",
+    ownership: "private",
+    note: "Voluntary data only — no audited statements; excluded from audited-metric comparisons (e.g., RoE).",
+  },
+  "state-street": {
+    name: "State Street (SSGA)",
+    ownership: "listed",
+    note: "SSGA asset-management segment isolated from parent custody and net-interest income.",
+  },
+  invesco: {
+    name: "Invesco",
+    ownership: "listed",
+    note: "Listed, Dec-31 FYE.",
+  },
+  amundi: {
+    name: "Amundi",
+    ownership: "listed",
+    note: "IFRS, EUR-reported — converted at period FX (date noted); bancassurance revenue model.",
   },
 };
 
@@ -346,6 +404,11 @@ const peerPrimarySource: Record<Exclude<FirmId, "vanguard">, string> = {
   amundi: "Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
 };
 
+/** The primary source a peer series is collected from (ticket 17 pipeline). */
+export function primarySourceFor(firm: Exclude<FirmId, "vanguard">): string {
+  return peerPrimarySource[firm];
+}
+
 const peerSeries = (
   metric: MetricId,
   firm: Exclude<FirmId, "vanguard">,
@@ -365,9 +428,7 @@ const allSeries: MetricSeries[] = [
   vanguardCostRatio,
   vanguardRevenue,
   vanguardRoe,
-  ...(
-    ["blackrock", "fidelity", "state-street", "invesco", "amundi"] as const
-  ).flatMap((firm) =>
+  ...peerFirms.flatMap((firm) =>
     headlineMetrics.map((metric) => peerSeries(metric, firm)),
   ),
 ];

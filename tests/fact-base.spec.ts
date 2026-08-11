@@ -1,5 +1,12 @@
 import { test, expect } from "@playwright/test";
-import { seriesFor, latestPublishedPoint } from "../src/data/fact-base";
+import {
+  seriesFor,
+  latestPublishedPoint,
+  peerFirms,
+  allFirms,
+  firmMeta,
+  primarySourceFor,
+} from "../src/data/fact-base";
 
 // Seam 2 — fact base provenance. Expected values are literal facts from the
 // disclosure research (`.scratch/vanguard-intelligence/assets/01-vanguard-public-disclosures.md`),
@@ -142,4 +149,40 @@ test("peer rows are pending-collection with their primary source identified", ()
     expect(p.verification).toBe("pending-collection");
     expect(p.source).toContain("voluntary");
   }
+});
+
+test("peer set is the ticket-04 core set in display order", () => {
+  expect(peerFirms).toEqual([
+    "blackrock",
+    "fidelity",
+    "state-street",
+    "invesco",
+    "amundi",
+  ]);
+  expect(allFirms[0]).toBe("vanguard");
+  expect(allFirms.slice(1)).toEqual(peerFirms);
+});
+
+test("firm metadata records ownership and per-firm availability notes", () => {
+  expect(firmMeta.vanguard.ownership).toBe("mutual");
+  expect(firmMeta.blackrock.ownership).toBe("listed");
+  expect(firmMeta.fidelity.ownership).toBe("private");
+  expect(firmMeta["state-street"].ownership).toBe("listed");
+  expect(firmMeta.invesco.ownership).toBe("listed");
+  expect(firmMeta.amundi.ownership).toBe("listed");
+
+  // Availability notes match the ticket-04 decision, verbatim on every surface.
+  expect(firmMeta.fidelity.note.toLowerCase()).toContain("voluntary");
+  expect(firmMeta["state-street"].note.toLowerCase()).toContain("segment");
+  expect(firmMeta.amundi.note.toLowerCase()).toContain("ifrs");
+  expect(firmMeta.amundi.note.toLowerCase()).toContain("eur");
+  expect(firmMeta.vanguard.note.toLowerCase()).toContain("mutual");
+});
+
+test("peer primary sources identify the filing each series is collected from", () => {
+  expect(primarySourceFor("blackrock")).toContain("10-K");
+  expect(primarySourceFor("state-street")).toContain("10-K");
+  expect(primarySourceFor("invesco")).toContain("10-K");
+  expect(primarySourceFor("amundi")).toContain("Universal Registration Document");
+  expect(primarySourceFor("fidelity")).toContain("voluntary");
 });
