@@ -2,7 +2,7 @@
 
 **What to build:** The RoE tree per the agreed decomposition, rendered across the 5 years with drilldown into driver nodes, every node traceable to the published numbers it derives from.
 
-**Blocked by:** 11 (Task: site scaffold — stack, shell, navigation), 05 (Grilling: RoE tree decomposition design), 08 (Task: fact base assembly)
+**Blocked by:** 11 (Task: site scaffold — stack, shell, navigation), 08 (Task: fact base assembly)
 
 **Status:** ready-for-agent
 
