@@ -23,6 +23,9 @@ interface BenchmarkTableProps {
   metric: MetricId;
   /** Case-insensitive firm filter from the explorer's search box. */
   firmFilter: string;
+  /** Shareable href for the copy-link button — defaults to the benchmarking
+   * view; other surfaces (e.g., the RoE comparison page) pass their own. */
+  copyHref?: string;
 }
 
 /** Cell text distinguishes the two gap kinds: peers are pending collection
@@ -40,7 +43,11 @@ function cellText(metric: MetricId, point: SeriesPoint): string {
  * fiscal years; every cell is a literal fact or an explicit gap label from
  * the fact base. The ownership caveat and a CSV export travel with the table.
  */
-export function BenchmarkTable({ metric, firmFilter }: BenchmarkTableProps) {
+export function BenchmarkTable({
+  metric,
+  firmFilter,
+  copyHref,
+}: BenchmarkTableProps) {
   const meta = metricMeta[metric];
   const query = firmFilter.trim().toLowerCase();
   const firms = allFirms.filter(
@@ -86,7 +93,7 @@ export function BenchmarkTable({ metric, firmFilter }: BenchmarkTableProps) {
             testId={`export-benchmark-${metric}`}
           />
           <CopyLinkButton
-            href={`/benchmarking?metric=${metric}`}
+            href={copyHref ?? `/benchmarking?metric=${metric}`}
             testId={`copy-benchmark-${metric}`}
           />
         </div>

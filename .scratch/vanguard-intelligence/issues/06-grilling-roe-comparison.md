@@ -36,4 +36,4 @@ Feeds ticket 16 (the only ready-for-agent task). Ticket 07 (LoB taxonomy) remain
 
 ## Review
 
-- Reviewed by two-axis review during ticket 16 implementation (commit `…`). No blockers on the comparison design decisions; implementation detail lives in `issues/16-task-roe-comparison-views.md`.
+- Reviewed by two-axis review during ticket 16 implementation (commit `b922ed7`). No blockers on the comparison design decisions; implementation detail lives in `issues/16-task-roe-comparison-views.md`.
