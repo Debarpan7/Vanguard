@@ -1,6 +1,5 @@
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
-import { MetricCard } from "@/components/metric-card";
-import { headlineMetrics } from "@/data/fact-base";
+import { MetricsDashboard } from "@/components/metrics-dashboard";
 
 export default function MetricsPage() {
   return (
@@ -23,11 +22,7 @@ export default function MetricsPage() {
         </p>
       </header>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        {headlineMetrics.map((metric) => (
-          <MetricCard key={metric} metric={metric} />
-        ))}
-      </div>
+      <MetricsDashboard />
     </div>
   );
 }

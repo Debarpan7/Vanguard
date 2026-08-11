@@ -1,58 +1,62 @@
+"use client";
+
 import {
   latestPublishedPoint,
   metricMeta,
   seriesFor,
   type MetricId,
 } from "@/data/fact-base";
-
-/** Formats a value for display per its metric's unit. Null is always the
- * explicit gap label — the site never shows an invented number. */
-function formatValue(metric: MetricId, value: number | null): string {
-  if (value === null) return "Not published";
-  switch (metric) {
-    case "aum":
-      return `$${value.toFixed(1)}T`;
-    case "clients":
-      return `${value}M+`;
-    case "cost-ratio":
-      return `${value.toFixed(2)}%`;
-    case "revenue":
-      return `$${value.toFixed(1)}B`;
-    case "roe":
-      return `${value.toFixed(1)}%`;
-  }
-}
-
-function formatAsOf(iso: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
+import { formatAsOf, formatValue } from "@/lib/format";
+import { CsvExportButton } from "@/components/csv-export-button";
+import { CopyLinkButton } from "@/components/copy-link-button";
 
 /**
  * A headline metric card: latest published value (with as-of), the metric
  * definition, and the 5-year trend — every row traceable to its source.
  * Data comes from the fact base (src/data/fact-base.ts), never hardcoded here.
+ * The card is a client component so it can offer CSV export and a stable
+ * shareable link (ticket 19); the section id doubles as the anchor target.
  */
 export function MetricCard({ metric }: { metric: MetricId }) {
   const meta = metricMeta[metric];
   const series = seriesFor(metric, "vanguard");
   const latest = latestPublishedPoint(metric, "vanguard");
 
+  const csvHeaders = ["Fiscal year", "Value", "Unit", "Source", "Note"];
+  const csvRows = series.points.map((point) => [
+    point.year,
+    formatValue(metric, point.value),
+    series.unit,
+    point.source,
+    point.note ?? "",
+  ]);
+
   return (
     <section
+      id={metric}
       data-testid={`metric-card-${metric}`}
       className="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
     >
-      <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
-        {meta.name}
-        <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">
-          {meta.unit}
-        </span>
-      </h2>
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+          {meta.name}
+          <span className="ml-2 text-sm font-normal text-zinc-500 dark:text-zinc-400">
+            {meta.unit}
+          </span>
+        </h2>
+        <div className="flex gap-2">
+          <CsvExportButton
+            filename={`vanguard-${metric}-trend-2021-2025.csv`}
+            headers={csvHeaders}
+            rows={csvRows}
+            testId={`export-metric-${metric}`}
+          />
+          <CopyLinkButton
+            href={`/metrics#${metric}`}
+            testId={`copy-metric-${metric}`}
+          />
+        </div>
+      </div>
       <p className="mt-1 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
         {series.definition}
       </p>
