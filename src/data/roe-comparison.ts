@@ -1,20 +1,19 @@
 import type { FirmId } from "@/data/fact-base";
 
 /**
- * RoE comparison basis (decision: ticket 06 — grilling RoE comparison across
- * peer set, industries, and lines of business). Vanguard publishes no segment
- * (line-of-business) financials, so line-of-business RoE is not computable
- * from published data: every Vanguard LoB cell renders an explicit
- * not-published gap, never an invented figure (ticket 03 exclusion 3). The
- * 4-line model is provisional pending the products & services taxonomy
- * (ticket 07); industry representatives come from the peer set (ticket 04)
- * only, and non-core industry benchmarks (e.g., Schwab) are deferred to
- * ticket 17 with a disclosed note.
+ * RoE comparison basis (decisions: ticket 06 — grilling RoE comparison across
+ * peer set, industries, and lines of business; ticket 07 — products & services
+ * and LoB taxonomy). Vanguard publishes no segment (line-of-business)
+ * financials, so line-of-business RoE is not computable from published data:
+ * every Vanguard LoB cell renders an explicit not-published gap, never an
+ * invented figure (ticket 03 exclusion 3). The 4-line model is the canonical
+ * LoB taxonomy (ticket 07); industry representatives come from the peer set
+ * (ticket 04) only, and non-core industry benchmarks (e.g., Schwab) are
+ * deferred to ticket 17 with a disclosed note.
  */
 
-/** The provisional line-of-business model (ticket 06) — four lines, in the
- * decided display order. Marked provisional: the taxonomy decision (ticket 07)
- * may revise the model later. */
+/** The canonical line-of-business model (ticket 07) — four lines, in the
+ * decided display order (ticket 06). */
 export type LobId =
   | "investment-management"
   | "retirement"
@@ -128,12 +127,12 @@ export function lobComparisonFor(id: LobId): LobComparison {
 }
 
 /** The stated limitation shown with the LoB comparison (ticket 06, answers 1
- * and 2): Vanguard publishes no segment financials, the 4-line model is
- * provisional, and industry representatives are peer-set only. */
+ * and 2; ticket 07): Vanguard publishes no segment financials, the 4-line
+ * model is canonical, and industry representatives are peer-set only. */
 export const lobComparisonDerivationDisclosure: string =
   "Vanguard does not publish segment (line-of-business) financials, so line-of-business RoE is " +
   "not computable from published data — every Vanguard LoB cell renders an explicit not-published gap, " +
   "never an invented figure (ticket 03 exclusion 3). The four lines (investment management, retirement, " +
-  "brokerage, advice) are provisional pending the products & services taxonomy (ticket 07). Each line is " +
+  "brokerage, advice) are the canonical LoB taxonomy (ticket 07). Each line is " +
   "benchmarked against the industry it competes in, represented by peer-set firms only; non-core industry " +
   "benchmarks (e.g., Schwab) are deferred to the peer-set expansion (ticket 17).";

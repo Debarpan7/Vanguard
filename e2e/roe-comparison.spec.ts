@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 // Seam 1 — the RoE comparison views render per the agreed design (decision:
 // ticket 06): the peer-set RoE table over the 5 years with the ownership
-// caveat, plus the line-of-business-vs-industry panel with the provisional
+// caveat, plus the line-of-business-vs-industry panel with the canonical
 // 4-line model, peer-set representatives, and the derivation disclosure
 // (ticket 16; spec stories 13, 15, section 18). Expected values are literal
 // facts from the fact base and the comparison dataset, never recomputed from
@@ -47,7 +47,7 @@ test("the peer-set RoE table renders over the 5 years with explicit gaps and the
   await expect(table).toContainText(/client-owned \(mutual\)/);
 });
 
-test("the line-of-business panel renders the provisional 4-line model against its industries", async ({
+test("the line-of-business panel renders the canonical 4-line model against its industries", async ({
   page,
 }) => {
   await page.goto("/roe-comparison");
@@ -107,7 +107,7 @@ test("the line-of-business panel renders the provisional 4-line model against it
   // The derivation disclosure states the limitations verbatim.
   const disclosure = panel.getByTestId("lob-derivation-disclosure");
   await expect(disclosure).toContainText(/not-published/);
-  await expect(disclosure).toContainText(/provisional/);
+  await expect(disclosure).toContainText(/canonical/);
   await expect(disclosure).toContainText(/ticket 07/);
   await expect(disclosure).toContainText(/ticket 17/);
 });

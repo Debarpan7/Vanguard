@@ -15,9 +15,10 @@ import {
 
 // Seam 2 — RoE comparison provenance. The comparison basis is the decided
 // design (ticket 06 — grilling RoE comparison across peer set, industries,
-// and lines of business): a provisional 4-line LoB model with peer-set
-// industry representatives and Vanguard LoB RoE as explicit not-published
-// gaps. Expected values are literal facts from the decision record
+// and lines of business; ticket 07 — canonical LoB taxonomy): the canonical
+// 4-line LoB model with peer-set industry representatives and Vanguard LoB
+// RoE as explicit not-published gaps. Expected values are literal facts from
+// the decision record
 // (`.scratch/vanguard-intelligence/issues/06-grilling-roe-comparison.md`),
 // never recomputed from the code under test.
 
@@ -50,7 +51,7 @@ const DECIDED_MAPPING: Record<
   },
 };
 
-test("the LoB model is the provisional 4-line model in the decided order (ticket 06)", () => {
+test("the LoB model is the canonical 4-line model in the decided order (tickets 06, 07)", () => {
   expect(lobComparisonIds).toEqual([
     "investment-management",
     "retirement",
@@ -124,11 +125,11 @@ test("peer-set RoE availability: Vanguard not-published, peers pending-collectio
   }
 });
 
-test("the derivation disclosure states the limitations: not-published gaps, provisional model, Schwab deferred to ticket 17", () => {
+test("the derivation disclosure states the limitations: not-published gaps, canonical model, Schwab deferred to ticket 17", () => {
   const disclosure = lobComparisonDerivationDisclosure;
   expect(disclosure).toMatch(/not-?published/);
   expect(disclosure).toMatch(/never an invented figure|not computable/i);
-  expect(disclosure).toMatch(/provisional/);
+  expect(disclosure).toMatch(/canonical/);
   expect(disclosure).toMatch(/ticket 07/);
   expect(disclosure).toMatch(/ticket 17/);
   expect(disclosure).toMatch(/Schwab/);

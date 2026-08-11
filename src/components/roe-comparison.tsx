@@ -22,9 +22,9 @@ function repLabel(rep: LobRepresentative): string {
  * every cell a literal fact or an explicit gap label ("Pending collection"
  * vs "Not published"), with the ownership caveat and Fidelity voluntary-side-
  * data note alongside. Section 2 compares Vanguard's line-of-business RoE
- * against the industries each line competes in, using the provisional 4-line
- * model (investment management / retirement / brokerage / advice) with
- * peer-set representatives and the derivation disclosure. All Vanguard LoB
+ * against the industries each line competes in, using the canonical 4-line
+ * model (investment management / retirement / brokerage / advice — ticket 07)
+ * with peer-set representatives and the derivation disclosure. All Vanguard LoB
  * cells are explicit not-published gaps — never invented (ticket 03).
  */
 export function RoeComparisonView() {
@@ -63,7 +63,7 @@ export function RoeComparisonView() {
         </h2>
         <p className="mt-1 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
           Vanguard&apos;s line-of-business RoE against the industry each line
-          competes in (provisional 4-line model, ticket 06).
+          competes in (canonical 4-line model, ticket 07).
         </p>
 
         <p
