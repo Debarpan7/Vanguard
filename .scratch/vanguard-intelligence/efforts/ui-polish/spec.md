@@ -1,23 +1,25 @@
-# Spec: Vanguard Intelligence UI polish — color, logos, icons, animation
+# Spec: Vanguard Intelligence UI polish — Take B site-wide system
 
 Status: ready-for-agent
 Type: spec
 
 ## Problem Statement
 
-The Vanguard Intelligence site reads as a default template. Every view is zinc/white with the Geist typeface and no visual identity: the benchmarking and RoE comparison tables are walls of text with nothing to tell one firm from the next, the nav and section pages carry no icons, there is no color beyond neutral grays, and the only motion is a hover tint. For an internal-reference tool the team reaches for every quarter, it works but it doesn't invite use — and the firm's own identity (navy, gold, recognizable marks) is entirely absent. The user wants the site to look and feel like a professional financial analysis product: color, firm logos, icons, and subtle, accessible motion — without disturbing a single number, test contract, or piece of data content.
+The Vanguard Intelligence site needs a coherent, production-ready visual system across every route: Take B mode 2 with a desktop left rail, mobile top menu, Vanguard red/navy identity, strong light and dark themes, card/grid-based content, useful firm marks and icons, accessible motion, and in-place metric switching. The user wants the site to feel like a professional financial analysis product without disturbing a single number, test contract, or piece of data content.
 
 ## Solution
 
-A site-wide visual polish pass that makes Vanguard Intelligence feel like a finished product while leaving every behavioral contract intact:
+A site-wide visual system pass that makes Vanguard Intelligence feel like a finished product while leaving every behavioral contract intact:
 
-- **Firm logos as hand-rendered SVG marks** — Vanguard, BlackRock, Fidelity, State Street, Invesco, and Amundi — placed in the benchmarking tables (rows Vanguard-first), the peer set panel, and the RoE comparison views (peer-set table and the line-of-business-vs-industry panel). The RoE tree drilldown stays clean, and the header keeps its text identity (no designed wordmark).
-- **A professional navy + gold palette** — the full palette applied in both light and dark modes: navy for the header, footer, section headers, and emphasis; gold for active nav, links, and data highlights; AA-compliant contrast in every pairing. Expressed as design tokens so the whole site restyles consistently.
-- **UI icons via `lucide-react`** (tree-shaken) — for the header nav sections, metric cards (one icon per headline metric), home nav cards, products categories, and action buttons (search, export, copy-link, chat send). Firm marks remain hand-rolled SVGs, not icon-library lookalikes.
-- **Subtle, accessible motion** — hover lifts on cards/links/buttons, fade-in-on-scroll for sections, nav transitions — with no animation on data tables and `prefers-reduced-motion` respected everywhere.
-- **Streamed chatbot replies** — responses reveal progressively in the chat view; the final text is byte-for-byte the deterministic engine's answer, so every verbatim E2E string still matches.
+- **Firm logos as hand-rendered SVG marks** — Vanguard, BlackRock, Fidelity, State Street, Invesco, and Amundi — placed in the benchmarking tables, peer set panel, and RoE comparison views. The RoE tree drilldown stays clean, and the header keeps its text identity.
+- **A professional red + navy palette** — deep navy for structure and emphasis, Vanguard red for active states and data highlights, and pale navy/white/red-tint surfaces in light mode. Expressed as design tokens in both themes.
+- **UI icons via `lucide-react`** for navigation, metric cards, home cards, product categories, and actions. Firm marks remain hand-rendered SVGs.
+- **Subtle, accessible motion** — hover lifts, scroll fade-ins, and nav transitions, with no table animation and full `prefers-reduced-motion` support.
+- **Streamed chatbot replies** — progressive presentation while preserving the deterministic engine's exact final text and accessibility semantics.
+- **Take B mode 2 is the locked shell** — a left rail on desktop, a compact top menu on mobile, and no alternate layout selector.
+- **Card/grid composition** — content groups use cards and CSS grids across all routes; semantic data tables remain actual tables inside responsive framed panels, with flex reserved for small control internals.
+- **Client-side metric switching** — benchmarking metric selection updates its table in place, preserves the `?metric=` URL and firm-search state, and does not perform a document reload.
 
-The site remains an internal reference tool: no content changes, no new facts, no new routes — a restyle that makes the existing intelligence readable at a glance. Every existing test stays green, and a new screenshot-diff seam guards the visual change itself.
 
 ## User Stories
 
@@ -30,11 +32,11 @@ The site remains an internal reference tool: no content changes, no new facts, n
 7. As a consultant drilling into the RoE tree, I want the decomposition uncluttered by logos, so that the income-statement drilldown stays the focus.
 8. As a consultant, I want the site header to keep its text identity, so that "Vanguard Intelligence" reads as the site's name rather than a brand mark (no designed wordmark).
 9. As a consultant, I want each header nav section to carry a small colored icon, so that the navigation is scannable and visually distinct from a text menu.
-10. As a consultant, I want the active nav section highlighted with the gold accent, so that I always know where I am on the site.
+10. As a consultant, I want the active nav section highlighted with the red accent, so that I always know where I am on the site.
 11. As a consultant, I want a deep-navy site header and footer, so that the shell frames the content with a professional financial feel.
 12. As a consultant, I want navy used for section headers and emphasis across pages, so that the hierarchy reads as intentional design rather than default gray.
-13. As a consultant, I want gold used for links, active states, and data highlights, so that the palette's accent draws the eye to interactive and important elements.
-14. As a consultant, I want every navy/gold pairing to meet AA contrast in both light and dark modes, so that the styled site remains readable for everyone.
+13. As a consultant, I want Vanguard red used for links, active states, and data highlights, so that the palette's accent draws the eye to interactive and important elements.
+14. As a consultant, I want every red/navy pairing to meet AA contrast in both light and dark modes, so that the styled site remains readable for everyone.
 15. As a consultant, I want the palette expressed as a consistent token system, so that all pages restyle together and the site never drifts into one-off colors.
 16. As a consultant viewing the metrics dashboard, I want each headline metric card to carry its own colored icon (AUM, clients, cost ratio, revenue, RoE), so that the five metrics are distinguishable at a glance.
 17. As a consultant viewing a metric card, I want the value and trend emphasized in the palette, so that the number — not the chrome — is what I see first.
@@ -59,13 +61,13 @@ The site remains an internal reference tool: no content changes, no new facts, n
 
 ## Implementation Decisions
 
-- **Design tokens**: the navy + gold palette lands as Tailwind 4 `@theme` tokens (colors, shadows, radii, durations/easings) with light and dark variants, expressed in the global stylesheet — one token surface the whole site reads from. Exact hue/scale values are decided by the visual-direction prototype ticket (ticket 21, HITL) before the shell pass builds against them; the decision here is *that* the tokens exist, cover both modes, and meet AA contrast.
+- **Design tokens**: the red + navy palette lands as Tailwind 4 `@theme` tokens (colors, shadows, radii, durations/easings) with explicit light and dark variants, expressed in the global stylesheet — one token surface the whole site reads from. Ticket 21 locks the exact hue/scale/type values and AA pairings.
 - **Firm marks**: a single shared firm-mark component keyed by firm id, matching the fact base's firm ids exactly (Vanguard, BlackRock, Fidelity, State Street, Invesco, Amundi), with size/color props and a monochrome variant for constrained contexts. Marks are hand-rolled SVG components built from public mark references (brand pages / press kits — public sources only, per the effort's standing preference), with sources recorded as a linked asset. Recognizable at 24–32px, not pixel-perfect trademark reproductions.
 - **UI icons**: `lucide-react` added (pinned) and tree-shaken — nav sections, metric cards, products categories, action buttons, home nav cards. Firm marks are never drawn from the icon library.
-- **Palette application**: navy for shell (header, footer) and emphasis (section headers, active states); gold for links, active nav, and data highlights; neutral base retained where the prototype keeps it. Applied shell-first, then data views, then remaining pages, in the map's build order.
+- **Palette application**: deep navy for shell and emphasis; Vanguard red for links, active nav, actions, and data highlights; pale navy/white/red-tint surfaces for light mode. Light mode is the default unless a saved explicit preference exists, and the in-app toggle is authoritative over OS preference.
 - **Motion**: a small client motion primitive (an in-view hook + wrapper) for scroll fade-ins — SSR-safe, no layout shift, bails out under `prefers-reduced-motion`; hover lifts and nav transitions as CSS-level motion tokens; data tables get no animation.
 - **Chatbot streaming**: presentation-only. The engine stays pure and returns the complete answer string; the chat view reveals it progressively. The final rendered text must equal the engine output exactly — verbatim refusal strings, the ownership caveat, figures, and source links included. The message region keeps its polite live-region semantics (no chunk-level announcements).
-- **Contracts preserved**: nav names, headings, testids (`data-as-of`, `chatbot-messages`), chatbot verbatim strings, cell text and formatting paths (`cellText`/`formatValue`), metric-card anchors (`#aum` etc.), CSV behavior, and the refresh pipeline's validation gate are untouched by this effort.
+- **Contracts preserved**: navigation names, headings, test IDs (`data-as-of`, `chatbot-messages`), chatbot verbatim strings, cell text and formatting behavior, metric-card anchors, CSV behavior, and the refresh pipeline's validation gate are untouched by this effort.
 - **Visual-regression seam**: a dedicated Playwright screenshot-diff spec over the key pages at a fixed viewport against committed baselines, with any dynamic regions masked; baselines regenerated via a documented script, compared in CI. It runs against the same production build the E2E suite already boots.
 - **Stack respected**: no change to the Next.js/React/Tailwind stack decided in the site-stack ADR; this effort adds a UI dependency and CSS tokens only.
 
@@ -91,7 +93,7 @@ The site remains an internal reference tool: no content changes, no new facts, n
 
 ## Further Notes
 
-- This effort carries the build, not just decisions — the map is at `.scratch/vanguard-intelligence/efforts/ui-polish/map.md` (tickets 21–27), and this spec is the contract its task tickets build against. The exact token values graduate from the visual-direction prototype (ticket 21, HITL); everything in this spec beyond those values is decided.
-- The design direction was settled by grilling in the charting session: firm logos only (real marks, hand-rendered SVG, header stays text), placements = benchmarking + peer set + RoE comparisons (RoE tree clean), full navy + gold palette in both modes, `lucide-react` icons, subtle accessible motion (no table animation), streamed chatbot replies with the verbatim contract preserved.
+- This effort carries the build, not just decisions — the existing UI-polish wayfinder map and its tickets are the execution plan, and this spec is the contract they build against. The exact token values graduate from the shell ticket; everything in this spec beyond those values is decided.
+- The design direction was settled by grilling in the charting sessions: firm logos only (real marks, hand-rendered SVG, header stays text), placements = benchmarking + peer set + RoE comparisons (RoE tree clean), Take B mode 2/left rail, red/navy palette, light-mode default with explicit dark toggle, card/grid composition, responsive top menu, `lucide-react` icons, subtle accessible motion (no table animation), streamed chatbot replies with the verbatim contract preserved, and client-side benchmarking metric switching with shareable URL state.
 - The visual seam's baselines should be captured once after the shell pass settles and re-baselined deliberately when a later ticket intentionally changes a page — never to mask a regression.
 - Refresh hygiene: the quarterly refresh runbook is unaffected — the palette and icons are presentation-only, and the validation gate's outputs are unchanged.

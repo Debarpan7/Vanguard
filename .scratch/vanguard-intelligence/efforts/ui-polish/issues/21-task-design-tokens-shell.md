@@ -1,17 +1,18 @@
-# 21 — Task: design tokens and site shell color pass
+# 21 — Task: lock Take B tokens and the rail shell
 
-**What to build:** A first styled pass that both locks the visual direction and applies it to the site shell — the tokens every later ticket builds against. Starts with a cheap, rough take on the home page and one data view (benchmarking) to react to, then lands the agreed navy + gold system in code: a token surface (colors, shadows, radii, durations/easings; light and dark variants; AA contrast on every navy/gold pairing), the navy header and footer, gold active-nav accent, nav transitions, and colored lucide-react icons on the header nav sections. This is the human-in-the-loop design gate: the exact hue/scale/type decisions are made here, in consultation, before the build tickets proceed.
+**What to build:** Lock Take B mode 2 as the site shell and establish the tokens every later ticket builds against: deep navy structure, Vanguard red accents, pale navy/white light surfaces, explicit dark overrides, typography, spacing, radii, shadows, and motion tokens. Apply the system to the shared rail header/footer, colored Lucide navigation icons, active states, data-as-of marker, and theme toggle. The desktop shell uses a left rail; mobile behavior is handled by ticket 28. Light mode is the default unless a saved explicit preference exists. Remove the alternate layout controls and make the in-app theme toggle authoritative over OS preference.
 
 **Blocked by:** None — can start immediately.
 
-**Status:** in-progress (prototype take in review)
+**Status:** resolved (Take B mode 2 is the shared production foundation; mobile behavior remains ticket 28)
 
 **Assignee:** GitHub Copilot
 
-- [ ] Rough styled take on home + benchmarking produced and agreed — token values (navy/gold hues, AA pairings, type treatment, radius/shadow scale) locked
-- [ ] `lucide-react` added (pinned); colored section icons render in the header nav
-- [ ] Navy header and footer, gold active-nav accent, nav transitions — in both light and dark modes
-- [ ] Nav link names, active detection, and the data-as-of marker contract unchanged; scaffold E2E green
+- [x] Take B mode 2/left rail selected; alternate layout controls removed
+- [x] Red/navy token values, AA pairings, type treatment, radius/shadow scale, and light/dark surfaces locked
+- [x] `lucide-react` added (pinned); colored section icons render in the header nav
+- [x] Navy header and footer, red active-nav accent, theme toggle, nav transitions — in both light and dark modes
+- [x] Nav link names, active detection, and the data-as-of marker contract unchanged; scaffold E2E green
 
 ## Code review (commits `7949756` + `2900010`)
 
@@ -33,4 +34,4 @@ to the live site; (2) Take C hero adds two narrative sentences ("Client-owned
 trim before folding or keep as a locked-copy decision; (3) takes/switcher stay
 in the prod JS bundle (runtime-gated, not compile-removed).
 
-**Status:** in-progress (prototype take in review — HITL)
+**Status:** resolved (production shell promoted after review repair; downstream page work stays ticketed separately)

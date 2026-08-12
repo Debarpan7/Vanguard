@@ -16,8 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-/* Serif display face for editorial headlines (Take B explores it; the
-   winner's type system gets locked with the tokens in ticket 21). */
+/* Serif display face for the locked Take B editorial system. */
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],

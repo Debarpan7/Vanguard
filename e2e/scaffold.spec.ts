@@ -23,6 +23,21 @@ test("home page shows the site name and navigation to every section", async ({ p
   }
 });
 
+test("theme toggle is authoritative and persists the explicit preference", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem("vanguard-take-b-theme", "dark");
+  });
+  await page.goto("/");
+
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  await page.getByRole("button", { name: "Switch to light mode" }).click();
+  await expect(page.locator("html")).not.toHaveClass(/dark/);
+
+  await page.reload();
+  await expect(page.locator("html")).not.toHaveClass(/dark/);
+  await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();
+});
+
 test("navigation reaches every section with a stable placeholder", async ({ page }) => {
   const nav = page.getByRole("banner");
   for (const link of NAV_LINKS) {
