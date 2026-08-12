@@ -1,9 +1,19 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowDown, ChevronRight, Quote, Search } from "lucide-react";
+import {
+  ArrowDown,
+  ChevronRight,
+  LayoutDashboard,
+  Moon,
+  PanelLeft,
+  PanelTop,
+  Quote,
+  Search,
+  Sun,
+} from "lucide-react";
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { BenchmarkTable } from "@/components/benchmark-table";
 import { navIcons } from "@/components/prototype/nav-icons";
@@ -60,17 +70,24 @@ const glanceStats: ReadonlyArray<{
   { metric: "clients", label: "Investors", suffix: "M+" },
 ];
 
+type TakeBLayout = "rail" | "top" | "canvas";
+type TakeBTheme = "dark" | "light";
+
 /** Serif brand lockup: "Vanguard" heavy, "Intelligence" light gold. */
-function BrandB() {
+function BrandB({ theme = "dark" }: { theme?: TakeBTheme }) {
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <span
         aria-hidden
         className="size-2.5 rotate-45 bg-linear-to-br from-vanguard-red-300 to-vanguard-red-600 shadow-sm shadow-vanguard-red-900/40"
       />
-      <span className="font-display text-lg font-semibold tracking-tight text-white">
+      <span
+        className={`font-display text-lg font-semibold tracking-tight ${
+          theme === "dark" ? "text-white" : "text-navy-950"
+        }`}
+      >
         {brandFirst}{" "}
-        <span className="font-light text-vanguard-red-200/90">
+        <span className={`font-light ${theme === "dark" ? "text-vanguard-red-200/90" : "text-vanguard-red-700"}`}>
           {brandRest.join(" ")}
         </span>
       </span>
@@ -121,26 +138,100 @@ function BGridTexture() {
 }
 
 export function TakeBShell({ children }: { children: ReactNode }) {
+  const [layout, setLayout] = useState<TakeBLayout>(() => {
+    if (typeof window === "undefined") return "rail";
+    const savedLayout = window.localStorage.getItem("vanguard-take-b-layout");
+    return savedLayout === "rail" || savedLayout === "top" || savedLayout === "canvas"
+      ? savedLayout
+      : "rail";
+  });
+  const [theme, setTheme] = useState<TakeBTheme>(() => {
+    if (typeof window === "undefined") return "dark";
+    return window.localStorage.getItem("vanguard-take-b-theme") === "light"
+      ? "light"
+      : "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    window.localStorage.setItem("vanguard-take-b-layout", layout);
+    window.localStorage.setItem("vanguard-take-b-theme", theme);
+  }, [layout, theme]);
+
+  function changeLayout(nextLayout: TakeBLayout) {
+    setLayout(nextLayout);
+    window.localStorage.setItem("vanguard-take-b-layout", nextLayout);
+  }
+
+  function changeTheme(nextTheme: TakeBTheme) {
+    setTheme(nextTheme);
+    window.localStorage.setItem("vanguard-take-b-theme", nextTheme);
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+  }
+
+  const frameClass =
+    layout === "rail"
+      ? "md:grid md:grid-cols-[248px_minmax(0,1fr)]"
+      : "min-h-full";
+
   return (
-    <>
-      <TakeBHeader />
-      <main className="flex-1">{children}</main>
-      <TakeBFooter />
-    </>
+    <div className={frameClass} data-layout={layout} data-theme={theme}>
+      <TakeBHeader
+        layout={layout}
+        theme={theme}
+        onLayoutChange={changeLayout}
+        onThemeChange={changeTheme}
+      />
+      <div className="min-w-0">
+        <main className="flex-1">{children}</main>
+        <TakeBFooter theme={theme} />
+      </div>
+    </div>
   );
 }
 
-function TakeBHeader() {
+function TakeBHeader({
+  layout,
+  theme,
+  onLayoutChange,
+  onThemeChange,
+}: {
+  layout: TakeBLayout;
+  theme: TakeBTheme;
+  onLayoutChange: (layout: TakeBLayout) => void;
+  onThemeChange: (theme: TakeBTheme) => void;
+}) {
   const pathname = usePathname();
+  const isRail = layout === "rail";
+
   return (
-    <header className="relative border-b border-white/10 bg-linear-to-b from-navy-950 via-navy-900 to-navy-950 shadow-lg shadow-navy-950/30">
+    <header
+      className={`relative border-white/10 shadow-lg shadow-navy-950/30 ${
+        theme === "dark"
+          ? "bg-linear-to-b from-navy-950 via-navy-900 to-navy-950"
+          : "border-navy-200 bg-white"
+      } ${
+        isRail
+          ? "border-b md:sticky md:top-0 md:z-40 md:h-screen md:border-b-0 md:border-r"
+          : "border-b"
+      } ${layout === "canvas" ? "lg:mx-6 lg:mt-5 lg:rounded-2xl lg:border lg:border-white/10" : ""}`}
+    >
       <div
         aria-hidden
         className="h-px bg-linear-to-r from-transparent via-vanguard-red-400/70 to-transparent"
       />
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3.5">
-        <BrandB />
-        <nav aria-label="Sections" className="flex flex-wrap items-center gap-1">
+      <div
+        className={`mx-auto flex max-w-6xl flex-wrap gap-y-4 px-4 py-3.5 ${
+          isRail
+            ? "md:h-[calc(100vh-1px)] md:flex-col md:items-stretch md:px-5 md:py-6"
+            : "items-center justify-between gap-x-6"
+        }`}
+      >
+        <BrandB theme={theme} />
+        <nav
+          aria-label="Sections"
+          className={`flex flex-wrap gap-1 ${isRail ? "md:flex-col md:items-stretch" : "items-center"}`}
+        >
           {navLinks.map((link) => {
             const active =
               pathname === link.path || pathname.startsWith(`${link.path}/`);
@@ -150,39 +241,120 @@ function TakeBHeader() {
                 key={link.path}
                 href={link.path}
                 aria-current={active ? "page" : undefined}
-                className={`group relative inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                className={`group relative inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? "text-vanguard-red-300"
-                    : "text-navy-100/75 hover:bg-white/5 hover:text-white"
-                }`}
+                    : theme === "dark"
+                      ? "text-navy-100/75 hover:bg-white/5 hover:text-white"
+                      : "text-navy-700 hover:bg-vanguard-red-50 hover:text-navy-950"
+                } ${isRail ? "md:w-full md:justify-start" : ""}`}
               >
                 <Icon
                   aria-hidden
                   className={`size-4 transition-colors ${
                     active
                       ? "text-vanguard-red-400"
-                      : "text-navy-200/60 group-hover:text-vanguard-red-300"
+                      : theme === "dark"
+                        ? "text-navy-200/60 group-hover:text-vanguard-red-300"
+                        : "text-navy-400 group-hover:text-vanguard-red-600"
                   }`}
                 />
-                {link.name}
+                <span className={isRail ? "min-w-0 break-words" : ""}>{link.name}</span>
                 {active && (
                   <span
                     aria-hidden
-                    className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-linear-to-r from-vanguard-red-300 via-vanguard-red-400 to-vanguard-red-500"
+                    className={`absolute rounded-full bg-linear-to-r from-vanguard-red-300 via-vanguard-red-400 to-vanguard-red-500 ${isRail ? "inset-y-2 right-0 w-0.5" : "inset-x-2 -bottom-px h-0.5"}`}
                   />
                 )}
               </Link>
             );
           })}
         </nav>
+        <div className={`${isRail ? "md:mt-auto" : "ml-auto"} flex flex-wrap items-center gap-2`}>
+          <div
+            aria-label="Layout options"
+            className="flex items-center gap-0.5 rounded-lg border border-white/10 bg-white/5 p-1"
+            role="group"
+          >
+            <LayoutOption
+              active={layout === "top"}
+              label="Top navigation"
+              onClick={() => onLayoutChange("top")}
+            >
+              <PanelTop aria-hidden className="size-3.5" />
+            </LayoutOption>
+            <LayoutOption
+              active={layout === "rail"}
+              label="Left rail navigation"
+              onClick={() => onLayoutChange("rail")}
+            >
+              <PanelLeft aria-hidden className="size-3.5" />
+            </LayoutOption>
+            <LayoutOption
+              active={layout === "canvas"}
+              label="Canvas navigation"
+              onClick={() => onLayoutChange("canvas")}
+            >
+              <LayoutDashboard aria-hidden className="size-3.5" />
+            </LayoutOption>
+          </div>
+          <button
+            type="button"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            onClick={() => onThemeChange(theme === "dark" ? "light" : "dark")}
+            className={`inline-flex size-8 items-center justify-center rounded-lg border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-vanguard-red-400 ${
+              theme === "dark"
+                ? "border-white/10 bg-white/5 text-vanguard-red-200 hover:bg-white/10 hover:text-white"
+                : "border-navy-200 bg-navy-50 text-vanguard-red-700 hover:bg-vanguard-red-50"
+            }`}
+          >
+            {theme === "dark" ? <Sun aria-hidden className="size-4" /> : <Moon aria-hidden className="size-4" />}
+          </button>
+        </div>
       </div>
     </header>
   );
 }
 
-function TakeBFooter() {
+function LayoutOption({
+  active,
+  label,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  label: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-linear-to-br from-navy-950 via-navy-900 to-navy-950">
+    <button
+      type="button"
+      aria-label={label}
+      aria-pressed={active}
+      title={label}
+      onClick={onClick}
+      className={`inline-flex size-7 items-center justify-center rounded-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-vanguard-red-400 ${
+        active
+          ? "bg-vanguard-red-500 text-white shadow-sm"
+          : "text-navy-300 hover:bg-white/10 hover:text-white"
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function TakeBFooter({ theme }: { theme: TakeBTheme }) {
+  return (
+    <footer
+      className={`relative overflow-hidden border-t ${
+        theme === "dark"
+          ? "border-white/10 bg-linear-to-br from-navy-950 via-navy-900 to-navy-950"
+          : "border-navy-200 bg-linear-to-br from-white via-vanguard-red-50/40 to-navy-50"
+      }`}
+    >
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-vanguard-red-500 to-transparent"
@@ -194,12 +366,12 @@ function TakeBFooter() {
       <div className="relative mx-auto max-w-6xl px-4 py-12 lg:py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12">
           <div className="max-w-sm">
-            <BrandB />
-            <p className="mt-5 max-w-xs text-sm leading-7 text-navy-100/70">
+            <BrandB theme={theme} />
+            <p className={`mt-5 max-w-xs text-sm leading-7 ${theme === "dark" ? "text-navy-100/70" : "text-navy-700"}`}>
               A research layer for understanding Vanguard&apos;s model, metrics,
               and strategic choices.
             </p>
-            <p className="mt-7 border-l-2 border-vanguard-red-500 pl-3 font-mono text-[10px] uppercase tracking-[0.2em] text-navy-200/60">
+            <p className={`mt-7 border-l-2 border-vanguard-red-500 pl-3 font-mono text-[10px] uppercase tracking-[0.2em] ${theme === "dark" ? "text-navy-200/60" : "text-navy-500"}`}>
               Internal reference only
             </p>
           </div>
@@ -215,30 +387,30 @@ function TakeBFooter() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className="text-navy-100/70 transition-colors hover:text-white"
+                  className={`transition-colors ${theme === "dark" ? "text-navy-100/70 hover:text-white" : "text-navy-700 hover:text-vanguard-red-700"}`}
                 >
                   {link.name}
                 </Link>
               ))}
             </nav>
           </div>
-          <div className="rounded-xl border border-white/10 bg-white/[0.04] p-5 shadow-xl shadow-navy-950/30">
+          <div className={`rounded-xl border p-5 shadow-xl ${theme === "dark" ? "border-white/10 bg-white/[0.04] shadow-navy-950/30" : "border-navy-200 bg-white/75 shadow-navy-900/10"}`}>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-vanguard-red-300">
               Data status
             </p>
-            <p className="mt-4 text-2xl font-display font-semibold text-white">
+            <p className={`mt-4 text-2xl font-display font-semibold ${theme === "dark" ? "text-white" : "text-navy-950"}`}>
               Current through
             </p>
-            <p className="mt-1 text-sm text-navy-100/70">
+            <p className={`mt-1 text-sm ${theme === "dark" ? "text-navy-100/70" : "text-navy-600"}`}>
               <DataAsOfMarker />
             </p>
             <div className="mt-5 h-px bg-linear-to-r from-vanguard-red-500/70 to-transparent" />
-            <p className="mt-4 text-xs leading-5 text-navy-200/60">
+            <p className={`mt-4 text-xs leading-5 ${theme === "dark" ? "text-navy-200/60" : "text-navy-500"}`}>
               Public-source evidence, clearly labeled where coverage is limited.
             </p>
           </div>
         </div>
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5 text-xs text-navy-200/60">
+        <div className={`mt-12 flex flex-wrap items-center justify-between gap-3 border-t pt-5 text-xs ${theme === "dark" ? "border-white/10 text-navy-200/60" : "border-navy-200 text-navy-500"}`}>
           <p>EST. 1975 — Client-owned, no shareholders.</p>
           <p className="font-mono uppercase tracking-[0.2em]">
             Vanguard Intelligence
