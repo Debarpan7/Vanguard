@@ -270,7 +270,7 @@ function TakeBHeader({
             );
           })}
         </nav>
-        <div className={`${isRail ? "md:mt-auto" : "ml-auto"} flex flex-wrap items-center gap-2`}>
+        <div className={`${isRail ? "md:mt-auto md:mb-20" : "ml-auto"} flex flex-wrap items-center gap-2`}>
           <div
             aria-label="Layout options"
             className="flex items-center gap-0.5 rounded-lg border border-white/10 bg-white/5 p-1"
