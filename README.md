@@ -14,7 +14,14 @@ press releases, and peers' filings). **Not client-facing.**
 - **Chatbot** — Q&A over the fact base
 - **About** — what this site is, how to read it, data provenance and refresh
 
-Sections beyond About are under construction (build tickets 12–20).
+## Refresh
+
+The site is refreshed on a quarterly cadence (spec story 23): data
+collection → fact base → re-analysis → validate → stamp data-as-of →
+redeploy. The automated gate runs with `npm run refresh:validate`, and the
+end-to-end runbook lives in `docs/runbooks/quarterly-refresh.md`. The
+data-as-of marker on every page shows the last refresh date
+(stamped in `src/lib/site.ts`).
 
 ## Stack
 

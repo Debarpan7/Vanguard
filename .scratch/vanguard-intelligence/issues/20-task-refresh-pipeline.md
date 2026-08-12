@@ -4,10 +4,10 @@
 
 **Blocked by:** 11 (Task: site scaffold — stack, shell, navigation), 17 (Task: LLM analysis pipeline — narrative and improvement opportunities), 18 (Task: live grounded chatbot)
 
-**Status:** ready-for-agent
+**Status:** resolved (commit `12407bd`)
 
-- [ ] Pipeline re-runs data collection into the fact base with provenance intact
-- [ ] Re-analysis produces an updated narrative and improvement opportunities
-- [ ] Redeploy updates the site and the chatbot's data
-- [ ] Data-as-of is updated and visible on the site
-- [ ] Runbook documents the quarterly process end to end
+- [x] Pipeline re-runs data collection into the fact base with provenance intact
+- [x] Re-analysis produces an updated narrative and improvement opportunities
+- [x] Redeploy updates the site and the chatbot's data
+- [x] Data-as-of is updated and visible on the site
+- [x] Runbook documents the quarterly process end to end
