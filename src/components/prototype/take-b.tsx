@@ -30,7 +30,7 @@ import {
 import { navLinks, site } from "@/lib/site";
 
 /* ------------------------------------------------------------------ */
-/* Take B — "Deep navy editorial". Full-bleed navy hero band with      */
+/* Take B â€” "Deep navy editorial". Full-bleed navy hero band with      */
 /* blueprint texture and radial gold glows, a serif display face       */
 /* (--font-display) for editorial headlines, ghost serif numerals,     */
 /* numbered sections with gold rules, a glass "At a glance" stat card  */
@@ -66,11 +66,11 @@ function BrandB() {
     <Link href="/" className="flex items-center gap-2.5">
       <span
         aria-hidden
-        className="size-2.5 rotate-45 bg-linear-to-br from-gold-300 to-gold-600 shadow-sm shadow-gold-900/40"
+        className="size-2.5 rotate-45 bg-linear-to-br from-vanguard-red-300 to-vanguard-red-600 shadow-sm shadow-vanguard-red-900/40"
       />
       <span className="font-display text-lg font-semibold tracking-tight text-white">
         {brandFirst}{" "}
-        <span className="font-light text-gold-200/90">
+        <span className="font-light text-vanguard-red-200/90">
           {brandRest.join(" ")}
         </span>
       </span>
@@ -90,9 +90,9 @@ function BKicker({ index, label }: { index: string; label: string }) {
       </span>
       <span
         aria-hidden
-        className="h-px w-10 bg-linear-to-r from-gold-400 to-transparent"
+        className="h-px w-10 bg-linear-to-r from-vanguard-red-400 to-transparent"
       />
-      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600 dark:text-gold-400">
+      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vanguard-red-600 dark:text-vanguard-red-400">
         {label}
       </p>
     </div>
@@ -104,7 +104,7 @@ function BSectionDivider() {
   return (
     <div aria-hidden className="my-16 flex items-center gap-3">
       <span className="h-px flex-1 bg-linear-to-r from-transparent via-navy-200 to-navy-300/60 dark:via-navy-700 dark:to-navy-600" />
-      <span className="size-1.5 rotate-45 bg-gold-500/70" />
+      <span className="size-1.5 rotate-45 bg-vanguard-red-500/70" />
       <span className="h-px flex-1 bg-linear-to-r from-navy-300/60 via-navy-200 to-transparent dark:from-navy-600 dark:via-navy-700" />
     </div>
   );
@@ -136,7 +136,7 @@ function TakeBHeader() {
     <header className="relative border-b border-white/10 bg-linear-to-b from-navy-950 via-navy-900 to-navy-950 shadow-lg shadow-navy-950/30">
       <div
         aria-hidden
-        className="h-px bg-linear-to-r from-transparent via-gold-400/70 to-transparent"
+        className="h-px bg-linear-to-r from-transparent via-vanguard-red-400/70 to-transparent"
       />
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3.5">
         <BrandB />
@@ -152,7 +152,7 @@ function TakeBHeader() {
                 aria-current={active ? "page" : undefined}
                 className={`group relative inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
                   active
-                    ? "text-gold-300"
+                    ? "text-vanguard-red-300"
                     : "text-navy-100/75 hover:bg-white/5 hover:text-white"
                 }`}
               >
@@ -160,15 +160,15 @@ function TakeBHeader() {
                   aria-hidden
                   className={`size-4 transition-colors ${
                     active
-                      ? "text-gold-400"
-                      : "text-navy-200/60 group-hover:text-gold-300"
+                      ? "text-vanguard-red-400"
+                      : "text-navy-200/60 group-hover:text-vanguard-red-300"
                   }`}
                 />
                 {link.name}
                 {active && (
                   <span
                     aria-hidden
-                    className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-linear-to-r from-gold-300 via-gold-400 to-gold-500"
+                    className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-linear-to-r from-vanguard-red-300 via-vanguard-red-400 to-vanguard-red-500"
                   />
                 )}
               </Link>
@@ -182,44 +182,63 @@ function TakeBHeader() {
 
 function TakeBFooter() {
   return (
-    <footer className="relative border-t border-white/10 bg-navy-950">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-linear-to-br from-navy-950 via-navy-900 to-navy-950">
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-gold-400/60 to-transparent"
+        className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-vanguard-red-500 to-transparent"
       />
-      <div className="mx-auto max-w-6xl px-4 py-10">
-        <div className="flex flex-wrap items-start justify-between gap-x-12 gap-y-8">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_100%_at_100%_0%,rgba(200,16,46,0.12),transparent_70%)]"
+      />
+      <div className="relative mx-auto max-w-6xl px-4 py-12 lg:py-14">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12">
           <div className="max-w-sm">
             <BrandB />
-            <p className="mt-3 text-sm leading-6 text-navy-100/70">
-              Internal reference only — not client-facing. Data from public
-              sources.
+            <p className="mt-5 max-w-xs text-sm leading-7 text-navy-100/70">
+              A research layer for understanding Vanguard&apos;s model, metrics,
+              and strategic choices.
+            </p>
+            <p className="mt-7 border-l-2 border-vanguard-red-500 pl-3 font-mono text-[10px] uppercase tracking-[0.2em] text-navy-200/60">
+              Internal reference only
             </p>
           </div>
-          <nav
-            aria-label="Footer"
-            className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className="text-navy-100/70 transition-colors hover:text-gold-300"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">
-              Data as of
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-vanguard-red-300">
+              Navigate
             </p>
-            <p className="mt-2 text-sm text-navy-100/80">
+            <nav
+              aria-label="Footer"
+              className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-sm"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className="text-navy-100/70 transition-colors hover:text-white"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/[0.04] p-5 shadow-xl shadow-navy-950/30">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-vanguard-red-300">
+              Data status
+            </p>
+            <p className="mt-4 text-2xl font-display font-semibold text-white">
+              Current through
+            </p>
+            <p className="mt-1 text-sm text-navy-100/70">
               <DataAsOfMarker />
+            </p>
+            <div className="mt-5 h-px bg-linear-to-r from-vanguard-red-500/70 to-transparent" />
+            <p className="mt-4 text-xs leading-5 text-navy-200/60">
+              Public-source evidence, clearly labeled where coverage is limited.
             </p>
           </div>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-4 text-xs text-navy-200/60">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5 text-xs text-navy-200/60">
           <p>EST. 1975 — Client-owned, no shareholders.</p>
           <p className="font-mono uppercase tracking-[0.2em]">
             Vanguard Intelligence
@@ -233,17 +252,17 @@ function TakeBFooter() {
 export function TakeBHome() {
   return (
     <div className="bg-white dark:bg-navy-950">
-      {/* Hero — layered navy band: blueprint texture, gold glows, ghost
+      {/* Hero â€” layered navy band: blueprint texture, gold glows, ghost
           serif wordmark, copy column + "At a glance" stat card. */}
       <section className="relative overflow-hidden bg-linear-to-br from-navy-950 via-navy-900 to-navy-800">
         <BGridTexture />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_78%_-10%,rgba(220,171,69,0.22),transparent_62%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_78%_-10%,rgba(200,16,46,0.22),transparent_62%)]"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_100%,rgba(220,171,69,0.09),transparent_60%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_100%,rgba(200,16,46,0.09),transparent_60%)]"
         />
         <div
           aria-hidden
@@ -260,9 +279,9 @@ export function TakeBHome() {
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden
-                  className="size-1.5 rotate-45 bg-gold-400 shadow-sm shadow-gold-900/50"
+                  className="size-1.5 rotate-45 bg-vanguard-red-400 shadow-sm shadow-vanguard-red-900/50"
                 />
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-300">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vanguard-red-300">
                   Internal intelligence
                 </p>
               </div>
@@ -272,21 +291,21 @@ export function TakeBHome() {
               <p className="mt-5 max-w-xl text-lg leading-8 text-navy-100/85">
                 {site.tagline}
               </p>
-              <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-white/5 px-3.5 py-1.5 text-sm text-gold-100 backdrop-blur-sm">
-                <span aria-hidden className="size-1.5 rounded-full bg-gold-400" />
+              <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-vanguard-red-400/30 bg-white/5 px-3.5 py-1.5 text-sm text-vanguard-red-100 backdrop-blur-sm">
+                <span aria-hidden className="size-1.5 rounded-full bg-vanguard-red-400" />
                 Data-as-of: <DataAsOfMarker />
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#analysis"
-                  className="inline-flex items-center gap-2 rounded-md bg-linear-to-r from-gold-400 to-gold-600 px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-lg shadow-gold-900/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold-900/40"
+                  className="inline-flex items-center gap-2 rounded-md bg-linear-to-r from-vanguard-red-400 to-vanguard-red-600 px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-lg shadow-vanguard-red-900/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-vanguard-red-900/40"
                 >
                   Read the analysis
                   <ArrowDown aria-hidden className="size-4" />
                 </a>
                 <a
                   href="#explore"
-                  className="inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-medium text-navy-50 transition-colors hover:border-gold-400/60 hover:text-gold-200"
+                  className="inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-medium text-navy-50 transition-colors hover:border-vanguard-red-400/60 hover:text-vanguard-red-200"
                 >
                   Explore sections
                 </a>
@@ -294,7 +313,7 @@ export function TakeBHome() {
             </div>
 
             <aside className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-navy-950/50 backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vanguard-red-300">
                 At a glance
               </p>
               <dl className="mt-4 divide-y divide-white/10">
@@ -304,7 +323,7 @@ export function TakeBHome() {
                   return (
                     <div key={stat.metric} className="py-4 first:pt-0 last:pb-0">
                       <dt className="text-xs text-navy-100/70">{stat.label}</dt>
-                      <dd className="mt-1 font-mono text-3xl font-medium tracking-tight text-gold-300">
+                      <dd className="mt-1 font-mono text-3xl font-medium tracking-tight text-vanguard-red-300">
                         {point.value.toLocaleString("en-US")}
                         {stat.suffix}
                       </dd>
@@ -323,44 +342,93 @@ export function TakeBHome() {
 
         <div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-gold-400/60 to-transparent"
+          className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-vanguard-red-400/60 to-transparent"
         />
       </section>
 
-      <div className="mx-auto max-w-3xl px-4 py-16">
-        <TakeBAnalysis />
+      <div className="relative overflow-hidden bg-linear-to-b from-white via-vanguard-red-50/30 to-navy-50 dark:from-navy-950 dark:via-navy-950 dark:to-navy-900">
+        <BGridTexture />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-0 h-[720px] w-[42%] bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.08),transparent_68%)]"
+        />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[190px_minmax(0,3fr)] lg:gap-16">
+            <aside className="hidden lg:block">
+              <div className="sticky top-8 border-l-2 border-vanguard-red-500/30 pl-5">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-vanguard-red-600 dark:text-vanguard-red-300">
+                  Field note
+                </p>
+                <p className="mt-3 font-display text-2xl font-semibold leading-tight text-navy-900 dark:text-white">
+                  The read
+                  <br />
+                  below
+                </p>
+                <nav aria-label="Analysis outline" className="mt-8 space-y-4">
+                  {[
+                    ["01", "Narrative", "#analysis"],
+                    ["02", "Opportunities", "#opportunities"],
+                    ["03", "Lens", "#lens"],
+                    ["04", "Explore", "#explore"],
+                  ].map(([index, label, href]) => (
+                    <a
+                      key={index}
+                      href={href}
+                      className="group flex items-center gap-2 text-xs text-navy-500 transition-colors hover:text-vanguard-red-600 dark:text-navy-300 dark:hover:text-vanguard-red-300"
+                    >
+                      <span className="font-mono text-[10px] text-vanguard-red-500/70">
+                        {index}
+                      </span>
+                      <span>{label}</span>
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </aside>
 
-        <section aria-label="Sections" id="explore" className="mt-16 scroll-mt-24">
-          <BKicker index="04" label="Explore" />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {navLinks.map((link) => {
-              const Icon = navIcons[link.path];
-              return (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className="group relative overflow-hidden rounded-xl border border-navy-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-lg hover:shadow-navy-950/10 dark:border-navy-800 dark:bg-navy-900 dark:hover:border-gold-600"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex size-9 items-center justify-center rounded-lg bg-navy-50 text-navy-700 transition-colors group-hover:bg-gold-100 group-hover:text-gold-700 dark:bg-navy-800 dark:text-navy-200 dark:group-hover:bg-gold-900/40 dark:group-hover:text-gold-300">
-                      <Icon aria-hidden className="size-4" />
-                    </span>
-                    <ChevronRight
-                      aria-hidden
-                      className="size-4 text-navy-300 transition-all group-hover:translate-x-0.5 group-hover:text-gold-500 dark:text-navy-500"
-                    />
-                  </div>
-                  <h2 className="mt-3 font-display text-lg font-semibold tracking-tight text-navy-900 dark:text-navy-50">
-                    {link.name}
-                  </h2>
-                  <p className="mt-1 text-sm text-navy-500 dark:text-navy-300">
-                    Opens the {link.name.toLowerCase()} section.
-                  </p>
-                </Link>
-              );
-            })}
+            <div className="min-w-0">
+              <TakeBAnalysis />
+            </div>
           </div>
-        </section>
+
+          <section aria-label="Sections" id="explore" className="mt-20 scroll-mt-24 border-t border-navy-200/80 pt-12 dark:border-navy-700">
+            <div className="flex flex-wrap items-end justify-between gap-5">
+              <BKicker index="04" label="Explore" />
+              <p className="max-w-sm text-sm leading-6 text-navy-500 dark:text-navy-300">
+                Move from the narrative into the evidence, products, and operating model behind it.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {navLinks.map((link) => {
+                const Icon = navIcons[link.path];
+                return (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className="group relative overflow-hidden rounded-xl border border-navy-200/80 bg-white/90 p-5 shadow-[0_8px_28px_-18px_rgba(13,24,48,0.6)] transition-all hover:-translate-y-1 hover:border-vanguard-red-300 hover:shadow-[0_18px_40px_-20px_rgba(200,16,46,0.35)] dark:border-navy-700 dark:bg-navy-900/80 dark:hover:border-vanguard-red-600"
+                  >
+                    <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-vanguard-red-400 via-vanguard-red-500 to-vanguard-red-700 opacity-70 transition-opacity group-hover:opacity-100" />
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex size-9 items-center justify-center rounded-lg bg-vanguard-red-50 text-vanguard-red-700 transition-colors group-hover:bg-vanguard-red-500 group-hover:text-white dark:bg-vanguard-red-900/30 dark:text-vanguard-red-300 dark:group-hover:bg-vanguard-red-500">
+                        <Icon aria-hidden className="size-4" />
+                      </span>
+                      <ChevronRight
+                        aria-hidden
+                        className="size-4 text-navy-300 transition-all group-hover:translate-x-0.5 group-hover:text-vanguard-red-500 dark:text-navy-500"
+                      />
+                    </div>
+                    <h2 className="mt-5 font-display text-lg font-semibold tracking-tight text-navy-900 dark:text-navy-50">
+                      {link.name}
+                    </h2>
+                    <p className="mt-1 text-sm text-navy-500 dark:text-navy-300">
+                      Opens the {link.name.toLowerCase()} section.
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );
@@ -379,7 +447,7 @@ export function TakeBBenchmarking({
         <BGridTexture />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_80%_-20%,rgba(220,171,69,0.2),transparent_60%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_80%_-20%,rgba(200,16,46,0.2),transparent_60%)]"
         />
         <div
           aria-hidden
@@ -393,9 +461,9 @@ export function TakeBBenchmarking({
           <div className="flex items-center gap-3">
             <span
               aria-hidden
-              className="size-1.5 rotate-45 bg-gold-400 shadow-sm shadow-gold-900/50"
+              className="size-1.5 rotate-45 bg-vanguard-red-400 shadow-sm shadow-vanguard-red-900/50"
             />
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vanguard-red-300">
               Peer comparisons
             </p>
           </div>
@@ -404,17 +472,17 @@ export function TakeBBenchmarking({
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-navy-100/85">
             Each headline metric compared against the peer set over the 5 years
-            — with membership rules and the ownership caveat displayed
+            â€” with membership rules and the ownership caveat displayed
             alongside every comparison.
           </p>
-          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-white/5 px-3.5 py-1.5 text-sm text-gold-100 backdrop-blur-sm">
-            <span aria-hidden className="size-1.5 rounded-full bg-gold-400" />
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-vanguard-red-400/30 bg-white/5 px-3.5 py-1.5 text-sm text-vanguard-red-100 backdrop-blur-sm">
+            <span aria-hidden className="size-1.5 rounded-full bg-vanguard-red-400" />
             Data-as-of: <DataAsOfMarker />
           </p>
         </header>
         <div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-gold-400/60 to-transparent"
+          className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-vanguard-red-400/60 to-transparent"
         />
       </section>
 
@@ -449,13 +517,13 @@ function TakeBAnalysis() {
           {analysisNarrative.reads.map((read, index) => (
             <article
               key={read.heading}
-              className="relative border-l-2 border-gold-400 pl-6 dark:border-gold-500"
+              className="relative border-l-2 border-vanguard-red-400 pl-6 dark:border-vanguard-red-500"
             >
               <span
                 aria-hidden
-                className="absolute -left-[5px] top-0 size-2 rotate-45 rounded-[1px] bg-gold-500"
+                className="absolute -left-[5px] top-0 size-2 rotate-45 rounded-[1px] bg-vanguard-red-500"
               />
-              <p className="font-mono text-xs tracking-widest text-gold-600 dark:text-gold-400">
+              <p className="font-mono text-xs tracking-widest text-vanguard-red-600 dark:text-vanguard-red-400">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-1.5 font-display text-2xl font-semibold tracking-tight text-navy-900 dark:text-navy-50">
@@ -484,11 +552,11 @@ function TakeBAnalysis() {
           {analysisOpportunities.map((opportunity) => (
             <article
               key={opportunity.id}
-              className="group relative overflow-hidden rounded-xl border border-navy-100 bg-white p-5 shadow-[0_1px_2px_rgba(13,24,48,0.04),0_12px_32px_-16px_rgba(13,24,48,0.25)] transition-all hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-[0_2px_4px_rgba(13,24,48,0.05),0_20px_48px_-20px_rgba(198,142,45,0.35)] dark:border-navy-800 dark:bg-navy-900 dark:shadow-none dark:hover:border-gold-600"
+              className="group relative overflow-hidden rounded-xl border border-navy-100 bg-white p-5 shadow-[0_1px_2px_rgba(13,24,48,0.04),0_12px_32px_-16px_rgba(13,24,48,0.25)] transition-all hover:-translate-y-0.5 hover:border-vanguard-red-300 hover:shadow-[0_2px_4px_rgba(13,24,48,0.05),0_20px_48px_-20px_rgba(200,16,46,0.35)] dark:border-navy-800 dark:bg-navy-900 dark:shadow-none dark:hover:border-vanguard-red-600"
             >
               <span
                 aria-hidden
-                className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-gold-300 via-gold-400 to-gold-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-vanguard-red-300 via-vanguard-red-400 to-vanguard-red-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
               <h3 className="font-display text-xl font-semibold tracking-tight text-navy-900 dark:text-navy-50">
                 {opportunity.name}
@@ -497,7 +565,7 @@ function TakeBAnalysis() {
                 {opportunity.claim}
               </p>
               <p className="mt-3 text-sm leading-6 text-navy-600 dark:text-navy-200">
-                <span className="font-medium text-gold-700 dark:text-gold-400">
+                <span className="font-medium text-vanguard-red-700 dark:text-vanguard-red-400">
                   Evidence:
                 </span>{" "}
                 {opportunity.evidence
@@ -505,7 +573,7 @@ function TakeBAnalysis() {
                   .join(", ")}
               </p>
               <p className="mt-2 text-sm leading-6 text-navy-600 dark:text-navy-200">
-                <span className="font-medium text-gold-700 dark:text-gold-400">
+                <span className="font-medium text-vanguard-red-700 dark:text-vanguard-red-400">
                   Read:
                 </span>{" "}
                 {opportunity.read}
@@ -519,17 +587,17 @@ function TakeBAnalysis() {
 
       <section className="scroll-mt-24" aria-label="Improvement lens">
         <BKicker index="03" label="Lens" />
-        <blockquote className="relative mt-8 overflow-hidden rounded-xl border border-gold-500/20 bg-linear-to-br from-gold-500/[0.07] to-transparent p-8">
+        <blockquote className="relative mt-8 overflow-hidden rounded-xl border border-vanguard-red-500/20 bg-linear-to-br from-vanguard-red-500/[0.07] to-transparent p-8">
           <Quote
             aria-hidden
-            className="absolute -top-3 left-6 size-8 text-gold-400/70"
+            className="absolute -top-3 left-6 size-8 text-vanguard-red-400/70"
           />
           <p className="relative font-display text-2xl font-light italic leading-relaxed text-navy-800 dark:text-navy-100">
             {improvementLens}
           </p>
           <span
             aria-hidden
-            className="mt-6 block h-px w-16 bg-linear-to-r from-gold-400 to-transparent"
+            className="mt-6 block h-px w-16 bg-linear-to-r from-vanguard-red-400 to-transparent"
           />
         </blockquote>
       </section>
@@ -545,7 +613,7 @@ function TakeBPeerSet() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-gold-300 via-gold-500 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-vanguard-red-300 via-vanguard-red-500 to-transparent"
       />
       <p
         aria-hidden
@@ -557,7 +625,7 @@ function TakeBPeerSet() {
         Peer set
         <span
           aria-hidden
-          className="mt-2 block h-0.5 w-12 rounded-full bg-linear-to-r from-gold-300 to-gold-500"
+          className="mt-2 block h-0.5 w-12 rounded-full bg-linear-to-r from-vanguard-red-300 to-vanguard-red-500"
         />
       </h2>
       <p className="relative mt-3 max-w-2xl text-sm leading-6 text-navy-100/80">
@@ -568,7 +636,7 @@ function TakeBPeerSet() {
         {allFirms.slice(1).map((firm) => (
           <li
             key={firm}
-            className="rounded-md border border-navy-700 bg-navy-900 p-3 transition-colors hover:border-gold-500/50 dark:bg-navy-950"
+            className="rounded-md border border-navy-700 bg-navy-900 p-3 transition-colors hover:border-vanguard-red-500/50 dark:bg-navy-950"
           >
             <span className="font-medium text-white">{firmMeta[firm].name}</span>{" "}
             <span className="block text-xs text-navy-200/70">
@@ -578,7 +646,7 @@ function TakeBPeerSet() {
         ))}
       </ul>
 
-      <h3 className="relative mt-7 text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">
+      <h3 className="relative mt-7 text-xs font-semibold uppercase tracking-[0.2em] text-vanguard-red-300">
         Membership rules
       </h3>
       <ol className="relative mt-2 list-decimal space-y-2 pl-5 text-sm leading-6 text-navy-100/85">
@@ -587,7 +655,7 @@ function TakeBPeerSet() {
         ))}
       </ol>
 
-      <h3 className="relative mt-7 text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">
+      <h3 className="relative mt-7 text-xs font-semibold uppercase tracking-[0.2em] text-vanguard-red-300">
         Basis of comparison
       </h3>
       <p className="relative mt-2 text-sm leading-6 text-navy-100/85">
@@ -599,7 +667,7 @@ function TakeBPeerSet() {
 
       <p
         data-testid="ownership-caveat"
-        className="relative mt-5 rounded-md border-l-4 border-gold-400 bg-navy-900/70 p-3 text-sm leading-6 text-navy-50"
+        className="relative mt-5 rounded-md border-l-4 border-vanguard-red-400 bg-navy-900/70 p-3 text-sm leading-6 text-navy-50"
       >
         {ownershipCaveat}
       </p>
@@ -659,9 +727,9 @@ function TakeBExplorer({
             type="search"
             value={firmFilter}
             onChange={(event) => onFirmFilterChange(event.target.value)}
-            placeholder="Filter firms — e.g., BlackRock"
+            placeholder="Filter firms â€” e.g., BlackRock"
             data-testid="benchmarking-firm-search"
-            className="w-full rounded-md border border-navy-200 bg-white py-2 pl-9 pr-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-400 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-50 dark:placeholder:text-navy-400"
+            className="w-full rounded-md border border-navy-200 bg-white py-2 pl-9 pr-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-vanguard-red-500 focus:outline-none focus:ring-1 focus:ring-vanguard-red-400 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-50 dark:placeholder:text-navy-400"
           />
         </div>
       </div>
@@ -676,7 +744,7 @@ function TakeBExplorer({
 function tabClassB(active: boolean): string {
   return `border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
     active
-      ? "border-gold-500 text-navy-900 dark:border-gold-400 dark:text-navy-50"
+      ? "border-vanguard-red-500 text-navy-900 dark:border-vanguard-red-400 dark:text-navy-50"
       : "border-transparent text-navy-500 hover:border-navy-300 hover:text-navy-800 dark:text-navy-300 dark:hover:border-navy-600 dark:hover:text-navy-100"
   }`;
 }

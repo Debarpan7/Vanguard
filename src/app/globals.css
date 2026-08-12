@@ -37,6 +37,17 @@
   --color-gold-700: #82541f;
   --color-gold-800: #65401e;
   --color-gold-900: #52351c;
+
+  --color-vanguard-red-50: #fff1f2;
+  --color-vanguard-red-100: #ffe4e6;
+  --color-vanguard-red-200: #fecdd3;
+  --color-vanguard-red-300: #f58a98;
+  --color-vanguard-red-400: #df4d62;
+  --color-vanguard-red-500: #c8102e;
+  --color-vanguard-red-600: #aa0e28;
+  --color-vanguard-red-700: #8d0c22;
+  --color-vanguard-red-800: #70091b;
+  --color-vanguard-red-900: #520713;
 }
 
 @media (prefers-color-scheme: dark) {
