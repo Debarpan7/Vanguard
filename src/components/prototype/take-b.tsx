@@ -138,19 +138,19 @@ function BGridTexture() {
 }
 
 export function TakeBShell({ children }: { children: ReactNode }) {
-  const [layout, setLayout] = useState<TakeBLayout>(() => {
-    if (typeof window === "undefined") return "rail";
+  const [layout, setLayout] = useState<TakeBLayout>("rail");
+  const [theme, setTheme] = useState<TakeBTheme>("dark");
+
+  useEffect(() => {
     const savedLayout = window.localStorage.getItem("vanguard-take-b-layout");
-    return savedLayout === "rail" || savedLayout === "top" || savedLayout === "canvas"
-      ? savedLayout
-      : "rail";
-  });
-  const [theme, setTheme] = useState<TakeBTheme>(() => {
-    if (typeof window === "undefined") return "dark";
-    return window.localStorage.getItem("vanguard-take-b-theme") === "light"
-      ? "light"
-      : "dark";
-  });
+    const savedTheme = window.localStorage.getItem("vanguard-take-b-theme");
+    if (savedLayout === "rail" || savedLayout === "top" || savedLayout === "canvas") {
+      window.setTimeout(() => setLayout(savedLayout), 0);
+    }
+    if (savedTheme === "light" || savedTheme === "dark") {
+      window.setTimeout(() => setTheme(savedTheme), 0);
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
