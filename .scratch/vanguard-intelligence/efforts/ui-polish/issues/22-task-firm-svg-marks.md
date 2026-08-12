@@ -1,6 +1,6 @@
 # 22 — Task: hand-built firm SVG mark components
 
-**What to build:** Accurate, hand-rendered SVG marks for the six firms — Vanguard, BlackRock, Fidelity, State Street, Invesco, Amundi — as one reusable component keyed by the fact base's firm ids, ready for the data views to drop in. Sources are researched from official public mark references (brand pages / press kits — public sources only) and recorded as a linked asset: `assets/01-firm-mark-references.md` (this effort).
+**What to build:** Accurate, hand-rendered SVG marks for the six firms — Vanguard, BlackRock, Fidelity, State Street, Invesco, Amundi — as one reusable component keyed by the fact base's firm ids, ready for the data views to drop in. Sources are researched from official public mark references (brand pages / press kits — public sources only) and recorded as a linked asset: `../assets/01-firm-mark-references.md` (this effort).
 
 **Blocked by:** None — can start immediately.
 
@@ -8,16 +8,16 @@
 
 **Assignee:** GitHub Copilot
 
-- [x] Mark source references gathered from public brand pages and recorded as a linked asset (`assets/01-firm-mark-references.md`)
+- [x] Mark source references gathered from public brand pages and recorded as a linked asset (`../assets/01-firm-mark-references.md`)
 - [x] Shared firm-mark component renders a recognizable mark per firm id (matching the fact base's firm ids), with size/color props and a monochrome variant; legible at 24–32px
 - [x] Unit tests green: renders per firm id, honors size/className, monochrome variant works
 
 ## Answer
 
 **Built:**
-- `src/components/firm-mark.tsx` — the shared `FirmMark` component keyed by fact-base firm id (`FirmId` from `src/data/fact-base.ts`), exporting `FirmMark`, `FirmMarkProps`, and `FIRM_MARK_COLORS`. Renders one hand-rolled SVG per firm (viewBox 0 0 32 32, default 24px — inside the spec's 24–32px legibility floor), with `size`, `color`, `monochrome`, and `className` props. `monochrome` renders `fill`/`stroke` as `currentColor` so callers can drop the marks into the site's navy/gold contexts; the default is the firm's brand hue (approximations ⚠️, sourced in the linked asset). Server-compatible (no hooks, no client state) so the data views can render it directly.
+- `src/components/firm-mark.ts` — the shared `FirmMark` component keyed by fact-base firm id (`FirmId` from `src/data/fact-base.ts`), exporting `FirmMark`, `FirmMarkProps`, and `FIRM_MARK_COLORS`. Renders one hand-rolled SVG per firm (viewBox 0 0 32 32, default 24px — inside the spec's 24–32px legibility floor), with `size`, `color`, `monochrome`, and `className` props. `monochrome` renders `fill`/`stroke` as `currentColor` so callers can drop the marks into the site's navy/gold contexts; the default is the firm's brand hue (approximations ⚠️, sourced in the linked asset). Server-compatible (no hooks, no client state) so the data views can render it directly. Dark-mode legibility (spec story 4) is applied by callers per surface (`monochrome`/`color` on dark backgrounds) and lands with ticket 24's placement.
 - `tests/firm-mark.spec.ts` — Seam 2 coverage: distinct mark per firm id (six pairwise-distinct outputs), aria-labels match fact-base display names (incl. `State Street (SSGA) logo`), size honors default 24 / 32 override, className lands on the svg, brand hue default with `color` override, monochrome variant uses `currentColor` and drops the brand hue.
-- Research asset `assets/01-firm-mark-references.md` — official/public mark sources per firm with a verification legend (✅/⚠️/🚫); BlackRock's corporate page is legally gated (🚫 recorded).
+- Research asset `../assets/01-firm-mark-references.md` — official/public mark sources per firm with a verification legend (✅/⚠️/🚫); BlackRock's corporate page is legally gated (🚫 recorded).
 
 **Verification (both seams):**
 - Seam 2 — `npm run test:unit`: 70/70 green (64 prior + 6 new firm-mark tests); `npx tsc --noEmit` clean; `npm run lint` clean.

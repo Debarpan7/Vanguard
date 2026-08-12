@@ -5,10 +5,11 @@ import { firmMeta } from "@/data/fact-base";
 
 /**
  * Approximate brand hues per firm, from the mark-references research asset
- * (`efforts/ui-polish/assets/01-firm-mark-references.md` — ⚠️ approximations
- * from general brand knowledge, tagged there). Every caller can override via
- * `color` or force `monochrome` for the site's own navy/gold contexts; the
- * firms' palettes are deliberately not the site palette (ticket 21).
+ * (`.scratch/vanguard-intelligence/efforts/ui-polish/assets/01-firm-mark-references.md`
+ * — ⚠️ approximations from general brand knowledge, tagged there). Every
+ * caller can override via `color` or force `monochrome` for the site's own
+ * navy/gold contexts; the firms' palettes are deliberately not the site
+ * palette (ticket 21).
  */
 export const FIRM_MARK_COLORS: Readonly<Record<FirmId, string>> = {
   vanguard: "#c41230",
@@ -42,7 +43,7 @@ export interface FirmMarkProps {
  * Playwright's own `playwright/jsx-runtime` (marker objects, not React
  * elements) — see the effort map's "Decisions so far".
  */
-const FIRM_MARK_PATHS: Record<FirmId, ReactElement> = {
+const FIRM_MARK_PATHS: Readonly<Record<FirmId, ReactElement>> = {
   // The Vanguard "V" — bold angular V (sail/needle motif; named for HMS Vanguard).
   vanguard: createElement("path", { d: "M3 5 L12 5 L16 18 L20 5 L29 5 L16 31 Z" }),
   // BlackRock — bold "B" (stem + two bowls) with the swoosh sweeping beneath.
@@ -86,7 +87,9 @@ const FIRM_MARK_PATHS: Record<FirmId, ReactElement> = {
  * The shared firm-mark component — one SVG per fact-base firm id, usable
  * from server components (no hooks, no client state). Renders the firm's
  * brand hue by default; pass `monochrome` to inherit `currentColor`, or
- * `color` to override the hue entirely.
+ * `color` to override the hue entirely. Dark-mode legibility (spec story 4)
+ * is applied by callers per surface — pass `monochrome` or a context `color`
+ * on dark backgrounds; the placement lands with ticket 24.
  */
 export function FirmMark({
   firm,

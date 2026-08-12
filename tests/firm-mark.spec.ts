@@ -47,8 +47,14 @@ test("renders a distinct mark for every firm id in the fact base", () => {
     expect(markups[i]).toContain(`aria-label="${firmMeta[firm].name} logo"`);
   }
 
-  // Each firm renders its own geometry — the six outputs are pairwise distinct.
-  expect(new Set(markups).size).toBe(6);
+  // Each firm renders its own geometry — the six shape outputs are pairwise
+  // distinct. Compare the svg's inner content only: the aria-label is unique
+  // by construction, so whole-markup uniqueness would pass even with six
+  // identical shapes.
+  const geometries = markups.map((markup) =>
+    markup.slice(markup.indexOf(">") + 1, markup.lastIndexOf("</svg>")),
+  );
+  expect(new Set(geometries).size).toBe(6);
 });
 
 test("labels every firm by its fact-base display name", () => {
