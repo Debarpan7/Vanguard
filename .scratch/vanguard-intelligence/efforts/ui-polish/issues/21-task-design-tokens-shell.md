@@ -12,3 +12,25 @@
 - [ ] `lucide-react` added (pinned); colored section icons render in the header nav
 - [ ] Navy header and footer, gold active-nav accent, nav transitions — in both light and dark modes
 - [ ] Nav link names, active detection, and the data-as-of marker contract unchanged; scaffold E2E green
+
+## Code review (commits `7949756` + `2900010`)
+
+Two-axis review of `f0f9dfd...HEAD` (prototype take + fixes). **Standards**: no
+hard violations remain. Fixed: `LiveChrome` moved out of `prototype/` so
+production never depends on throwaway code; `VARIANT_LABELS`/`SHELLS` made
+`Readonly`; Take C light-mode wordmark gradient darkened to `gold-700/800`
+(AA ≥ 4.5 on white; bright gold gradient reserved for dark mode). Judgement
+calls noted, not blocking: near-duplicate `TakeAExplorer`/`TakeBExplorer`
+bodies (extract if a take wins), `if (take === "A"|"B"|"C")` cascades in both
+pages (a shared map would do), `null` as the live-site sentinel, `parseVariant`
+accepting `string[]` that never occurs. **Spec**: deliverable faithful — 3
+structurally-different takes on `/` + `/benchmarking` via `?variant=`, switcher
+with keyboard cycling + focus guard, NODE_ENV gates on layout/shell/switcher/
+pages, all contract testids kept. Known quirks, accepted for the prototype:
+(1) in-take nav links, metric tabs, and brand links drop `?variant=` and exit
+to the live site; (2) Take C hero adds two narrative sentences ("Client-owned
+— no shareholders…") not in the fact base — flagged as scope creep, either
+trim before folding or keep as a locked-copy decision; (3) takes/switcher stay
+in the prod JS bundle (runtime-gated, not compile-removed).
+
+**Status:** in-progress (prototype take in review — HITL)
