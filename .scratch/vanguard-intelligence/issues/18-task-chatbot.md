@@ -4,9 +4,9 @@
 
 **Blocked by:** 11 (Task: site scaffold — stack, shell, navigation), 08 (Task: fact base assembly), 09 (Grilling: chatbot scope and engineering)
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Chatbot answers known fact base queries with the correct grounded sources
-- [ ] Chatbot refuses out-of-fact-base and advice questions
-- [ ] Ownership caveat is enforced in relevant answers
-- [ ] Browser E2E test asserts a known query returns the correct grounded answer and an out-of-scope query is refused
+- [x] Chatbot answers known fact base queries with the correct grounded sources
+- [x] Chatbot refuses out-of-fact-base and advice questions
+- [x] Ownership caveat is enforced in relevant answers
+- [x] Browser E2E test asserts a known query returns the correct grounded answer and an out-of-scope query is refused
