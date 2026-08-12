@@ -4,7 +4,9 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** in-progress (prototype take in review)
+
+**Assignee:** GitHub Copilot
 
 - [ ] Rough styled take on home + benchmarking produced and agreed — token values (navy/gold hues, AA pairings, type treatment, radius/shadow scale) locked
 - [ ] `lucide-react` added (pinned); colored section icons render in the header nav

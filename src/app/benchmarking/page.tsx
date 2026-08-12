@@ -1,6 +1,10 @@
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { PeerSetPanel } from "@/components/peer-set-panel";
 import { BenchmarkingExplorer } from "@/components/benchmarking-explorer";
+import { TakeABenchmarking } from "@/components/prototype/take-a";
+import { TakeBBenchmarking } from "@/components/prototype/take-b";
+import { TakeCBenchmarking } from "@/components/prototype/take-c";
+import { parseVariant } from "@/components/prototype/variants";
 import { headlineMetrics, type MetricId } from "@/data/fact-base";
 
 /** Resolves ?metric= from the URL to a headline metric, or null for all. */
@@ -13,12 +17,8 @@ function parseMetric(
     : null;
 }
 
-export default async function BenchmarkingPage({
-  searchParams,
-}: PageProps<"/benchmarking">) {
-  const { metric } = await searchParams;
-  const activeMetric = parseMetric(metric);
-
+/** The live benchmarking page (no ?variant=). */
+function LiveBenchmarking({ activeMetric }: { activeMetric: MetricId | null }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <header className="max-w-3xl">
@@ -39,4 +39,22 @@ export default async function BenchmarkingPage({
       <BenchmarkingExplorer activeMetric={activeMetric} />
     </div>
   );
+}
+
+/**
+ * Ticket 21 — design tokens & shell (HITL gate): the benchmarking view gets
+ * the same three prototype takes as home, switchable via `?variant=`.
+ * Dev-only; production always renders the live page.
+ */
+export default async function BenchmarkingPage({
+  searchParams,
+}: PageProps<"/benchmarking">) {
+  const { metric, variant } = await searchParams;
+  const activeMetric = parseMetric(metric);
+  const take = process.env.NODE_ENV === "production" ? null : parseVariant(variant);
+
+  if (take === "A") return <TakeABenchmarking activeMetric={activeMetric} />;
+  if (take === "B") return <TakeBBenchmarking activeMetric={activeMetric} />;
+  if (take === "C") return <TakeCBenchmarking activeMetric={activeMetric} />;
+  return <LiveBenchmarking activeMetric={activeMetric} />;
 }
