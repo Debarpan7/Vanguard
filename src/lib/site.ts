@@ -8,8 +8,13 @@ export const site = {
   name: "Vanguard Intelligence",
   tagline:
     "How Vanguard is faring and where it can improve — internal reference, LLM-produced analysis over public sources.",
-  /** ISO date of the last fact base refresh. Null until the first refresh runs. */
-  dataAsOf: null as string | null,
+  /**
+   * ISO date of the last fact base refresh. Stamped by the quarterly refresh
+   * pipeline (ticket 20, runbook: `docs/runbooks/quarterly-refresh.md`) on
+   * each run; `2026-08-12` is the first refresh (the pipeline's
+   * establishment run, which validated the seeded fact base).
+   */
+  dataAsOf: "2026-08-12" as string | null,
 } as const;
 
 export interface NavLink {
