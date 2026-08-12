@@ -23,3 +23,19 @@
 - Seam 2 — `npm run test:unit`: 70/70 green (64 prior + 6 new firm-mark tests); `npx tsc --noEmit` clean; `npm run lint` clean.
 - Seam 1 — untouched this ticket: the component is not wired into pages until ticket 24, so no E2E changes; the suite stays green as-is.
 - Loader note: the component and test are deliberately JSX-free (`createElement`), because Playwright's unit-test transform compiles JSX against its own `playwright/jsx-runtime` (marker objects, not React elements) and Node 26's native TS loader rejects JSX inside `.ts` files — recorded in the map's Decisions so far.
+
+## Review (code review, post-resolution)
+
+Two-axis review (Standards = documented repo standards; Spec = this ticket + the ui-polish spec) of `9e8231d..HEAD`.
+
+**Standards axis — approved, no blocking findings.** Judgement-call nits, both fixed in commit `f8142bc`:
+- `firm-mark.tsx` contained zero JSX → renamed to `firm-mark.ts` (`git mv`, history preserved); the honest extension.
+- `FIRM_MARK_PATHS` was a plain `Record` while `FIRM_MARK_COLORS` was `Readonly` → made consistent.
+- Test tooling shaping prod code (JSX-free form dictated by the Playwright unit pipeline) — documented above, unavoidable, accepted.
+
+**Spec axis — 3 findings, all addressed in `f8142bc`:**
+- **(a1) Story 4 (dark mode) only half-provided.** The component ships the `monochrome`/`color` mechanism but BlackRock's `#141414` is unreadable on the dark theme until a caller applies it. Recorded as deferred: dark-mode legibility is owned by ticket 24's placement (its checklist item 2), and the component docstring now documents that callers apply `monochrome`/`color` per surface.
+- **(a2) "Linked asset" references did not resolve.** The ticket's `assets/01-firm-mark-references.md` (from `issues/`) and the component docstring's `efforts/ui-polish/assets/...` both lacked the `.scratch/` prefix. Fixed: ticket now links `../assets/...` (resolves relative to `issues/`, matching the site effort's convention), map Sources now `assets/...` (relative to map), component docstring fully-qualified.
+- **(c1) Pairwise-distinct test was circular.** `new Set(markups).size === 6` proved only aria-label uniqueness (labels are unique by construction — six identical geometries would pass). Fixed: distinctness is now asserted on the svg's **inner geometry** (slice between the first `>` and `</svg>`), `new Set(geometries).size === 6`.
+
+Post-review verification: `npm run test:unit` 70/70, `npx tsc --noEmit` clean, `npm run lint` clean.
