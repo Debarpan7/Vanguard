@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AnalysisView } from "@/components/analysis-view";
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { navLinks, site } from "@/lib/site";
 
@@ -16,6 +17,10 @@ export default function Home() {
           Data-as-of: <DataAsOfMarker />
         </p>
       </section>
+
+      {/* Ticket 17 — the home page is the analysis view: narrative, improvement
+      opportunities, and lens from the seeded pipeline output. */}
+      <AnalysisView />
 
       <section className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {navLinks.map((link) => (
