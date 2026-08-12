@@ -2,7 +2,7 @@
 
 import type { ComponentType, ReactNode } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { LiveChrome } from "./live-chrome";
+import { LiveChrome } from "@/components/live-chrome";
 import { PrototypeSwitcher } from "./prototype-switcher";
 import { TakeAShell } from "./take-a";
 import { TakeBShell } from "./take-b";
@@ -13,12 +13,13 @@ import {
   type PrototypeVariant,
 } from "./variants";
 
-const SHELLS: Record<PrototypeVariant, ComponentType<{ children: ReactNode }>> =
-  {
-    A: TakeAShell,
-    B: TakeBShell,
-    C: TakeCShell,
-  };
+const SHELLS: Readonly<
+  Record<PrototypeVariant, ComponentType<{ children: ReactNode }>>
+> = {
+  A: TakeAShell,
+  B: TakeBShell,
+  C: TakeCShell,
+};
 
 /**
  * Client gate that swaps the site chrome (header + footer) for the selected

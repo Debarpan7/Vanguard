@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
-import { LiveChrome } from "@/components/prototype/live-chrome";
+import { LiveChrome } from "@/components/live-chrome";
 import { PrototypeShell } from "@/components/prototype/prototype-shell";
 import { site } from "@/lib/site";
 import "./globals.css";

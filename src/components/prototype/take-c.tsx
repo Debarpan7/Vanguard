@@ -55,7 +55,10 @@ function TakeCHeader() {
           className="flex items-baseline gap-1 text-lg font-semibold tracking-tight text-navy-900 dark:text-navy-50"
         >
           {brandFirst}
-          <span className="bg-linear-to-r from-gold-500 via-gold-600 to-gold-500 bg-clip-text text-transparent dark:from-gold-300 dark:via-gold-400 dark:to-gold-300">
+          {/* Light mode: gold-700/800 stops keep AA ≥ 4.5 on white; the
+              bright gold gradient is reserved for dark mode where the
+              navy-950 ground gives it ample contrast. */}
+          <span className="bg-linear-to-r from-gold-700 to-gold-800 bg-clip-text text-transparent dark:from-gold-300 dark:via-gold-400 dark:to-gold-300">
             {brandRest.join(" ")}
           </span>
         </Link>

@@ -3,9 +3,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 /**
- * The live site chrome (header + main + footer) — also the Suspense
- * fallback for the prototype shell, so initial HTML and non-prototype
- * routes are byte-identical to the current site.
+ * The live site chrome (header + main + footer). Lives OUTSIDE the
+ * prototype directory so production never depends on throwaway code —
+ * also the Suspense fallback for the prototype shell, so initial HTML
+ * and non-prototype routes are byte-identical to the current site.
  */
 export function LiveChrome({ children }: { children: ReactNode }) {
   return (

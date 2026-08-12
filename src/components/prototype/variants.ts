@@ -28,7 +28,7 @@ export function parseVariant(
     : null;
 }
 
-export const VARIANT_LABELS: Record<PrototypeVariant, string> = {
+export const VARIANT_LABELS: Readonly<Record<PrototypeVariant, string>> = {
   A: "Take A — Classic institutional",
   B: "Take B — Deep navy editorial",
   C: "Take C — Gold-forward split",
