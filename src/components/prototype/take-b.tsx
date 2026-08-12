@@ -144,19 +144,19 @@ export function TakeBShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedLayout = window.localStorage.getItem("vanguard-take-b-layout");
     const savedTheme = window.localStorage.getItem("vanguard-take-b-theme");
-    if (savedLayout === "rail" || savedLayout === "top" || savedLayout === "canvas") {
-      window.setTimeout(() => setLayout(savedLayout), 0);
-    }
-    if (savedTheme === "light" || savedTheme === "dark") {
-      window.setTimeout(() => setTheme(savedTheme), 0);
-    }
+    queueMicrotask(() => {
+      if (savedLayout === "rail" || savedLayout === "top" || savedLayout === "canvas") {
+        setLayout(savedLayout);
+      }
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      }
+    });
   }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem("vanguard-take-b-layout", layout);
-    window.localStorage.setItem("vanguard-take-b-theme", theme);
-  }, [layout, theme]);
+  }, [theme]);
 
   function changeLayout(nextLayout: TakeBLayout) {
     setLayout(nextLayout);
