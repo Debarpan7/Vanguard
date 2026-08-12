@@ -4,7 +4,10 @@ export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  // CI: two retries. Local: one — the first navigation against a freshly
+  // started `next start` occasionally aborts with ERR_ABORTED (cold-start);
+  // the retry runs against the warm server and passes.
+  retries: process.env.CI ? 2 : 1,
   reporter: "list",
   use: {
     baseURL: "http://localhost:3000",
