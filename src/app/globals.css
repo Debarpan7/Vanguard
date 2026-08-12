@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
 
   /* Ticket 21 candidate palette — navy + gold, both light and dark.
      Values are NOT locked yet: the three prototype takes (A/B/C) explore
