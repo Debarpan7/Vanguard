@@ -33,4 +33,4 @@ Unblocks tickets 15, 16 (de-provisionalizes their LoB display), and 17 (full).
 
 ## Review
 
-- Reviewed during ticket 17 implementation (commit `XXXXXXX`). No blockers on the taxonomy decisions; implementation detail lives in `issues/17-task-analysis-pipeline.md`.
+- Reviewed during ticket 17 implementation (commit `b79bf2d`). No blockers on the taxonomy decisions; implementation detail lives in `issues/17-task-analysis-pipeline.md`.
