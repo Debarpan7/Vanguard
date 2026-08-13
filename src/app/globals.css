@@ -44,8 +44,8 @@
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-fraunces);
 
-    /* Take B foundation: deep navy structure and Vanguard red accents.
-      Gold remains available for legacy prototype compatibility only. */
+    /* Site foundation: deep navy structure and Vanguard red accents.
+      Gold remains available for legacy compatibility only. */
   --color-navy-50: #f3f6fb;
   --color-navy-100: #e4ebf5;
   --color-navy-200: #c7d5ea;

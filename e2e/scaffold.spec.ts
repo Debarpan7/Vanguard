@@ -24,15 +24,24 @@ test("home page shows the site name and navigation to every section", async ({ p
 });
 
 test("theme toggle is authoritative and persists the explicit preference", async ({ page }) => {
-  await page.addInitScript(() => {
-    window.localStorage.setItem("vanguard-take-b-theme", "dark");
-  });
   await page.goto("/");
 
+  // Default is light.
+  await expect(page.locator("html")).not.toHaveClass(/dark/);
+  await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();
+
+  // Switch to dark; the explicit choice is written to storage.
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
   await expect(page.locator("html")).toHaveClass(/dark/);
+
+  // The choice survives a reload.
+  await page.reload();
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  await expect(page.getByRole("button", { name: "Switch to light mode" })).toBeVisible();
+
+  // Switching back also persists.
   await page.getByRole("button", { name: "Switch to light mode" }).click();
   await expect(page.locator("html")).not.toHaveClass(/dark/);
-
   await page.reload();
   await expect(page.locator("html")).not.toHaveClass(/dark/);
   await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();

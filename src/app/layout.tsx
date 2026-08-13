@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
-import { Suspense } from "react";
-import { LiveChrome } from "@/components/live-chrome";
-import { PrototypeShell } from "@/components/prototype/prototype-shell";
+import { SiteShell } from "@/components/site-shell";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -35,16 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        {process.env.NODE_ENV === "production" ? (
-          <LiveChrome>{children}</LiveChrome>
-        ) : (
-          /* Dev-only prototype gate (ticket 21): the take switcher reads
-             ?variant= client-side, so the shell sits under a Suspense
-             boundary with the live chrome as the SSR fallback. */
-          <Suspense fallback={<LiveChrome>{children}</LiveChrome>}>
-            <PrototypeShell>{children}</PrototypeShell>
-          </Suspense>
-        )}
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowDown, ChevronRight, Moon, Quote, Search, Sun } from "lucide-react";
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { BenchmarkTable } from "@/components/benchmark-table";
-import { navIcons } from "@/components/prototype/nav-icons";
+import { navIcons } from "@/components/nav-icons";
 import {
   analysisNarrative,
   analysisOpportunities,
@@ -30,8 +30,8 @@ import {
 import { navLinks, site } from "@/lib/site";
 
 /* ------------------------------------------------------------------ */
-/* Take B — deep navy editorial. Full-bleed navy hero bands with        */
-/* blueprint texture and red accents, a serif display face             */
+/* Production site shell — deep navy editorial. Full-bleed navy hero   */
+/* bands with blueprint texture and red accents, a serif display face  */
 /* (--font-display) for editorial headlines, ghost serif numerals,     */
 /* numbered sections with red rules, a glass "At a glance" stat card   */
 /* built from the real fact base, and hover-lift cards.                */
@@ -60,10 +60,10 @@ const glanceStats: ReadonlyArray<{
   { metric: "clients", label: "Investors", suffix: "M+" },
 ];
 
-type TakeBTheme = "dark" | "light";
+type SiteTheme = "dark" | "light";
 
 /** Serif brand lockup: "Vanguard" heavy, "Intelligence" light red. */
-function BrandB({ theme = "dark" }: { theme?: TakeBTheme }) {
+function Brand({ theme = "dark" }: { theme?: SiteTheme }) {
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <span
@@ -85,7 +85,7 @@ function BrandB({ theme = "dark" }: { theme?: TakeBTheme }) {
 }
 
 /** Editorial section kicker: ghost serif numeral + red rule + label. */
-function BKicker({ index, label }: { index: string; label: string }) {
+function SectionKicker({ index, label }: { index: string; label: string }) {
   return (
     <div className="flex items-center gap-4">
       <span
@@ -106,7 +106,7 @@ function BKicker({ index, label }: { index: string; label: string }) {
 }
 
 /** Thin red rule with a diamond, used between editorial sections. */
-function BSectionDivider() {
+function SectionDivider() {
   return (
     <div aria-hidden className="my-16 flex items-center gap-3">
       <span className="h-px flex-1 bg-linear-to-r from-transparent via-navy-200 to-navy-300/60 dark:via-navy-700 dark:to-navy-600" />
@@ -117,7 +117,7 @@ function BSectionDivider() {
 }
 
 /** Faint blueprint grid used over editorial bands and light surfaces. */
-function BGridTexture() {
+function GridTexture() {
   return (
     <div
       aria-hidden
@@ -126,11 +126,11 @@ function BGridTexture() {
   );
 }
 
-export function TakeBShell({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<TakeBTheme>("light");
+export function SiteShell({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<SiteTheme>("light");
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("vanguard-take-b-theme");
+    const savedTheme = window.localStorage.getItem("vanguard-theme");
     queueMicrotask(() => {
       if (savedTheme === "light" || savedTheme === "dark") {
         setTheme(savedTheme);
@@ -142,29 +142,29 @@ export function TakeBShell({ children }: { children: ReactNode }) {
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
-  function changeTheme(nextTheme: TakeBTheme) {
+  function changeTheme(nextTheme: SiteTheme) {
     setTheme(nextTheme);
-    window.localStorage.setItem("vanguard-take-b-theme", nextTheme);
+    window.localStorage.setItem("vanguard-theme", nextTheme);
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
   }
 
   return (
     <div className="md:grid md:grid-cols-[248px_minmax(0,1fr)]" data-layout="rail" data-theme={theme}>
-      <TakeBHeader theme={theme} onThemeChange={changeTheme} />
+      <SiteHeader theme={theme} onThemeChange={changeTheme} />
       <div className="min-w-0">
         <main className="flex-1">{children}</main>
-        <TakeBFooter theme={theme} />
+        <SiteFooter theme={theme} />
       </div>
     </div>
   );
 }
 
-function TakeBHeader({
+function SiteHeader({
   theme,
   onThemeChange,
 }: {
-  theme: TakeBTheme;
-  onThemeChange: (theme: TakeBTheme) => void;
+  theme: SiteTheme;
+  onThemeChange: (theme: SiteTheme) => void;
 }) {
   const pathname = usePathname();
   return (
@@ -182,7 +182,7 @@ function TakeBHeader({
       <div
         className="mx-auto flex max-w-6xl flex-wrap gap-y-4 px-4 py-3.5 md:h-[calc(100vh-1px)] md:flex-col md:items-stretch md:px-5 md:py-6"
       >
-        <BrandB theme="dark" />
+        <Brand theme="dark" />
         <nav
           aria-label="Sections"
           className="flex flex-wrap gap-1 md:flex-col md:items-stretch"
@@ -239,7 +239,7 @@ function TakeBHeader({
   );
 }
 
-function TakeBFooter({ theme }: { theme: TakeBTheme }) {
+function SiteFooter({ theme }: { theme: SiteTheme }) {
   return (
     <footer
       className={`relative overflow-hidden border-t ${
@@ -259,7 +259,7 @@ function TakeBFooter({ theme }: { theme: TakeBTheme }) {
       <div className="relative mx-auto max-w-6xl px-4 py-12 lg:py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12">
           <div className="max-w-sm">
-            <BrandB theme={theme} />
+            <Brand theme={theme} />
             <p className={`mt-5 max-w-xs text-sm leading-7 ${theme === "dark" ? "text-navy-100/70" : "text-navy-700"}`}>
               A research layer for understanding Vanguard&apos;s model, metrics,
               and strategic choices.
@@ -314,13 +314,13 @@ function TakeBFooter({ theme }: { theme: TakeBTheme }) {
   );
 }
 
-export function TakeBHome() {
+export function HomeView() {
   return (
     <div className="bg-white dark:bg-navy-950">
       {/* Hero — layered navy band: blueprint texture, red glows, ghost
           serif wordmark, copy column + "At a glance" stat card. */}
       <section className="relative overflow-hidden bg-linear-to-br from-white via-navy-50 to-vanguard-red-50/60 dark:from-navy-950 dark:via-navy-900 dark:to-navy-800">
-        <BGridTexture />
+        <GridTexture />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_78%_-10%,rgba(200,16,46,0.22),transparent_62%)]"
@@ -412,7 +412,7 @@ export function TakeBHome() {
       </section>
 
       <div className="relative overflow-hidden bg-linear-to-b from-navy-50 via-white to-vanguard-red-50/40 dark:from-navy-950 dark:via-navy-950 dark:to-navy-900">
-        <BGridTexture />
+        <GridTexture />
         <div
           aria-hidden
           className="pointer-events-none absolute right-0 top-0 h-[720px] w-[42%] bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.08),transparent_68%)]"
@@ -452,13 +452,13 @@ export function TakeBHome() {
             </aside>
 
             <div className="min-w-0">
-              <TakeBAnalysis />
+              <AnalysisView />
             </div>
           </div>
 
           <section aria-label="Sections" id="explore" className="mt-20 scroll-mt-24 border-t border-navy-200/80 pt-12 dark:border-navy-700">
             <div className="grid gap-5 lg:grid-cols-[1fr_360px] lg:items-end">
-              <BKicker index="04" label="Explore" />
+              <SectionKicker index="04" label="Explore" />
               <p className="max-w-sm rounded-lg border border-vanguard-red-200 bg-white/80 p-4 text-sm leading-6 text-navy-600 shadow-sm dark:border-vanguard-red-800/50 dark:bg-navy-900/70 dark:text-navy-300">
                 Move from the narrative into the evidence, products, and operating model behind it.
               </p>
@@ -499,7 +499,7 @@ export function TakeBHome() {
   );
 }
 
-export function TakeBBenchmarking({
+export function BenchmarkingView({
   activeMetric,
 }: {
   activeMetric: MetricId | null;
@@ -509,7 +509,7 @@ export function TakeBBenchmarking({
   return (
     <div className="bg-white dark:bg-navy-950">
       <section className="relative overflow-hidden bg-linear-to-br from-white via-navy-50 to-vanguard-red-50/60 dark:from-navy-950 dark:via-navy-900 dark:to-navy-800">
-        <BGridTexture />
+        <GridTexture />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_80%_-20%,rgba(200,16,46,0.2),transparent_60%)]"
@@ -537,7 +537,7 @@ export function TakeBBenchmarking({
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-navy-700 dark:text-navy-100/85">
             Each headline metric compared against the peer set over the 5 years
-            â€” with membership rules and the ownership caveat displayed
+            — with membership rules and the ownership caveat displayed
             alongside every comparison.
           </p>
           <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-vanguard-red-300 bg-white/80 px-3.5 py-1.5 text-sm text-vanguard-red-800 shadow-sm backdrop-blur-sm dark:border-vanguard-red-400/30 dark:bg-white/5 dark:text-vanguard-red-100">
@@ -552,9 +552,9 @@ export function TakeBBenchmarking({
       </section>
 
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <TakeBPeerSet />
+        <PeerSetPanel />
 
-        <TakeBExplorer
+        <BenchmarkingExplorer
           activeMetric={activeMetric}
           firmFilter={firmFilter}
           onFirmFilterChange={setFirmFilter}
@@ -566,11 +566,11 @@ export function TakeBBenchmarking({
 
 /* Shared pieces ------------------------------------------------------- */
 
-function TakeBAnalysis() {
+function AnalysisView() {
   return (
     <>
       <section aria-label="How Vanguard is faring" id="analysis" className="scroll-mt-24">
-        <BKicker index="01" label="Narrative" />
+        <SectionKicker index="01" label="Narrative" />
         <div className="mt-5 rounded-xl border border-navy-200 bg-white p-6 shadow-[0_12px_32px_-24px_rgba(13,24,48,0.55)] dark:border-navy-800 dark:bg-navy-900">
           <h2 className="font-display text-4xl font-semibold tracking-tight text-navy-900 dark:text-navy-50">
             {analysisNarrative.title}
@@ -609,10 +609,10 @@ function TakeBAnalysis() {
         </p>
       </section>
 
-      <BSectionDivider />
+      <SectionDivider />
 
       <section className="scroll-mt-24" aria-label="Improvement opportunities">
-        <BKicker index="02" label="Opportunities" />
+        <SectionKicker index="02" label="Opportunities" />
         <h2 className="mt-5 rounded-xl border border-navy-200 bg-white p-6 font-display text-4xl font-semibold tracking-tight text-navy-900 shadow-[0_12px_32px_-24px_rgba(13,24,48,0.55)] dark:border-navy-800 dark:bg-navy-900 dark:text-navy-50">
           Improvement opportunities
         </h2>
@@ -651,10 +651,10 @@ function TakeBAnalysis() {
         </div>
       </section>
 
-      <BSectionDivider />
+      <SectionDivider />
 
       <section className="scroll-mt-24" aria-label="Improvement lens">
-        <BKicker index="03" label="Lens" />
+        <SectionKicker index="03" label="Lens" />
         <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-navy-900 dark:text-navy-50">
           Improvement lens
         </h2>
@@ -676,7 +676,7 @@ function TakeBAnalysis() {
   );
 }
 
-function TakeBPeerSet() {
+function PeerSetPanel() {
   return (
     <section
       data-testid="peer-set-panel"
@@ -746,7 +746,7 @@ function TakeBPeerSet() {
   );
 }
 
-function TakeBExplorer({
+function BenchmarkingExplorer({
   activeMetric,
   firmFilter,
   onFirmFilterChange,
@@ -768,7 +768,7 @@ function TakeBExplorer({
         <Link
           href="/benchmarking"
           aria-current={activeMetric === null ? "page" : undefined}
-          className={tabClassB(activeMetric === null)}
+          className={tabClass(activeMetric === null)}
         >
           All metrics
         </Link>
@@ -777,7 +777,7 @@ function TakeBExplorer({
             key={metric}
             href={`/benchmarking?metric=${metric}`}
             aria-current={activeMetric === metric ? "page" : undefined}
-            className={tabClassB(activeMetric === metric)}
+            className={tabClass(activeMetric === metric)}
           >
             {metricMeta[metric].name}
           </Link>
@@ -798,7 +798,7 @@ function TakeBExplorer({
             type="search"
             value={firmFilter}
             onChange={(event) => onFirmFilterChange(event.target.value)}
-            placeholder="Filter firms â€” e.g., BlackRock"
+            placeholder="Filter firms — e.g., BlackRock"
             data-testid="benchmarking-firm-search"
             className="w-full rounded-md border border-navy-200 bg-white py-2 pl-9 pr-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-vanguard-red-500 focus:outline-none focus:ring-1 focus:ring-vanguard-red-400 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-50 dark:placeholder:text-navy-400"
           />
@@ -812,7 +812,7 @@ function TakeBExplorer({
   );
 }
 
-function tabClassB(active: boolean): string {
+function tabClass(active: boolean): string {
   return `border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
     active
       ? "border-vanguard-red-500 text-navy-900 dark:border-vanguard-red-400 dark:text-navy-50"
