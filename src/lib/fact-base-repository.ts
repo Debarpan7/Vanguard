@@ -412,9 +412,10 @@ function validateCandidate(database: DatabaseSync, runId: string): string[] {
       row.firm_id === "amundi" &&
       publishedTags.has(String(row.verification)) &&
       (!row.source_currency ||
-        !row.accounting_basis ||
-        !row.issuer_scope ||
-        !row.comparability_classification)
+        String(row.source_currency) !== "EUR" ||
+        !String(row.accounting_basis).toUpperCase().includes("IFRS") ||
+        !String(row.issuer_scope).toLowerCase().includes("amundi") ||
+        String(row.comparability_classification) !== "display-only-eur-ifrs")
     ) {
       issues.push(
         `observation ${row.id}: Amundi published point is missing EUR/IFRS scope or comparability metadata`,

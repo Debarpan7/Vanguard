@@ -138,7 +138,7 @@ test.describe("database-backed fact base", () => {
               sourceCurrency: "EUR",
               accountingBasis: "IFRS",
               issuerScope: "Amundi consolidated",
-              comparabilityClassification: "regulated-eur-ifrs-display-only",
+              comparabilityClassification: "display-only-eur-ifrs",
             })),
           }
         : current,
@@ -159,7 +159,7 @@ test.describe("database-backed fact base", () => {
       sourceCurrency: "EUR",
       accountingBasis: "IFRS",
       issuerScope: "Amundi consolidated",
-      comparabilityClassification: "regulated-eur-ifrs-display-only",
+      comparabilityClassification: "display-only-eur-ifrs",
     });
     expect(
       database
@@ -301,6 +301,44 @@ test.describe("database-backed fact base", () => {
                       accountingBasis: undefined,
                       issuerScope: undefined,
                       comparabilityClassification: undefined,
+                    }
+                  : point,
+              ),
+            }
+          : series,
+      ),
+    });
+
+    expect(() => publishCandidate(database, candidateRunId)).toThrow(
+      "Amundi published point is missing EUR/IFRS scope or comparability metadata",
+    );
+  });
+
+  test("rejects an Amundi point with a non-regulated EUR/IFRS classification", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const candidateRunId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries.map((series) =>
+        series.firm === "amundi" && series.metric === "revenue"
+          ? {
+              ...series,
+              points: series.points.map((point, index) =>
+                index === 0
+                  ? {
+                      ...point,
+                      value: 3.1,
+                      verification: "verified-from-url" as const,
+                      sourceCurrency: "EUR",
+                      accountingBasis: "IFRS",
+                      issuerScope: "Amundi consolidated",
+                      comparabilityClassification: "display-only-segment",
                     }
                   : point,
               ),
