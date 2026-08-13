@@ -11,7 +11,8 @@
     "test:unit": "playwright test --config playwright.unit.config.ts",
     "refresh:validate": "playwright test --config playwright.unit.config.ts tests/refresh.spec.ts",
     "fact-base:generate": "node --experimental-strip-types scripts/generate-fact-base-baseline.mjs",
-    "adviserinfo:generate": "node scripts/generate-adv-raw.mjs"
+    "adviserinfo:generate": "node scripts/generate-adv-raw.mjs",
+    "adviserinfo:timeseries": "node scripts/generate-adv-timeseries.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",
