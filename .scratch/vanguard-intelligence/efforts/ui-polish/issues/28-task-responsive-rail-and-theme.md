@@ -4,7 +4,7 @@
 
 **Blocked by:** 21 (Task: lock Take B tokens and the rail shell)
 
-**Status:** resolved (commit pending)
+**Status:** resolved (commit `9c2f2a5`)
 
 **Assignee:** GitHub Copilot
 
