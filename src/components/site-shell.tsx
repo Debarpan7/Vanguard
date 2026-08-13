@@ -554,6 +554,12 @@ export function BenchmarkingView({
       <div className="mx-auto max-w-6xl px-4 py-12">
         <PeerSetPanel />
 
+          <p className="mt-8 rounded-md border border-vanguard-red-200 bg-vanguard-red-50/70 px-4 py-3 text-sm leading-6 text-navy-700 dark:border-vanguard-red-400/30 dark:bg-vanguard-red-950/30 dark:text-navy-100">
+            Published peer coverage: audited BlackRock and Invesco Revenue and
+            Return on equity series are available for FY2021–FY2025. AUM, client
+            count, and cost-ratio gaps remain explicitly pending collection.
+          </p>
+
         <BenchmarkingExplorer
           activeMetric={activeMetric}
           firmFilter={firmFilter}
