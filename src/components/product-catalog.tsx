@@ -1,5 +1,6 @@
 import { productCategories } from "@/data/product-catalog";
 import { formatAsOf } from "@/lib/format";
+import { SurfaceCard } from "@/components/surface";
 
 /**
  * The products & services catalog — renders the six ticket-13 categories in
@@ -12,10 +13,10 @@ export function ProductCatalog() {
   return (
     <div className="mt-10 space-y-8" data-testid="product-catalog">
       {productCategories.map((category) => (
-        <section
+        <SurfaceCard
           key={category.id}
           data-testid={`product-category-${category.id}`}
-          className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
+          className="p-6"
         >
           <h2 className="text-xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
             {category.name}
@@ -23,12 +24,12 @@ export function ProductCatalog() {
           <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             {category.blurb}
           </p>
-          <ul className="mt-4 space-y-4">
+          <ul className="mt-4 divide-y divide-navy-100 dark:divide-navy-800">
             {category.items.map((item, index) => (
               <li
                 key={item.name}
                 data-testid={`product-item-${category.id}-${index}`}
-                className="border-t border-zinc-100 pt-4 dark:border-zinc-800"
+                className="py-4 first:pt-0 last:pb-0"
               >
                 <h3 className="font-medium text-zinc-900 dark:text-zinc-100">
                   {item.name}
@@ -56,7 +57,7 @@ export function ProductCatalog() {
               </li>
             ))}
           </ul>
-        </section>
+        </SurfaceCard>
       ))}
     </div>
   );

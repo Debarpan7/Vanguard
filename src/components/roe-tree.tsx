@@ -7,6 +7,7 @@ import {
 } from "@/data/roe-tree";
 import { seriesFor, trendYears } from "@/data/fact-base";
 import { formatAsOf } from "@/lib/format";
+import { SurfaceCard, TablePanel } from "@/components/surface";
 
 interface RoeTreeViewProps {
   /** Fiscal year selected via ?year= (stable URL state), latest by default. */
@@ -47,10 +48,8 @@ function RoeNodeCard({
 
   return (
     <li data-testid={`roe-node-${node.id}`}>
-      <div
-        className={`rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
-          depth === 0 ? "border-zinc-300 dark:border-zinc-700" : ""
-        }`}
+      <SurfaceCard
+        className={depth === 0 ? "border-navy-300 dark:border-navy-700" : ""}
       >
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <Link
@@ -82,7 +81,7 @@ function RoeNodeCard({
             {node.contextNote}
           </p>
         ) : null}
-      </div>
+      </SurfaceCard>
       {node.children && node.children.length > 0 ? (
         <ul className="ml-4 mt-4 space-y-4 border-l border-zinc-200 pl-4 dark:border-zinc-800">
           {node.children.map((childId) => (
@@ -160,10 +159,10 @@ export function RoeTreeView({ activeYear, activeNode }: RoeTreeViewProps) {
           </p>
         </div>
 
-        <section
+        <SurfaceCard
           data-testid={`roe-node-detail-${detail.id}`}
           aria-label={`${detail.name} — detail`}
-          className="h-fit rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+          className="h-fit"
         >
           <h2 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
             {detail.name}
@@ -209,9 +208,10 @@ export function RoeTreeView({ activeYear, activeNode }: RoeTreeViewProps) {
             </div>
           </dl>
 
+          <TablePanel className="mt-5 border-0 bg-transparent p-0 shadow-none dark:bg-transparent">
           <table
             data-testid={`roe-series-${detail.id}`}
-            className="mt-5 w-full border-collapse text-left text-sm"
+            className="w-full border-collapse text-left text-sm"
           >
             <caption className="sr-only">
               {detail.name} by fiscal year
@@ -254,7 +254,8 @@ export function RoeTreeView({ activeYear, activeNode }: RoeTreeViewProps) {
               ))}
             </tbody>
           </table>
-        </section>
+          </TablePanel>
+        </SurfaceCard>
       </div>
     </div>
   );

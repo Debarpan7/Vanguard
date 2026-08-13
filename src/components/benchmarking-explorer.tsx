@@ -8,6 +8,7 @@ import {
   type MetricId,
 } from "@/data/fact-base";
 import { BenchmarkTable } from "@/components/benchmark-table";
+import { SurfaceCard } from "@/components/surface";
 
 interface BenchmarkingExplorerProps {
   /** Metric selected via ?metric= (stable URL state), or null for all. */
@@ -59,7 +60,7 @@ export function BenchmarkingExplorer({
         ))}
       </nav>
 
-      <div className="mt-6 max-w-md">
+      <SurfaceCard className="mt-6 max-w-md p-4">
         <label htmlFor="benchmarking-firm-search" className="sr-only">
           Filter firms
         </label>
@@ -72,7 +73,7 @@ export function BenchmarkingExplorer({
           data-testid="benchmarking-firm-search"
           className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500"
         />
-      </div>
+      </SurfaceCard>
 
       {metrics.map((metric) => (
         <BenchmarkTable

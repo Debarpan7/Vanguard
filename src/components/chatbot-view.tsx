@@ -6,6 +6,7 @@ import {
   ChatbotSource,
   promptAsk,
 } from "@/lib/chatbot";
+import { SurfaceCard } from "@/components/surface";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -59,9 +60,9 @@ export function ChatbotView() {
 
   return (
     <div className="mt-6">
-      <div
+      <SurfaceCard
         data-testid="chatbot-messages"
-        className="max-h-[28rem] space-y-4 overflow-y-auto rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+        className="max-h-[28rem] space-y-4 overflow-y-auto bg-navy-50 dark:bg-navy-950"
         aria-live="polite"
         aria-label="Chat messages"
       >
@@ -105,7 +106,7 @@ export function ChatbotView() {
             </div>
           </div>
         ))}
-      </div>
+      </SurfaceCard>
 
       <div className="mt-4">
         <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">

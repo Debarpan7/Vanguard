@@ -17,7 +17,7 @@ export function SectionPlaceholder({ title, description }: SectionPlaceholderPro
       <p className="mt-3 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
         {description}
       </p>
-      <p className="mt-8 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-4 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+      <p className="mt-8 rounded-[var(--radius-card)] border border-dashed border-navy-300 bg-navy-50 p-4 text-sm text-zinc-500 shadow-[var(--shadow-card)] dark:border-navy-700 dark:bg-navy-950 dark:text-zinc-400">
         This section is under construction — the build ticket for this view has
         not landed yet.
       </p>

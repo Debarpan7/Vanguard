@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { headlineMetrics, metricMeta, type MetricId } from "@/data/fact-base";
 import { MetricCard } from "@/components/metric-card";
+import { SurfaceCard } from "@/components/surface";
 
 /** Case-insensitive match on name, unit, and definition. */
 function matchesQuery(metric: MetricId, query: string): boolean {
@@ -26,7 +27,7 @@ export function MetricsDashboard() {
 
   return (
     <>
-      <div className="mt-6 max-w-md">
+      <SurfaceCard className="mt-6 max-w-md p-4">
         <label htmlFor="metrics-search" className="sr-only">
           Search metrics
         </label>
@@ -39,7 +40,7 @@ export function MetricsDashboard() {
           data-testid="metrics-search"
           className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500"
         />
-      </div>
+      </SurfaceCard>
 
       {visible.length === 0 ? (
         <p

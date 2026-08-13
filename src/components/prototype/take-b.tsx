@@ -655,6 +655,9 @@ function TakeBAnalysis() {
 
       <section className="scroll-mt-24" aria-label="Improvement lens">
         <BKicker index="03" label="Lens" />
+        <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-navy-900 dark:text-navy-50">
+          Improvement lens
+        </h2>
         <blockquote className="relative mt-8 overflow-hidden rounded-xl border border-vanguard-red-500/20 bg-linear-to-br from-vanguard-red-500/[0.07] to-transparent p-8">
           <Quote
             aria-hidden

@@ -6,6 +6,7 @@ import {
   peerSetBasisOfComparison,
   peerSetMembershipRules,
 } from "@/lib/peer-set";
+import { SurfaceCard } from "@/components/surface";
 
 /**
  * The peer set panel — who Vanguard is benchmarked against, the membership
@@ -14,9 +15,9 @@ import {
  */
 export function PeerSetPanel() {
   return (
-    <section
+    <SurfaceCard
       data-testid="peer-set-panel"
-      className="mt-8 rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+      className="mt-8"
     >
       <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
         Peer set
@@ -25,11 +26,11 @@ export function PeerSetPanel() {
         The five peers benchmarked against Vanguard, defined by the membership
         rules below:
       </p>
-      <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-3 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-3">
         {allFirms.slice(1).map((firm) => (
           <li
             key={firm}
-            className="rounded-md border border-zinc-100 p-3 dark:border-zinc-900"
+            className="border-l-2 border-vanguard-red-300 py-2 pl-3 dark:border-vanguard-red-700"
           >
             <span className="font-medium text-zinc-900 dark:text-zinc-100">
               {firmMeta[firm].name}
@@ -66,6 +67,6 @@ export function PeerSetPanel() {
       >
         {ownershipCaveat}
       </p>
-    </section>
+    </SurfaceCard>
   );
 }

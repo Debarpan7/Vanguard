@@ -4,6 +4,7 @@ import {
   improvementLens,
 } from "@/data/analysis";
 import { metricMeta } from "@/data/fact-base";
+import { SurfaceCard, SurfaceGrid } from "@/components/surface";
 
 /**
  * The analysis view (ticket 17 — LLM analysis pipeline): the home page's
@@ -22,11 +23,11 @@ export function AnalysisView() {
           {analysisNarrative.intro}
         </p>
 
-        <div className="mt-6 space-y-4">
+        <SurfaceGrid className="mt-6 lg:grid-cols-2">
           {analysisNarrative.reads.map((read) => (
-            <div
+            <SurfaceCard
               key={read.heading}
-              className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+              className="p-4"
             >
               <h3 className="font-medium text-zinc-950 dark:text-zinc-50">
                 {read.heading}
@@ -34,9 +35,9 @@ export function AnalysisView() {
               <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                 {read.body}
               </p>
-            </div>
+            </SurfaceCard>
           ))}
-        </div>
+        </SurfaceGrid>
 
         <p className="mt-4 text-sm italic text-zinc-500 dark:text-zinc-400">
           {analysisNarrative.caveat}
@@ -47,11 +48,11 @@ export function AnalysisView() {
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
           Improvement opportunities
         </h2>
-        <div className="mt-6 space-y-4">
+        <SurfaceGrid className="mt-6 lg:grid-cols-2">
           {analysisOpportunities.map((opportunity) => (
-            <div
+            <SurfaceCard
               key={opportunity.id}
-              className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+              className="p-4"
             >
               <h3 className="font-medium text-zinc-950 dark:text-zinc-50">
                 {opportunity.name}
@@ -68,9 +69,9 @@ export function AnalysisView() {
               <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                 <span className="font-medium">Read:</span> {opportunity.read}
               </p>
-            </div>
+            </SurfaceCard>
           ))}
-        </div>
+        </SurfaceGrid>
       </section>
 
       <section className="mt-10" aria-label="Improvement lens">

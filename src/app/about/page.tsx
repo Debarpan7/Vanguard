@@ -1,5 +1,6 @@
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { navLinks } from "@/lib/site";
+import { SurfaceCard } from "@/components/surface";
 
 export default function AboutPage() {
   return (
@@ -8,14 +9,14 @@ export default function AboutPage() {
         About
       </h1>
 
-      <section className="mt-6 rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+      <SurfaceCard className="mt-6 bg-navy-50 dark:bg-navy-950">
         <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
           This site is internal reference only — it is not client-facing and
           nothing on it is intended for external distribution.
         </p>
-      </section>
+      </SurfaceCard>
 
-      <section className="mt-8">
+      <SurfaceCard className="mt-8">
         <h2 className="text-xl font-semibold text-zinc-950 dark:text-zinc-50">
           How to read this site
         </h2>
@@ -28,7 +29,7 @@ export default function AboutPage() {
         <p className="mt-3 leading-7 text-zinc-600 dark:text-zinc-400">
           The sections are:
         </p>
-        <ul className="mt-3 list-disc space-y-1 pl-6 text-zinc-600 dark:text-zinc-400">
+        <ul className="mt-3 grid gap-4 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2">
           {navLinks
             .filter((link) => link.name !== "About")
             .map((link) => (
@@ -50,9 +51,9 @@ export default function AboutPage() {
           faring well and where it can improve, with technology one possible
           lever among many, not the default answer.
         </p>
-      </section>
+      </SurfaceCard>
 
-      <section className="mt-8">
+      <SurfaceCard className="mt-8">
         <h2 className="text-xl font-semibold text-zinc-950 dark:text-zinc-50">
           Data and refresh
         </h2>
@@ -63,7 +64,7 @@ export default function AboutPage() {
           the site&apos;s data was last refreshed.
         </p>
         <DataAsOfMarker className="mt-4 inline-block rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300" />
-      </section>
+      </SurfaceCard>
     </div>
   );
 }

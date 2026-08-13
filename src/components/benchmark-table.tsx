@@ -18,6 +18,7 @@ import {
 } from "@/lib/peer-set";
 import { CsvExportButton } from "@/components/csv-export-button";
 import { CopyLinkButton } from "@/components/copy-link-button";
+import { SurfaceCard, TablePanel } from "@/components/surface";
 
 interface BenchmarkTableProps {
   metric: MetricId;
@@ -74,9 +75,8 @@ export function BenchmarkTable({
   });
 
   return (
-    <section
+    <SurfaceCard
       data-testid={`benchmark-table-${metric}`}
-      className="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
@@ -102,7 +102,7 @@ export function BenchmarkTable({
         {seriesFor(metric, "vanguard").definition}
       </p>
 
-      <div className="mt-4 overflow-x-auto">
+      <TablePanel className="mt-4 border-0 bg-transparent p-0 shadow-none dark:bg-transparent">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">
             {meta.name} compared against the peer set, FY2021–FY2025
@@ -160,7 +160,7 @@ export function BenchmarkTable({
             })}
           </tbody>
         </table>
-      </div>
+      </TablePanel>
 
       {isAuditedMetric(metric) && (
         <p
@@ -174,6 +174,6 @@ export function BenchmarkTable({
       <p className="mt-3 text-xs leading-5 text-zinc-500 dark:text-zinc-400">
         {ownershipCaveat}
       </p>
-    </section>
+    </SurfaceCard>
   );
 }

@@ -30,6 +30,7 @@ A production-ready Vanguard Intelligence website using Take B mode 2 as the lock
 <!-- one line per closed ticket: title + gist; detail lives in the ticket -->
 
 - Ticket 22 — firm marks: hand-rendered SVG per fact-base firm id via the shared `FirmMark` component (size/color props + monochrome variant, legible 24–32px); component and tests are JSX-free because Playwright's unit-test transform compiles JSX to its own `playwright/jsx-runtime` (marker objects, not React elements) and Node 26's native TS loader rejects JSX in `.ts` files — `createElement` sidesteps both. Sources: `assets/01-firm-mark-references.md`.
+- Ticket 27 — card composition: shared `SurfaceCard`, `SurfaceGrid`, and `TablePanel` primitives establish framed content groups, responsive grids, and semantic responsive table boundaries across route components; list/table semantics and existing contracts remain intact.
 
 ## Not yet specified
 

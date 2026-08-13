@@ -5,6 +5,7 @@ import {
   lobComparisonDerivationDisclosure,
   lobComparisons,
 } from "@/data/roe-comparison";
+import { TablePanel } from "@/components/surface";
 
 /** One representative's display text: firm name, "(voluntary)" for Fidelity.
  * RoE availability is a literal pending-collection gap until ticket 17 —
@@ -66,14 +67,14 @@ export function RoeComparisonView() {
           competes in (canonical 4-line model, ticket 07).
         </p>
 
-        <p
+        <aside
           data-testid="lob-derivation-disclosure"
-          className="mt-4 rounded-lg border border-zinc-200 bg-white p-4 text-xs leading-5 text-zinc-500 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400"
+          className="mt-4 rounded-[var(--radius-card)] border border-navy-200 bg-white p-4 text-xs leading-5 text-zinc-500 shadow-[var(--shadow-card)] dark:border-navy-800 dark:bg-navy-900 dark:text-zinc-400"
         >
           {lobComparisonDerivationDisclosure}
-        </p>
+        </aside>
 
-        <div className="mt-4 overflow-x-auto">
+        <TablePanel className="mt-4">
           <table className="w-full text-left text-sm">
             <caption className="sr-only">
               Line-of-business RoE compared against each line&apos;s industry
@@ -140,7 +141,7 @@ export function RoeComparisonView() {
               ))}
             </tbody>
           </table>
-        </div>
+        </TablePanel>
       </section>
     </div>
   );

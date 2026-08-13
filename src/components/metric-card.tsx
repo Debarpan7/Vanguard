@@ -9,6 +9,7 @@ import {
 import { formatAsOf, formatValue } from "@/lib/format";
 import { CsvExportButton } from "@/components/csv-export-button";
 import { CopyLinkButton } from "@/components/copy-link-button";
+import { SurfaceCard, TablePanel } from "@/components/surface";
 
 /**
  * A headline metric card: latest published value (with as-of), the metric
@@ -32,10 +33,9 @@ export function MetricCard({ metric }: { metric: MetricId }) {
   ]);
 
   return (
-    <section
+    <SurfaceCard
       id={metric}
       data-testid={`metric-card-${metric}`}
-      className="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
@@ -86,7 +86,8 @@ export function MetricCard({ metric }: { metric: MetricId }) {
         )}
       </div>
 
-      <table className="mt-4 w-full text-left text-sm">
+      <TablePanel className="mt-4 border-0 bg-transparent p-0 shadow-none dark:bg-transparent">
+        <table className="w-full text-left text-sm">
         <caption className="sr-only">
           {meta.name} 5-year trend with sources
         </caption>
@@ -134,7 +135,8 @@ export function MetricCard({ metric }: { metric: MetricId }) {
             </tr>
           ))}
         </tbody>
-      </table>
-    </section>
+        </table>
+      </TablePanel>
+    </SurfaceCard>
   );
 }
