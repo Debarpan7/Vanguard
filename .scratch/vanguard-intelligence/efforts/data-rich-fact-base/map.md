@@ -12,7 +12,7 @@ A decision-complete, executable specification for replacing the site’s sparse 
 - **Planning only**: this map resolves decisions and produces the implementation route. Database construction, backfill, and site migration begin only after the route is clear.
 - **Coverage direction**: expanded comparable financial and operating metrics, not every public datapoint. The current five dashboard metrics remain in scope, and the exact expanded taxonomy awaits source-coverage research.
 - **History and refresh**: retain FY2021–FY2025; design for a quarterly refresh.
-- **Evidence policy**: primary company/regulatory sources are preferred. A public aggregator may identify a fact, but publishing requires corroboration from a primary source or a second independent public source.
+- **Evidence policy**: primary company/regulatory sources remain preferred for audited and like-for-like comparisons. Reputable secondary or aggregator sources may publish as explicitly `unverified` display/context facts when URL, retrieval date, period, definition, scope, and caveats are retained. They cannot silently upgrade a gap, support a derived metric, or enter an audited comparison without review.
 - **Comparability**: retain published but non-comparable facts with explicit scope, definition, currency, and comparability flags; exclude them from like-for-like defaults rather than silently normalizing them.
 - **Record contents**: facts, metric definitions, citations/URLs, extraction and verification timestamps, source quality, and collection-validation audit data.
 - **Skills to consult**: grilling, domain-modeling, research, api-and-interface-design, source-driven-development, security-and-hardening, test-driven-development.

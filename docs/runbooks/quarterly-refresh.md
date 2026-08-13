@@ -22,11 +22,16 @@ when validation fails.
 
 Collect the quarter's public figures for the 5 headline metrics
 (`aum`, `clients`, `cost-ratio`, `revenue`, `roe`) across Vanguard and the
-peer set, from primary sources only (annual report, key statistics, press
-releases, peers' 10-Ks). Provenance rules:
+peer set. Prefer primary sources (annual report, key statistics, press
+releases, peers' 10-Ks), but reputable secondary or aggregator sources may
+also be collected for display/context coverage. Provenance rules:
 
 - Every figure gets a `source` (document/title), `sourceUrl`, and a
   `verification` tag — never a bare number.
+- Secondary or aggregator evidence uses `verification: "unverified"`, keeps
+  its retrieval date, definition, period, scope, and caveat, and is excluded
+  from audited like-for-like comparisons by default. It cannot support a
+  derived metric without review.
 - A figure that cannot be found is recorded as a **gap**, not invented:
   `verification: "not-published"` (or `"pending-collection"`), `value: null`.
 - Research notes from prior rounds live in
@@ -151,7 +156,7 @@ npx playwright test --config playwright.config.ts --workers=2
 
 ## Checklist (one line per run)
 
-- [ ] Data collected from primary sources, provenance noted (step 1)
+- [ ] Data collected from preferred primary or explicitly labeled secondary sources, provenance noted (step 1)
 - [ ] Candidate database generated, gaps stay gaps (step 2)
 - [ ] Analysis re-run, claims grounded (step 3)
 - [ ] `npm run refresh:validate` passes (step 4)

@@ -13,9 +13,9 @@ Decide source priority and fallback; extraction boundaries; cross-check evidence
 
 ## Answer
 
-The refresh source order is: **regulatory filing or regulated annual report; issuer-hosted copy; issuer results/AUM release; corroborating public source**. SEC and other source-specific rate limits, declared user agents, caching, and retrieval timestamps are part of the collector contract.
+The refresh source order is: **regulatory filing or regulated annual report; issuer-hosted copy; issuer results/AUM release; reputable secondary or aggregator source**. Primary sources remain the default for audited and like-for-like facts. A secondary source may publish as an explicitly `unverified` display/context observation when its URL, retrieval date, metric definition, period, scope, and caveat are retained. It still requires review before supporting a derived metric or audited comparison. SEC and other source-specific rate limits, declared user agents, caching, and retrieval timestamps are part of the collector contract.
 
-Aggregators are discovery leads only. A lead cannot publish until corroborated by a primary source or a second independent public source, with the lead retained in the audit trail. Stable structured facts with complete provenance may publish automatically; PDF tables, custom XBRL tags, segment notes, changed definitions, accounting/scope breaks, and derived values require human review.
+Aggregators are no longer discovery-only: reputable leads may publish as `unverified` display/context facts with the lead retained in the audit trail. They cannot be presented as audited evidence or used in derived calculations without human review. Stable structured facts with complete provenance may publish automatically; PDF tables, custom XBRL tags, segment notes, changed definitions, accounting/scope breaks, and derived values require human review.
 
 Each refresh creates an immutable candidate run. A deterministic observation key combines firm, metric, period, scope, definition/basis, and source identity so reruns update the candidate without duplicating observations. Publication is atomic: a candidate is promoted only after validation and required review, while the previous published run remains available for rollback.
 

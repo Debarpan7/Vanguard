@@ -13,7 +13,7 @@
 | ⚠️ **PRIMARY-ROUTE-NEEDS-MANUAL-COLLECTION** | The official route is public, but the research fetcher could not extract it; collect in a browser and preserve the downloaded document URL, hash, and page/table citation. |
 | 🚫 **NOT-A-SOURCE-FOR-THIS-METRIC** | The entity does not publicly publish the required firm-level fact; do not fill the gap with inference. |
 
-The recommended evidence hierarchy is: regulatory filing or regulated annual report; issuer-hosted copy of that filing; issuer results/AUM release for facts not in the statements; then a corroborating public route. A public aggregator may locate a document, but does not by itself meet the fact-base evidence policy.
+The recommended evidence hierarchy is: regulatory filing or regulated annual report; issuer-hosted copy of that filing; issuer results/AUM release for facts not in the statements; then a reputable secondary or aggregator route. A secondary source may support an explicitly `unverified` display/context fact when its limitations are retained, but does not by itself meet the evidence standard for audited or like-for-like comparison.
 
 ## Executive coverage finding
 

@@ -110,6 +110,8 @@ test.describe("database-backed fact base", () => {
             ...current,
             points: current.points.map((point) => ({
               ...point,
+              value: point.value ?? 1,
+              verification: "unverified" as const,
               sourceCurrency: "EUR",
               accountingBasis: "IFRS",
               issuerScope: "Amundi consolidated",
@@ -136,6 +138,13 @@ test.describe("database-backed fact base", () => {
       issuerScope: "Amundi consolidated",
       comparabilityClassification: "regulated-eur-ifrs-display-only",
     });
+    expect(
+      database
+        .prepare(
+          "SELECT state FROM comparability_states WHERE observation_id = (SELECT o.id FROM observations o WHERE o.run_id = ? AND o.firm_id = 'amundi' AND o.metric_id = 'revenue' LIMIT 1)",
+        )
+        .get(runId),
+    ).toEqual({ state: "display-only" });
   });
 
   test("rejects an invalid candidate without replacing the active publication", () => {

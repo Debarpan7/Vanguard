@@ -259,9 +259,15 @@ export function backfillStaticFactBase(
           point.note ?? null,
           now,
         );
+        const comparabilityState =
+          point.verification === "voluntary"
+            ? "voluntary"
+            : point.verification === "unverified"
+              ? "display-only"
+              : "comparable";
         insertComparability.run(
           observationId,
-          point.verification === "voluntary" ? "voluntary" : "comparable",
+          comparabilityState,
           series.definition,
         );
       }
