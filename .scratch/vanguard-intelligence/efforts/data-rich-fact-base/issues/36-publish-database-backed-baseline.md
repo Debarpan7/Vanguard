@@ -4,7 +4,7 @@
 
 **Blocked by:** 35 — Expand fact-base access boundary.
 
-**Status:** resolved (commit pending)
+**Status:** resolved (commit 7f74708)
 
 - [x] A local-first database stores firms, metric definitions, periods, observations, sources/citations, verification/comparability state, collection runs, and revision history required by the approved domain model.
 - [x] The existing source-backed facts and explicit gaps are backfilled, validated, and served to every existing site consumer through the expanded access boundary with no browser-visible regression.
