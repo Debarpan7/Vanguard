@@ -25,14 +25,15 @@ A decision-complete, executable specification for replacing the site’s sparse 
 - [Research: public-source coverage for the current peer set](issues/30-research-public-source-coverage.md) — BlackRock and Invesco have audited five-year coverage; Amundi and State Street require scoped extraction/normalization; Vanguard profitability and Fidelity audited financials remain explicit structural gaps.
 - [Grilling: canonical metric taxonomy and comparability policy](issues/31-grilling-canonical-metric-taxonomy.md) — Four metric families are canonical under the existing Vanguard-plus-two-peers/three-of-five coverage floor; non-comparable facts are stored and shown with warnings; derived values require compatible inputs and explicit provenance.
 - [Grilling: local data-store technology and domain boundary](issues/32-grilling-local-data-store-boundary.md) — SQLite with a typed SQL layer and normalized relational schema; server-side repository plus serialized read model; containerized local service with documented volume backup/restore.
+- [Grilling: ingestion, validation, and quarterly-refresh contract](issues/33-grilling-ingestion-validation-refresh.md) — Source-priority collection, corroborated aggregator leads, review for interpretive facts, deterministic reruns, immutable candidate runs, atomic promotion, strict provenance/scope validation, and rollback to the prior publication.
 
 ## Not yet specified
 
 - Which concrete metrics within the four approved families meet the coverage floor after database/source design is settled.
-- The source-by-source extraction methods, document formats, rate limits, licensing constraints, and source fallback order once the coverage inventory is known.
+- The concrete extractor implementations, source-specific parsers, and review UI/runbook steps.
 - The migration tooling and exact serialized read-model shape for the SQLite repository.
 - The observation model for fiscal/calendar periods, currencies, restatements, segment scope, and comparable versus display-only facts.
-- The ingestion, validation, review, reconciliation, error-recovery, and quarterly refresh workflow.
+- The concrete ingestion, validation, review, reconciliation, error-recovery, and quarterly refresh implementation.
 - The cutover design from `src/data/fact-base.ts`, including application access APIs, test seams, data-as-of behavior, and rollback.
 
 ## Out of scope
