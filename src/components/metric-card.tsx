@@ -6,7 +6,7 @@ import {
   seriesFor,
   type MetricId,
 } from "@/lib/fact-base";
-import { formatAsOf, formatValue } from "@/lib/format";
+import { formatAsOf, formatValue, qualificationText } from "@/lib/format";
 import { CsvExportButton } from "@/components/csv-export-button";
 import { CopyLinkButton } from "@/components/copy-link-button";
 import { SurfaceCard, TablePanel } from "@/components/surface";
@@ -75,6 +75,11 @@ export function MetricCard({ metric }: { metric: MetricId }) {
                 ? `As of ${formatAsOf(latest.asOf)}`
                 : `Fiscal year ${latest.year}`}
             </span>
+            {qualificationText(latest) !== "Verified source" ? (
+              <span className="ml-2 text-sm text-zinc-500 dark:text-zinc-400">
+                ({qualificationText(latest)})
+              </span>
+            ) : null}
           </>
         ) : (
           <span

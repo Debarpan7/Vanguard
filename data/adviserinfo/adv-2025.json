@@ -1,0 +1,1382 @@
+{
+  "dataset": "sec-form-adv-raw",
+  "generatedAt": "2026-08-13T10:24:32.586Z",
+  "filingPeriod": "2025-12-01/2025-12-31",
+  "source": {
+    "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+    "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+    "officialSite": "https://adviserinfo.sec.gov/",
+    "notes": [
+      "This is adviser-level regulatory disclosure, not audited corporate financial-statement data.",
+      "Values are retained in USD as reported by the Form ADV archive.",
+      "A pending-collection record means the target was not matched in this bounded archive; it is not a zero value."
+    ]
+  },
+  "records": [
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Advisers",
+      "sourceName": "VANGUARD ADVISERS, INC.",
+      "status": "collected",
+      "filingId": "2035455",
+      "filedAt": "12/22/2025 02:55:41 PM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "VANGUARD ADVISERS, INC.",
+        "businessName": "VANGUARD ADVISERS, INC.",
+        "employees": 2225,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 1567,
+          "registeredRepresentatives": 2050,
+          "stateInvestmentAdviserRepresentatives": 1775,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 12
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 743587,
+          "raumUsd": 159758802854
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 73708,
+          "raumUsd": 126944232765
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 12,
+          "raumUsd": 13731898144
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 21,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": 0,
+          "raumUsd": 0
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 107739320953,
+        "nonDiscretionaryAmountUsd": 192695612810,
+        "totalAmountUsd": 300434933763,
+        "discretionaryAccounts": 496767,
+        "nonDiscretionaryAccounts": 202076,
+        "totalAccounts": 698843
+      },
+      "rawFields": {
+        "5A": 2225,
+        "5B1": 1567,
+        "5B2": 2050,
+        "5B3": 1775,
+        "5B4": 0,
+        "5B5": 0,
+        "5B6": 12,
+        "5D1a": 743587,
+        "5D3a": 159758802854,
+        "5D1b": 73708,
+        "5D3b": 126944232765,
+        "5D1c": 0,
+        "5D3c": 0,
+        "5D1d": 0,
+        "5D3d": 0,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 12,
+        "5D3f": 13731898144,
+        "5D1g": 0,
+        "5D3g": 0,
+        "5D1h": 0,
+        "5D3h": 0,
+        "5D1i": 0,
+        "5D3i": 0,
+        "5D1j": 21,
+        "5D3j": 0,
+        "5D1k": 0,
+        "5D3k": 0,
+        "5D1l": 0,
+        "5D3l": 0,
+        "5D1m": 0,
+        "5D3m": 0,
+        "5D1n": 0,
+        "5D3n": 0,
+        "5F2a": 107739320953,
+        "5F2b": 192695612810,
+        "5F2c": 300434933763,
+        "5F2d": 496767,
+        "5F2e": 202076,
+        "5F2f": 698843
+      }
+    },
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Global Advisers",
+      "sourceName": "VANGUARD GLOBAL ADVISERS, LLC",
+      "status": "collected",
+      "filingId": "2032887",
+      "filedAt": "12/22/2025 10:23:24 AM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "VANGUARD GLOBAL ADVISERS, LLC",
+        "businessName": "VANGUARD GLOBAL ADVISERS, LLC",
+        "employees": 192,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 84,
+          "registeredRepresentatives": 37,
+          "stateInvestmentAdviserRepresentatives": 0,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 154,
+          "raumUsd": 491432981088
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": 0,
+          "raumUsd": 0
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 491432981088,
+        "nonDiscretionaryAmountUsd": 0,
+        "totalAmountUsd": 491432981088,
+        "discretionaryAccounts": 154,
+        "nonDiscretionaryAccounts": 0,
+        "totalAccounts": 154
+      },
+      "rawFields": {
+        "5A": 192,
+        "5B1": 84,
+        "5B2": 37,
+        "5B3": 0,
+        "5B4": 0,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": 0,
+        "5D3a": 0,
+        "5D1b": 0,
+        "5D3b": 0,
+        "5D1c": 0,
+        "5D3c": 0,
+        "5D1d": 0,
+        "5D3d": 0,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 154,
+        "5D3f": 491432981088,
+        "5D1g": 0,
+        "5D3g": 0,
+        "5D1h": 0,
+        "5D3h": 0,
+        "5D1i": 0,
+        "5D3i": 0,
+        "5D1j": 0,
+        "5D3j": 0,
+        "5D1k": 0,
+        "5D3k": 0,
+        "5D1l": 0,
+        "5D3l": 0,
+        "5D1m": 0,
+        "5D3m": 0,
+        "5D1n": 0,
+        "5D3n": 0,
+        "5F2a": 491432981088,
+        "5F2b": 0,
+        "5F2c": 491432981088,
+        "5F2d": 154,
+        "5F2e": 0,
+        "5F2f": 154
+      }
+    },
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Group",
+      "sourceName": "THE VANGUARD GROUP, INC.",
+      "status": "collected",
+      "filingId": "2033120",
+      "filedAt": "12/22/2025 10:15:15 AM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "THE VANGUARD GROUP, INC.",
+        "businessName": "VANGUARD GROUP INC",
+        "employees": 651,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 330,
+          "registeredRepresentatives": 148,
+          "stateInvestmentAdviserRepresentatives": 0,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 212,
+          "raumUsd": 10246278445228
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 1,
+          "raumUsd": 317600405
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": 0,
+          "raumUsd": 0
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 10246596045633,
+        "nonDiscretionaryAmountUsd": 0,
+        "totalAmountUsd": 10246596045633,
+        "discretionaryAccounts": 212,
+        "nonDiscretionaryAccounts": 0,
+        "totalAccounts": 212
+      },
+      "rawFields": {
+        "5A": 651,
+        "5B1": 330,
+        "5B2": 148,
+        "5B3": 0,
+        "5B4": 0,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": 0,
+        "5D3a": 0,
+        "5D1b": 0,
+        "5D3b": 0,
+        "5D1c": 0,
+        "5D3c": 0,
+        "5D1d": 212,
+        "5D3d": 10246278445228,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 1,
+        "5D3f": 317600405,
+        "5D1g": 0,
+        "5D3g": 0,
+        "5D1h": 0,
+        "5D3h": 0,
+        "5D1i": 0,
+        "5D3i": 0,
+        "5D1j": 0,
+        "5D3j": 0,
+        "5D1k": 0,
+        "5D3k": 0,
+        "5D1l": 0,
+        "5D3l": 0,
+        "5D1m": 0,
+        "5D3m": 0,
+        "5D1n": 0,
+        "5D3n": 0,
+        "5F2a": 10246596045633,
+        "5F2b": 0,
+        "5F2c": 10246596045633,
+        "5F2d": 212,
+        "5F2e": 0,
+        "5F2f": 212
+      }
+    },
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Capital",
+      "sourceName": "VANGUARD CAPITAL",
+      "status": "pending-collection",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip"
+      },
+      "adviser": null,
+      "clientInformation": null,
+      "aumInformation": null,
+      "reason": "No matching legal adviser name in the December 2025 SEC filing archive; do not infer from the peer brand or a different adviser entity."
+    },
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Capital Management",
+      "sourceName": "VANGUARD CAPITAL MANAGEMENT, LLC",
+      "status": "collected",
+      "filingId": "2034307",
+      "filedAt": "12/22/2025 10:17:59 AM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "VANGUARD CAPITAL MANAGEMENT, LLC",
+        "businessName": "VANGUARD CAPITAL MANAGEMENT, LLC",
+        "employees": 8,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 2,
+          "registeredRepresentatives": 1,
+          "stateInvestmentAdviserRepresentatives": 0,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 125,
+          "raumUsd": 0
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": null,
+          "raumUsd": 0
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": null,
+        "nonDiscretionaryAmountUsd": null,
+        "totalAmountUsd": null,
+        "discretionaryAccounts": null,
+        "nonDiscretionaryAccounts": null,
+        "totalAccounts": null
+      },
+      "rawFields": {
+        "5A": 8,
+        "5B1": 2,
+        "5B2": 1,
+        "5B3": 0,
+        "5B4": 0,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": 0,
+        "5D3a": 0,
+        "5D1b": 0,
+        "5D3b": 0,
+        "5D1c": 0,
+        "5D3c": 0,
+        "5D1d": 125,
+        "5D3d": 0,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 0,
+        "5D3f": 0,
+        "5D1g": 0,
+        "5D3g": 0,
+        "5D1h": 0,
+        "5D3h": 0,
+        "5D1i": 0,
+        "5D3i": 0,
+        "5D1j": 0,
+        "5D3j": 0,
+        "5D1k": 0,
+        "5D3k": 0,
+        "5D1l": 0,
+        "5D3l": 0,
+        "5D1m": 0,
+        "5D3m": 0,
+        "5D1n": null,
+        "5D3n": 0,
+        "5F2a": null,
+        "5F2b": null,
+        "5F2c": null,
+        "5F2d": null,
+        "5F2e": null,
+        "5F2f": null
+      }
+    },
+    {
+      "firm": "vanguard",
+      "requestedName": "Vanguard Portfolio Management",
+      "sourceName": "VANGUARD PORTFOLIO MANAGEMENT, LLC",
+      "status": "collected",
+      "filingId": "2034292",
+      "filedAt": "12/22/2025 10:16:57 AM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "VANGUARD PORTFOLIO MANAGEMENT, LLC",
+        "businessName": "VANGUARD PORTFOLIO MANAGEMENT, LLC",
+        "employees": 7,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 1,
+          "registeredRepresentatives": 3,
+          "stateInvestmentAdviserRepresentatives": 0,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 98,
+          "raumUsd": 0
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": 0,
+          "raumUsd": 0
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": null,
+        "nonDiscretionaryAmountUsd": null,
+        "totalAmountUsd": null,
+        "discretionaryAccounts": null,
+        "nonDiscretionaryAccounts": null,
+        "totalAccounts": null
+      },
+      "rawFields": {
+        "5A": 7,
+        "5B1": 1,
+        "5B2": 3,
+        "5B3": 0,
+        "5B4": 0,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": 0,
+        "5D3a": 0,
+        "5D1b": 0,
+        "5D3b": 0,
+        "5D1c": 0,
+        "5D3c": 0,
+        "5D1d": 98,
+        "5D3d": 0,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 0,
+        "5D3f": 0,
+        "5D1g": 0,
+        "5D3g": 0,
+        "5D1h": 0,
+        "5D3h": 0,
+        "5D1i": 0,
+        "5D3i": 0,
+        "5D1j": 0,
+        "5D3j": 0,
+        "5D1k": 0,
+        "5D3k": 0,
+        "5D1l": 0,
+        "5D3l": 0,
+        "5D1m": 0,
+        "5D3m": 0,
+        "5D1n": 0,
+        "5D3n": 0,
+        "5F2a": null,
+        "5F2b": null,
+        "5F2c": null,
+        "5F2d": null,
+        "5F2e": null,
+        "5F2f": null
+      }
+    },
+    {
+      "firm": "blackrock",
+      "requestedName": "BlackRock Advisors",
+      "sourceName": "BLACKROCK ADVISORS, LLC",
+      "status": "collected",
+      "filingId": "2035405",
+      "filedAt": "12/22/2025 01:37:29 PM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "BLACKROCK ADVISORS, LLC",
+        "businessName": "BLACKROCK ADVISORS, LLC",
+        "employees": 148,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 139,
+          "registeredRepresentatives": 50,
+          "stateInvestmentAdviserRepresentatives": 3,
+          "representativesForAnotherAdviser": 3,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 202,
+          "raumUsd": 936956719445
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 2,
+          "raumUsd": 808765319
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": null,
+          "raumUsd": 20970069342
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": null,
+          "raumUsd": 307777758
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": null,
+          "raumUsd": null
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 959043331864,
+        "nonDiscretionaryAmountUsd": 0,
+        "totalAmountUsd": 959043331864,
+        "discretionaryAccounts": 299,
+        "nonDiscretionaryAccounts": 0,
+        "totalAccounts": 299
+      },
+      "rawFields": {
+        "5A": 148,
+        "5B1": 139,
+        "5B2": 50,
+        "5B3": 3,
+        "5B4": 3,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": null,
+        "5D3a": null,
+        "5D1b": null,
+        "5D3b": null,
+        "5D1c": null,
+        "5D3c": null,
+        "5D1d": 202,
+        "5D3d": 936956719445,
+        "5D1e": null,
+        "5D3e": null,
+        "5D1f": 2,
+        "5D3f": 808765319,
+        "5D1g": null,
+        "5D3g": null,
+        "5D1h": null,
+        "5D3h": null,
+        "5D1i": null,
+        "5D3i": 20970069342,
+        "5D1j": null,
+        "5D3j": 307777758,
+        "5D1k": null,
+        "5D3k": null,
+        "5D1l": null,
+        "5D3l": null,
+        "5D1m": null,
+        "5D3m": null,
+        "5D1n": null,
+        "5D3n": null,
+        "5F2a": 959043331864,
+        "5F2b": 0,
+        "5F2c": 959043331864,
+        "5F2d": 299,
+        "5F2e": 0,
+        "5F2f": 299
+      }
+    },
+    {
+      "firm": "fidelity",
+      "requestedName": "Fidelity Institutional Wealth Adviser",
+      "sourceName": "FIDELITY INSTITUTIONAL WEALTH ADVISER LLC",
+      "status": "collected",
+      "filingId": "2035175",
+      "filedAt": "12/19/2025 05:04:11 PM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "FIDELITY INSTITUTIONAL WEALTH ADVISER LLC",
+        "businessName": "FIDELITY INSTITUTIONAL WEALTH ADVISER LLC",
+        "employees": 194,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 93,
+          "registeredRepresentatives": 152,
+          "stateInvestmentAdviserRepresentatives": 38,
+          "representativesForAnotherAdviser": 0,
+          "licensedInsuranceAgents": 6,
+          "solicitors": 2
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 49046,
+          "raumUsd": 161405779
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 2276,
+          "raumUsd": 2423812634
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": null,
+          "raumUsd": 0
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": null,
+          "raumUsd": 0
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 339,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": null,
+          "raumUsd": null
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 1027,
+          "raumUsd": 3883043250
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": null,
+          "raumUsd": null
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 6468261663,
+        "nonDiscretionaryAmountUsd": 0,
+        "totalAmountUsd": 6468261663,
+        "discretionaryAccounts": 829,
+        "nonDiscretionaryAccounts": 0,
+        "totalAccounts": 829
+      },
+      "rawFields": {
+        "5A": 194,
+        "5B1": 93,
+        "5B2": 152,
+        "5B3": 38,
+        "5B4": 0,
+        "5B5": 6,
+        "5B6": 2,
+        "5D1a": 49046,
+        "5D3a": 161405779,
+        "5D1b": 2276,
+        "5D3b": 2423812634,
+        "5D1c": null,
+        "5D3c": 0,
+        "5D1d": null,
+        "5D3d": null,
+        "5D1e": null,
+        "5D3e": null,
+        "5D1f": null,
+        "5D3f": null,
+        "5D1g": null,
+        "5D3g": null,
+        "5D1h": null,
+        "5D3h": 0,
+        "5D1i": null,
+        "5D3i": null,
+        "5D1j": 339,
+        "5D3j": 0,
+        "5D1k": null,
+        "5D3k": null,
+        "5D1l": null,
+        "5D3l": null,
+        "5D1m": 1027,
+        "5D3m": 3883043250,
+        "5D1n": null,
+        "5D3n": null,
+        "5F2a": 6468261663,
+        "5F2b": 0,
+        "5F2c": 6468261663,
+        "5F2d": 829,
+        "5F2e": 0,
+        "5F2f": 829
+      }
+    },
+    {
+      "firm": "state-street",
+      "requestedName": "State Street Global Advisors",
+      "sourceName": "STATE STREET GLOBAL ADVISORS, INC.",
+      "status": "pending-collection",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip"
+      },
+      "adviser": null,
+      "clientInformation": null,
+      "aumInformation": null,
+      "reason": "No matching legal adviser name in the December 2025 SEC filing archive; do not infer from the peer brand or a different adviser entity."
+    },
+    {
+      "firm": "invesco",
+      "requestedName": "Invesco Advisers",
+      "sourceName": "INVESCO ADVISERS, INC.",
+      "status": "collected",
+      "filingId": "2032953",
+      "filedAt": "12/23/2025 04:14:33 PM",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+        "sourceFile": "IA_ADV_Base_A_20251201_20251231.csv",
+        "form": "Form ADV Part 1A"
+      },
+      "adviser": {
+        "legalName": "INVESCO ADVISERS, INC.",
+        "businessName": "INVESCO ADVISERS, INC.",
+        "employees": 2872,
+        "employeeFunctions": {
+          "investmentAdvisoryFunctions": 787,
+          "registeredRepresentatives": 625,
+          "stateInvestmentAdviserRepresentatives": 206,
+          "representativesForAnotherAdviser": 3,
+          "licensedInsuranceAgents": 0,
+          "solicitors": 0
+        }
+      },
+      "clientInformation": [
+        {
+          "code": "a",
+          "label": "Individuals (other than high net worth individuals)",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "b",
+          "label": "High net worth individuals",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "c",
+          "label": "Banking or thrift institutions",
+          "clients": 3,
+          "raumUsd": 93020936
+        },
+        {
+          "code": "d",
+          "label": "Investment companies",
+          "clients": 198,
+          "raumUsd": 463324913352
+        },
+        {
+          "code": "e",
+          "label": "Business development companies",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "f",
+          "label": "Pooled investment vehicles",
+          "clients": 248,
+          "raumUsd": 132599569348
+        },
+        {
+          "code": "g",
+          "label": "Pension and profit sharing plans",
+          "clients": 80,
+          "raumUsd": 43963206551
+        },
+        {
+          "code": "h",
+          "label": "Charitable organizations",
+          "clients": 6,
+          "raumUsd": 285103222
+        },
+        {
+          "code": "i",
+          "label": "State or municipal government entities",
+          "clients": 31,
+          "raumUsd": 28199277019
+        },
+        {
+          "code": "j",
+          "label": "Other investment advisers",
+          "clients": 0,
+          "raumUsd": 0
+        },
+        {
+          "code": "k",
+          "label": "Insurance companies",
+          "clients": 33,
+          "raumUsd": 11402253668
+        },
+        {
+          "code": "l",
+          "label": "Sovereign wealth funds and foreign official institutions",
+          "clients": 14,
+          "raumUsd": 14252536200
+        },
+        {
+          "code": "m",
+          "label": "Corporations or other businesses",
+          "clients": 68,
+          "raumUsd": 50470220336
+        },
+        {
+          "code": "n",
+          "label": "Other",
+          "clients": 60555,
+          "raumUsd": 12291122597
+        }
+      ],
+      "aumInformation": {
+        "discretionaryAmountUsd": 744283364675,
+        "nonDiscretionaryAmountUsd": 12597858554,
+        "totalAmountUsd": 756881223229,
+        "discretionaryAccounts": 2220,
+        "nonDiscretionaryAccounts": 59016,
+        "totalAccounts": 61236
+      },
+      "rawFields": {
+        "5A": 2872,
+        "5B1": 787,
+        "5B2": 625,
+        "5B3": 206,
+        "5B4": 3,
+        "5B5": 0,
+        "5B6": 0,
+        "5D1a": 0,
+        "5D3a": 0,
+        "5D1b": 0,
+        "5D3b": 0,
+        "5D1c": 3,
+        "5D3c": 93020936,
+        "5D1d": 198,
+        "5D3d": 463324913352,
+        "5D1e": 0,
+        "5D3e": 0,
+        "5D1f": 248,
+        "5D3f": 132599569348,
+        "5D1g": 80,
+        "5D3g": 43963206551,
+        "5D1h": 6,
+        "5D3h": 285103222,
+        "5D1i": 31,
+        "5D3i": 28199277019,
+        "5D1j": 0,
+        "5D3j": 0,
+        "5D1k": 33,
+        "5D3k": 11402253668,
+        "5D1l": 14,
+        "5D3l": 14252536200,
+        "5D1m": 68,
+        "5D3m": 50470220336,
+        "5D1n": 60555,
+        "5D3n": 12291122597,
+        "5F2a": 744283364675,
+        "5F2b": 12597858554,
+        "5F2c": 756881223229,
+        "5F2d": 2220,
+        "5F2e": 59016,
+        "5F2f": 61236
+      }
+    },
+    {
+      "firm": "amundi",
+      "requestedName": "Amundi US",
+      "sourceName": "AMUNDI US",
+      "status": "pending-collection",
+      "filingPeriod": "2025-12-01/2025-12-31",
+      "source": {
+        "name": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+        "archiveUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip"
+      },
+      "adviser": null,
+      "clientInformation": null,
+      "aumInformation": null,
+      "reason": "No matching legal adviser name in the December 2025 SEC filing archive; do not infer from the peer brand or a different adviser entity."
+    }
+  ]
+}

@@ -359,7 +359,8 @@ function describeLatest(metric: MetricId): string {
   const point = latestPublishedPoint(metric, "vanguard");
   if (!point) return "not published";
   const asOf = point.asOf ? ` as of ${formatAsOf(point.asOf)}` : "";
-  return `${formatValue(metric, point.value)}${asOf}`;
+  const qualification = qualificationText(point);
+  return `${formatValue(metric, point.value)}${asOf}${qualification === "Verified source" ? "" : ` (${qualification.toLowerCase()})`}`;
 }
 
 function describePeerLatest(

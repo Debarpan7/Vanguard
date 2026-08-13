@@ -431,6 +431,20 @@ function validateCandidate(database: DatabaseSync, runId: string): string[] {
         `observation ${row.id}: State Street published point is missing explicit Investment Management segment scope`,
       );
     }
+    if (
+      row.firm_id === "vanguard" &&
+      row.metric_id === "aum" &&
+      publishedTags.has(String(row.verification)) &&
+      String(row.comparability_classification) ===
+        "display-only-regulatory-aum" &&
+      (String(row.source).toLowerCase().includes("form adv") === false ||
+        !String(row.url).includes("adviserinfo.sec.gov") ||
+        !String(row.issuer_scope).includes("CRD 105958"))
+    ) {
+      issues.push(
+        `observation ${row.id}: Vanguard regulatory AUM requires an adviser Form ADV citation, CRD 105958 scope, and display-only-regulatory-aum classification`,
+      );
+    }
     if (!gapTags.has(String(row.verification)) && !publishedTags.has(String(row.verification))) {
       issues.push(`observation ${row.id}: unknown verification tag`);
     }

@@ -134,11 +134,15 @@
         },
         {
           "year": 2025,
-          "value": null,
-          "source": "No publication found (research asset 01)",
-          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
-          "verification": "not-published",
-          "note": "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01)."
+          "value": 10.246596045633,
+          "asOf": "2025-09-30",
+          "source": "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+          "sourceUrl": "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+          "verification": "verified-from-url",
+          "sourceCurrency": "USD",
+          "issuerScope": "The Vanguard Group, Inc. SEC-registered investment adviser (CRD 105958)",
+          "comparabilityClassification": "display-only-regulatory-aum",
+          "note": "Total regulatory assets under management reported in Form ADV Item 5.F.2.c: $10,246,596,045,633, filed 2025-12-22. Regulatory adviser AUM is not a corporate financial-statement measure and is excluded from audited financial comparisons."
         }
       ]
     },

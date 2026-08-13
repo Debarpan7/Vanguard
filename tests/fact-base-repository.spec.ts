@@ -324,4 +324,37 @@ test.describe("database-backed fact base", () => {
       "State Street published point is missing explicit Investment Management segment scope",
     );
   });
+
+  test("rejects Vanguard AUM that is published without adviser scope", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const candidateRunId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries.map((series) =>
+        series.firm === "vanguard" && series.metric === "aum"
+          ? {
+              ...series,
+              points: series.points.map((point) =>
+                point.year === 2025
+                  ? {
+                      ...point,
+                      issuerScope: "Vanguard corporate consolidated",
+                    }
+                  : point,
+              ),
+            }
+          : series,
+      ),
+    });
+
+    expect(() => publishCandidate(database, candidateRunId)).toThrow(
+      "Vanguard regulatory AUM requires an adviser Form ADV citation",
+    );
+  });
 });

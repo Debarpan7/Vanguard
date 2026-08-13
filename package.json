@@ -10,7 +10,8 @@
     "test:e2e": "playwright test",
     "test:unit": "playwright test --config playwright.unit.config.ts",
     "refresh:validate": "playwright test --config playwright.unit.config.ts tests/refresh.spec.ts",
-    "fact-base:generate": "node --experimental-strip-types scripts/generate-fact-base-baseline.mjs"
+    "fact-base:generate": "node --experimental-strip-types scripts/generate-fact-base-baseline.mjs",
+    "adviserinfo:generate": "node scripts/generate-adv-raw.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",
@@ -27,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "xlsx": "^0.18.5"
   }
 }

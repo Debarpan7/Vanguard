@@ -10,16 +10,19 @@ test("metrics dashboard shows headline metrics with definitions, sources, and 5-
     page.getByRole("heading", { name: "Metrics", level: 1 }),
   ).toBeVisible();
 
-  // AUM — latest published point FY2022 $8.1T (as of Mar 31, 2022); later years are gaps.
+  // AUM — latest published point FY2025 regulatory AUM, qualified as display-only adviser data.
   const aum = page.getByTestId("metric-card-aum");
-  await expect(aum.getByTestId("metric-value")).toHaveText("$8.1T");
-  await expect(aum.getByText("As of Mar 31, 2022", { exact: true })).toBeVisible();
+  await expect(aum.getByTestId("metric-value")).toHaveText("$10.2T");
+  await expect(aum.getByText("As of Sep 30, 2025", { exact: true })).toBeVisible();
+  await expect(
+    aum.getByText(/display-only regulatory AUM; SEC Form ADV verified/i),
+  ).toBeVisible();
   await expect(aum.getByTestId("trend-2021")).toContainText("$8.0T");
   await expect(aum.getByTestId("trend-2022")).toContainText("$8.1T");
   await expect(aum.getByTestId("trend-2023")).toContainText("Not published");
-  await expect(aum.locator("a").first()).toHaveAttribute(
+  await expect(aum.getByTestId("trend-2025").locator("a")).toHaveAttribute(
     "href",
-    /web\.archive\.org/,
+    /adviserinfo\.sec\.gov/,
   );
 
   // Clients — latest 50M+ (FY2025); trend shows the 2023 methodology break.

@@ -35,18 +35,42 @@ test("Vanguard AUM series traces to its published points with the correct covera
   expect(p2022.asOf).toBe("2022-03-31");
   expect(p2022.verification).toBe("verified-from-url");
 
-  // FY2023–FY2025: unpublished on vanguard.com — gaps, never invented.
-  for (const year of [2023, 2024, 2025]) {
+  // FY2023–FY2024: unpublished on vanguard.com — gaps, never invented.
+  for (const year of [2023, 2024]) {
     const p = byYear.get(year)!;
     expect(p.value).toBeNull();
     expect(p.verification).toBe("not-published");
   }
+
+  const p2025 = byYear.get(2025)!;
+  expect(p2025.value).toBe(10.246596045633);
+  expect(p2025.verification).toBe("verified-from-url");
+  expect(p2025.comparabilityClassification).toBe("display-only-regulatory-aum");
 });
 
-test("latest published AUM point is FY2022 at $8.1T", () => {
+test("latest published AUM point is FY2025 regulatory AUM", () => {
   const latest = latestPublishedPoint("aum", "vanguard");
-  expect(latest?.year).toBe(2022);
-  expect(latest?.value).toBe(8.1);
+  expect(latest?.year).toBe(2025);
+  expect(latest?.value).toBe(10.246596045633);
+});
+
+test("Vanguard FY2025 AUM is qualified regulatory adviser AUM", () => {
+  const point = seriesFor("aum", "vanguard").points.find(
+    (current) => current.year === 2025,
+  );
+
+  expect(point).toMatchObject({
+    value: 10.246596045633,
+    asOf: "2025-09-30",
+    verification: "verified-from-url",
+    sourceUrl:
+      "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+    sourceCurrency: "USD",
+    issuerScope: expect.stringContaining("CRD 105958"),
+    comparabilityClassification: "display-only-regulatory-aum",
+  });
+  expect(point?.note).toContain("filed 2025-12-22");
+  expect(point?.note).toContain("10,246,596,045,633");
 });
 
 test("Vanguard clients series covers 2021–2025 with the 2023 methodology break noted", () => {

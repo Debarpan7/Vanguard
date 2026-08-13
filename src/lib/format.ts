@@ -25,6 +25,9 @@ export function formatValue(
 
 /** Makes source and comparison status visible wherever a published point is shown. */
 export function qualificationText(point: SeriesPoint): string {
+  if (point.comparabilityClassification === "display-only-regulatory-aum") {
+    return "Display-only regulatory AUM; SEC Form ADV verified";
+  }
   if (point.verification === "unverified") {
     if (point.comparabilityClassification === "display-only-segment") {
       return "Display-only segment; unverified";

@@ -30,9 +30,10 @@ test("out-of-fact-base topics are refused with the fixed string, verbatim", () =
 
 test("a metric query answers with the latest published value, as-of, and source", () => {
   const response = answerChat("what is vanguard's aum");
-  // Decided fact: $8.1T as of Mar 31, 2022 (fact-base literal).
-  expect(response.text).toMatch(/\$8\.1T/);
-  expect(response.text).toMatch(/Mar 31, 2022/);
+  // Decided fact: FY2025 regulatory AUM, qualified as display-only adviser data.
+  expect(response.text).toMatch(/\$10\.2T/);
+  expect(response.text).toMatch(/Sep 30, 2025/);
+  expect(response.text).toMatch(/display-only regulatory aum; sec form adv verified/i);
   expect(response.sources.length).toBeGreaterThan(0);
   expect(response.sources[0].name.length).toBeGreaterThan(0);
   expect(response.sources[0].url.startsWith("http")).toBe(true);
@@ -57,12 +58,13 @@ test("a trend query renders the full 5-year series with explicit gap labels", ()
   expect(response.text).toMatch(/2021: \$8\.0T/);
   expect(response.text).toMatch(/2022: \$8\.1T/);
   expect(response.text).toMatch(/2023: Not published/);
-  expect(response.text).toMatch(/2025: Not published/);
+  expect(response.text).toMatch(/2025: \$10\.2T/);
 });
 
 test("a benchmarking query answers with Vanguard's value, the named peer value, and the ownership caveat", () => {
   const response = answerChat("compare vanguard aum to blackrock");
-  expect(response.text).toMatch(/\$8\.1T/);
+  expect(response.text).toMatch(/\$10\.2T/);
+  expect(response.text).toMatch(/display-only regulatory aum; sec form adv verified/i);
   expect(response.text).toMatch(/pending collection/i);
   // Ownership caveat is auto-appended on benchmarking answers (decision 4).
   expect(response.text).toMatch(/client-owned \(mutual\)/);

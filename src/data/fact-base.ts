@@ -220,6 +220,20 @@ const pendingCollection = (
   note: `Series for ${firm} not yet collected from primary source (ticket 37 — audited peer series).`,
 });
 
+const vanguardRegulatoryAum: SeriesPoint = {
+  year: 2025,
+  value: 10.246596045633,
+  asOf: "2025-09-30",
+  source: "SEC Investment Adviser Public Disclosure — Form ADV filing data",
+  sourceUrl:
+    "https://reports.adviserinfo.sec.gov/reports/foia/advFilingData/2025/ADV_Filing_Data_20251201_20251231.zip",
+  verification: "verified-from-url",
+  sourceCurrency: "USD",
+  issuerScope: "The Vanguard Group, Inc. SEC-registered investment adviser (CRD 105958)",
+  comparabilityClassification: "display-only-regulatory-aum",
+  note: "Total regulatory assets under management reported in Form ADV Item 5.F.2.c: $10,246,596,045,633, filed 2025-12-22. Regulatory adviser AUM is not a corporate financial-statement measure and is excluded from audited financial comparisons.",
+};
+
 /* ------------------------------------------------------------------ *
  * Vanguard series — values verified in asset 01 (public disclosures). *
  * ------------------------------------------------------------------ */
@@ -260,10 +274,12 @@ const vanguardAum: MetricSeries = {
     ),
     notPublished(
       2025,
-      "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01).",
+      "Firm AUM unpublished on vanguard.com; regulatory AUM for the 2025 filing is published separately as adviser-level display-only data.",
     ),
   ],
 };
+
+vanguardAum.points[4] = vanguardRegulatoryAum;
 
 const vanguardClients: MetricSeries = {
   metric: "clients",

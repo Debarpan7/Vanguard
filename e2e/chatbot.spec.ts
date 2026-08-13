@@ -29,7 +29,14 @@ test("a known query returns the correct grounded answer with a source link", asy
   await page.getByRole("button", { name: /ask/i }).click();
   // Grounded answer — decided fact-base literal, not recomputed.
   await expect(
-    page.locator("main").getByText(/Assets under management: \$8\.1T as of Mar 31, 2022/),
+    page
+      .locator("main")
+      .getByText(/Assets under management: \$10\.2T as of Sep 30, 2025/),
+  ).toBeVisible();
+  await expect(
+    page
+      .locator("main")
+      .getByText(/display-only regulatory aum; sec form adv verified/i),
   ).toBeVisible();
   // The source is rendered as a real link to the fact-base source URL.
   const sourceLink = page.locator("main").getByRole("link").first();
