@@ -5,7 +5,7 @@ import {
   improvementLens,
   opportunityFor,
 } from "../src/data/analysis";
-import { headlineMetrics } from "../src/data/fact-base";
+import { headlineMetrics } from "../src/lib/fact-base";
 
 // Seam 2 — analysis provenance. The analysis is the decided pipeline output
 // (ticket 17 — LLM analysis pipeline): a seeded narrative grounded in the fact

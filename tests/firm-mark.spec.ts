@@ -3,7 +3,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { FirmMark } from "../src/components/firm-mark";
 import type { FirmMarkProps } from "../src/components/firm-mark";
-import { allFirms, firmMeta } from "../src/data/fact-base";
+import { allFirms, firmMeta } from "../src/lib/fact-base";
 
 // Seam 2 — the firm-mark component. Expected values are literal facts from
 // the mark-references research asset

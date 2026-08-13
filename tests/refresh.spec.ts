@@ -6,7 +6,7 @@ import {
   trendYears,
   type MetricId,
   type MetricSeries,
-} from "../src/data/fact-base";
+} from "../src/lib/fact-base";
 import {
   analysisNarrative,
   analysisOpportunities,

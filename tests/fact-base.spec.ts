@@ -8,7 +8,7 @@ import {
   primarySourceFor,
   auditedMetrics,
   isAuditedMetric,
-} from "../src/data/fact-base";
+} from "../src/lib/fact-base";
 
 // Seam 2 — fact base provenance. Expected values are literal facts from the
 // disclosure research (`.scratch/vanguard-intelligence/assets/01-vanguard-public-disclosures.md`),

@@ -7,7 +7,7 @@ import {
   roeYearDelta,
   type RoeNode,
 } from "../src/data/roe-tree";
-import { trendYears } from "../src/data/fact-base";
+import { trendYears } from "../src/lib/fact-base";
 
 // Seam 2 — RoE tree provenance. The tree structure is the agreed
 // decomposition (decision: ticket 05 — income-statement drilldown). Expected

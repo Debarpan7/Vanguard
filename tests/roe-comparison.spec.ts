@@ -11,7 +11,7 @@ import {
   peerFirms,
   seriesFor,
   trendYears,
-} from "../src/data/fact-base";
+} from "../src/lib/fact-base";
 
 // Seam 2 — RoE comparison provenance. The comparison basis is the decided
 // design (ticket 06 — grilling RoE comparison across peer set, industries,
