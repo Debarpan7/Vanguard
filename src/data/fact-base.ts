@@ -38,6 +38,10 @@ export interface SeriesPoint {
   source: string;
   sourceUrl: string;
   verification: VerificationTag;
+  sourceCurrency?: string;
+  accountingBasis?: string;
+  issuerScope?: string;
+  comparabilityClassification?: string;
   /** Free-form note: methodology breaks, definition caveats, gap reasons. */
   note?: string;
 }

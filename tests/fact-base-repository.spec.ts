@@ -97,6 +97,47 @@ test.describe("database-backed fact base", () => {
     ).toEqual({ count: 150 });
   });
 
+  test("round-trips Amundi accounting and comparability metadata", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const amundiRevenue = seriesFor("revenue", "amundi");
+    const series = allSeries.map((current) =>
+      current === amundiRevenue
+        ? {
+            ...current,
+            points: current.points.map((point) => ({
+              ...point,
+              sourceCurrency: "EUR",
+              accountingBasis: "IFRS",
+              issuerScope: "Amundi consolidated",
+              comparabilityClassification: "regulated-eur-ifrs-display-only",
+            })),
+          }
+        : current,
+    );
+    const runId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series,
+    });
+    publishCandidate(database, runId);
+
+    const published = readPublishedSeries(database).find(
+      (current) => current.firm === "amundi" && current.metric === "revenue",
+    );
+    expect(published?.points[0]).toMatchObject({
+      sourceCurrency: "EUR",
+      accountingBasis: "IFRS",
+      issuerScope: "Amundi consolidated",
+      comparabilityClassification: "regulated-eur-ifrs-display-only",
+    });
+  });
+
   test("rejects an invalid candidate without replacing the active publication", () => {
     const database = new DatabaseSync(":memory:");
     createFactBaseSchema(database);
@@ -176,5 +217,39 @@ test.describe("database-backed fact base", () => {
         .prepare("SELECT id FROM collection_runs WHERE status = 'published'")
         .get(),
     ).toEqual({ id: activeRunId });
+  });
+
+  test("rejects an Amundi published point without EUR/IFRS comparability metadata", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const candidateRunId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries.map((series) =>
+        series.firm === "amundi" && series.metric === "revenue"
+          ? {
+              ...series,
+              points: series.points.map((point, index) =>
+                index === 0
+                  ? {
+                      ...point,
+                      value: 3.1,
+                      verification: "verified-from-url" as const,
+                    }
+                  : point,
+              ),
+            }
+          : series,
+      ),
+    });
+
+    expect(() => publishCandidate(database, candidateRunId)).toThrow(
+      "Amundi published point is missing EUR/IFRS scope or comparability metadata",
+    );
   });
 });

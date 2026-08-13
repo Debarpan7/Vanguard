@@ -86,6 +86,10 @@ const schema = `
     value REAL,
     as_of TEXT,
     verification TEXT NOT NULL,
+    source_currency TEXT,
+    accounting_basis TEXT,
+    issuer_scope TEXT,
+    comparability_classification TEXT,
     note TEXT,
     supersedes_id INTEGER REFERENCES observations(id),
     UNIQUE (run_id, firm_id, metric_id, period_year)
@@ -122,6 +126,20 @@ const schema = `
 
 export function createFactBaseSchema(database: DatabaseSync): void {
   database.exec(schema);
+  const columns = database
+    .prepare("PRAGMA table_info(observations)")
+    .all()
+    .map((row) => String(row.name));
+  for (const [name, definition] of [
+    ["source_currency", "TEXT"],
+    ["accounting_basis", "TEXT"],
+    ["issuer_scope", "TEXT"],
+    ["comparability_classification", "TEXT"],
+  ] as const) {
+    if (!columns.includes(name)) {
+      database.exec(`ALTER TABLE observations ADD COLUMN ${name} ${definition}`);
+    }
+  }
 }
 
 export function backfillStaticFactBase(
@@ -170,7 +188,7 @@ export function backfillStaticFactBase(
       "INSERT INTO sources (name, url) VALUES (?, ?)",
     );
     const insertObservation = database.prepare(
-      "INSERT INTO observations (run_id, firm_id, metric_id, period_year, value, as_of, verification, note, supersedes_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO observations (run_id, firm_id, metric_id, period_year, value, as_of, verification, source_currency, accounting_basis, issuer_scope, comparability_classification, note, supersedes_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     );
     const previousObservation = database.prepare(
       "SELECT o.id FROM observations o JOIN collection_runs r ON r.id = o.run_id WHERE r.status = 'published' AND o.firm_id = ? AND o.metric_id = ? AND o.period_year = ?",
@@ -214,6 +232,10 @@ export function backfillStaticFactBase(
           point.value,
           point.asOf ?? null,
           point.verification,
+          point.sourceCurrency ?? null,
+          point.accountingBasis ?? null,
+          point.issuerScope ?? null,
+          point.comparabilityClassification ?? null,
           point.note ?? null,
           supersedesId,
         );
@@ -314,8 +336,10 @@ function validateCandidate(database: DatabaseSync, runId: string): string[] {
   );
   const candidateRows = database
     .prepare(
-      `SELECT o.id, o.firm_id, o.metric_id, o.period_year, o.value,
-              o.verification, o.as_of, s.name AS source, s.url,
+          `SELECT o.id, o.firm_id, o.metric_id, o.period_year, o.value,
+              o.verification, o.as_of, o.source_currency, o.accounting_basis,
+              o.issuer_scope, o.comparability_classification,
+              s.name AS source, s.url,
               c.observation_id AS citation_id,
               v.observation_id AS verification_id,
               cs.observation_id AS comparability_id
@@ -372,6 +396,18 @@ function validateCandidate(database: DatabaseSync, runId: string): string[] {
     if (publishedTags.has(String(row.verification)) && row.value === null) {
       issues.push(`observation ${row.id}: published point has no value`);
     }
+    if (
+      row.firm_id === "amundi" &&
+      publishedTags.has(String(row.verification)) &&
+      (!row.source_currency ||
+        !row.accounting_basis ||
+        !row.issuer_scope ||
+        !row.comparability_classification)
+    ) {
+      issues.push(
+        `observation ${row.id}: Amundi published point is missing EUR/IFRS scope or comparability metadata`,
+      );
+    }
     if (!gapTags.has(String(row.verification)) && !publishedTags.has(String(row.verification))) {
       issues.push(`observation ${row.id}: unknown verification tag`);
     }
@@ -425,8 +461,10 @@ function readSeries(database: DatabaseSync, runId?: string): MetricSeries[] {
   const runPredicate = runId ? "r.id = ?" : "r.status = 'published'";
   const rows = database
     .prepare(
-      `SELECT o.firm_id, o.metric_id, m.unit, m.definition, o.period_year,
-              o.value, o.as_of, s.name AS source, s.url AS source_url,
+          `SELECT o.firm_id, o.metric_id, m.unit, m.definition, o.period_year,
+              o.value, o.as_of, o.source_currency, o.accounting_basis,
+              o.issuer_scope, o.comparability_classification,
+              s.name AS source, s.url AS source_url,
               o.verification, o.note
        FROM observations o
        JOIN collection_runs r ON r.id = o.run_id AND ${runPredicate}
@@ -456,6 +494,12 @@ function readSeries(database: DatabaseSync, runId?: string): MetricSeries[] {
       source: String(row.source),
       sourceUrl: String(row.source_url),
       verification: row.verification as VerificationTag,
+      ...(row.source_currency === null ? {} : { sourceCurrency: String(row.source_currency) }),
+      ...(row.accounting_basis === null ? {} : { accountingBasis: String(row.accounting_basis) }),
+      ...(row.issuer_scope === null ? {} : { issuerScope: String(row.issuer_scope) }),
+      ...(row.comparability_classification === null
+        ? {}
+        : { comparabilityClassification: String(row.comparability_classification) }),
       ...(row.note === null ? {} : { note: String(row.note) }),
     });
   }
