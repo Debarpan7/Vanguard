@@ -1,6 +1,6 @@
 import { DataAsOfMarker } from "@/components/data-as-of-marker";
 import { RoeTreeView } from "@/components/roe-tree";
-import { trendYears } from "@/data/fact-base";
+import { trendYears } from "@/lib/fact-base";
 import {
   roeTreeIds,
   roeTreeRoot,

@@ -1,5 +1,5 @@
 import { BenchmarkingView } from "@/components/site-shell";
-import { headlineMetrics, type MetricId } from "@/data/fact-base";
+import { headlineMetrics, type MetricId } from "@/lib/fact-base";
 
 /** Resolves ?metric= from the URL to a headline metric, or null for all. */
 function parseMetric(

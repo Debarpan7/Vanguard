@@ -19,7 +19,7 @@ import {
   latestPublishedPoint,
   metricMeta,
   type MetricId,
-} from "@/data/fact-base";
+} from "@/lib/fact-base";
 import {
   ownershipCaveat,
   ownershipLabel,

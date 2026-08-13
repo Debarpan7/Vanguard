@@ -1,4 +1,4 @@
-import type { Ownership } from "@/data/fact-base";
+import type { Ownership } from "@/lib/fact-base";
 
 /**
  * Peer set comparison content (decisions: ticket 04 — grilling peer set

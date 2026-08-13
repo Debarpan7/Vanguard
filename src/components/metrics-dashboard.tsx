@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { headlineMetrics, metricMeta, type MetricId } from "@/data/fact-base";
+import { headlineMetrics, metricMeta, type MetricId } from "@/lib/fact-base";
 import { MetricCard } from "@/components/metric-card";
 import { SurfaceCard } from "@/components/surface";
 

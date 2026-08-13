@@ -18,7 +18,7 @@
  *       network.
  */
 
-import type { MetricId } from "@/data/fact-base";
+import type { MetricId } from "@/lib/fact-base";
 import {
   firmMeta,
   headlineMetrics,
@@ -26,7 +26,7 @@ import {
   metricMeta,
   peerFirms,
   seriesFor,
-} from "@/data/fact-base";
+} from "@/lib/fact-base";
 import {
   analysisNarrative,
   analysisOpportunities,

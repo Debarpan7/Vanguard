@@ -1,4 +1,4 @@
-import type { MetricId } from "@/data/fact-base";
+import type { MetricId } from "@/lib/fact-base";
 
 /** Formats a value for display per its metric's unit. Null is always the
  * explicit gap label — the site never shows an invented number. Shared by

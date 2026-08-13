@@ -5,7 +5,7 @@ import {
   trendYears,
   type MetricSeries,
   type VerificationTag,
-} from "@/data/fact-base";
+} from "@/lib/fact-base";
 import {
   analysisNarrative,
   analysisOpportunities,

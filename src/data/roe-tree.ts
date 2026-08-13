@@ -18,7 +18,7 @@
  * as context only, never as a node. Figures are never invented.
  */
 
-import { trendYears, type VerificationTag } from "@/data/fact-base";
+import { trendYears, type VerificationTag } from "@/lib/fact-base";
 
 export type RoeNodeId =
   | "roe"

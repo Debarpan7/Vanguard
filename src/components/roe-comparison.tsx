@@ -1,5 +1,5 @@
 import { BenchmarkTable } from "@/components/benchmark-table";
-import { firmMeta } from "@/data/fact-base";
+import { firmMeta } from "@/lib/fact-base";
 import type { LobRepresentative } from "@/data/roe-comparison";
 import {
   lobComparisonDerivationDisclosure,

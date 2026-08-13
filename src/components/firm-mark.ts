@@ -1,7 +1,7 @@
 import { createElement } from "react";
 import type { ReactElement } from "react";
-import type { FirmId } from "@/data/fact-base";
-import { firmMeta } from "@/data/fact-base";
+import type { FirmId } from "@/lib/fact-base";
+import { firmMeta } from "@/lib/fact-base";
 
 /**
  * Approximate brand hues per firm, from the mark-references research asset

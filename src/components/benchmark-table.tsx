@@ -9,7 +9,7 @@ import {
   trendYears,
   type MetricId,
   type SeriesPoint,
-} from "@/data/fact-base";
+} from "@/lib/fact-base";
 import { formatValue } from "@/lib/format";
 import {
   ownershipCaveat,

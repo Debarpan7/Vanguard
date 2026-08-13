@@ -5,7 +5,7 @@ import {
   type RoeNode,
   type RoeNodeId,
 } from "@/data/roe-tree";
-import { seriesFor, trendYears } from "@/data/fact-base";
+import { seriesFor, trendYears } from "@/lib/fact-base";
 import { formatAsOf } from "@/lib/format";
 import { SurfaceCard, TablePanel } from "@/components/surface";
 

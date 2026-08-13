@@ -5,7 +5,7 @@ import {
   metricMeta,
   seriesFor,
   type MetricId,
-} from "@/data/fact-base";
+} from "@/lib/fact-base";
 import { formatAsOf, formatValue } from "@/lib/format";
 import { CsvExportButton } from "@/components/csv-export-button";
 import { CopyLinkButton } from "@/components/copy-link-button";
