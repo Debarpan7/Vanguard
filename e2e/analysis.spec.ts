@@ -40,9 +40,9 @@ test("home page renders the analysis narrative from the seeded pipeline output",
   await expect(
     page.locator("main").getByText(/client-owned \(mutual\)/i).first(),
   ).toBeVisible();
-  // The ownership caveat is stated.
+  // The ownership caveat and current peer-availability qualification are stated.
   await expect(
-    page.locator("main").getByText(/no peer-relative claim|peer data stays pending collection/i).first(),
+    page.locator("main").getByText(/audited BlackRock and Invesco revenue and RoE series are available/i).first(),
   ).toBeVisible();
 });
 

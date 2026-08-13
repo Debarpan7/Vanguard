@@ -491,43 +491,48 @@
       "points": [
         {
           "year": 2021,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 19.374,
+          "asOf": "2021-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename."
         },
         {
           "year": 2022,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 17.873,
+          "asOf": "2022-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename."
         },
         {
           "year": 2023,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 17.859,
+          "asOf": "2023-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename."
         },
         {
           "year": 2024,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 20.407,
+          "asOf": "2024-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename."
         },
         {
           "year": 2025,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 24.216,
+          "asOf": "2025-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename."
         }
       ]
     },
@@ -539,43 +544,48 @@
       "points": [
         {
           "year": 2021,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 16.172,
+          "asOf": "2021-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2022,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 13.728,
+          "asOf": "2022-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2023,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 14.274,
+          "asOf": "2023-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2024,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 14.668,
+          "asOf": "2024-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2025,
-          "value": null,
-          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 10.743,
+          "asOf": "2025-12-31",
+          "source": "BlackRock annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         }
       ]
     },
@@ -1211,43 +1221,48 @@
       "points": [
         {
           "year": 2021,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 6.8945,
+          "asOf": "2021-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420822000319/ivz-20211231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions."
         },
         {
           "year": 2022,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 6.0489,
+          "asOf": "2022-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420823000297/ivz-20221231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions."
         },
         {
           "year": 2023,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 5.7164,
+          "asOf": "2023-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420824000219/ivz-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions."
         },
         {
           "year": 2024,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 6.067,
+          "asOf": "2024-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420825000114/ivz-20241231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions."
         },
         {
           "year": 2025,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 6.3771,
+          "asOf": "2025-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420826000079/ivz-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Consolidated revenue in USD billions."
         }
       ]
     },
@@ -1259,43 +1274,48 @@
       "points": [
         {
           "year": 2021,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 9.331,
+          "asOf": "2021-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420822000319/ivz-20211231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2022,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 4.454,
+          "asOf": "2022-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420823000297/ivz-20221231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2023,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": -2.239,
+          "asOf": "2023-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420824000219/ivz-20231231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2024,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": 3.69,
+          "asOf": "2024-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420825000114/ivz-20241231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         },
         {
           "year": 2025,
-          "value": null,
-          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
-          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          "verification": "pending-collection",
-          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+          "value": -1.305,
+          "asOf": "2025-12-31",
+          "source": "Invesco annual report / SEC 10-K",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/914208/000091420826000079/ivz-20251231.htm",
+          "verification": "verified-from-url",
+          "note": "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals."
         }
       ]
     },

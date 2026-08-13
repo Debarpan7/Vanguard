@@ -213,7 +213,7 @@ const pendingCollection = (
   source: `Pending collection — ${primarySource}`,
   sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
   verification: "pending-collection",
-  note: `Series for ${firm} not yet collected from primary source (ticket 17 — analysis pipeline).`,
+  note: `Series for ${firm} not yet collected from primary source (ticket 37 — audited peer series).`,
 });
 
 /* ------------------------------------------------------------------ *
@@ -401,8 +401,9 @@ const vanguardRoe: MetricSeries = {
 };
 
 /* ------------------------------------------------------------------ *
- * Peer series — structure with pending-collection markers. Filled in  *
- * as primary-source data is collected (ticket 17 — analysis pipeline).*
+ * Peer series — audited financials are populated where collected; operating *
+ * metrics remain explicit pending-collection gaps until their primary-source *
+ * extraction tickets are complete.                                          *
  * ------------------------------------------------------------------ */
 
 const peerPrimarySource: Record<Exclude<FirmId, "vanguard">, string> = {
@@ -423,15 +424,119 @@ export function primarySourceFor(firm: Exclude<FirmId, "vanguard">): string {
 const peerSeries = (
   metric: MetricId,
   firm: Exclude<FirmId, "vanguard">,
-): MetricSeries => ({
-  metric,
-  firm,
-  unit: metricMeta[metric].unit,
-  definition: metricMeta[metric].definition,
-  points: trendYears.map((year) =>
-    pendingCollection(year, firm, peerPrimarySource[firm]),
-  ),
+): MetricSeries => {
+  if (metric === "revenue" || metric === "roe") {
+    const auditedSeries = auditedPeerSeries[firm]?.[metric];
+    if (auditedSeries) return auditedSeries;
+  }
+
+  return {
+    metric,
+    firm,
+    unit: metricMeta[metric].unit,
+    definition: metricMeta[metric].definition,
+    points: trendYears.map((year) =>
+      pendingCollection(year, firm, peerPrimarySource[firm]),
+    ),
+  };
+};
+
+const auditedPeerPoint = (
+  year: number,
+  value: number,
+  source: string,
+  sourceUrl: string,
+  note: string,
+): SeriesPoint => ({
+  year,
+  value,
+  asOf: `${year}-12-31`,
+  source,
+  sourceUrl,
+  verification: "verified-from-url",
+  note,
 });
+
+const blackrock2021To2023Filing =
+  "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm";
+const blackrock2024To2025Filing =
+  "https://www.sec.gov/Archives/edgar/data/2012383/000119312526071966/blk-20251231.htm";
+const invescoFilings: Record<number, string> = {
+  2021: "https://www.sec.gov/Archives/edgar/data/914208/000091420822000319/ivz-20211231.htm",
+  2022: "https://www.sec.gov/Archives/edgar/data/914208/000091420823000297/ivz-20221231.htm",
+  2023: "https://www.sec.gov/Archives/edgar/data/914208/000091420824000219/ivz-20231231.htm",
+  2024: "https://www.sec.gov/Archives/edgar/data/914208/000091420825000114/ivz-20241231.htm",
+  2025: "https://www.sec.gov/Archives/edgar/data/914208/000091420826000079/ivz-20251231.htm",
+};
+
+const auditedPeerSeries: Partial<
+  Record<Exclude<FirmId, "vanguard">, Partial<Record<"revenue" | "roe", MetricSeries>>>
+> = {
+  blackrock: {
+    revenue: {
+      metric: "revenue",
+      firm: "blackrock",
+      unit: metricMeta.revenue.unit,
+      definition: metricMeta.revenue.definition,
+      points: trendYears.map((year, index) =>
+        auditedPeerPoint(
+          year,
+          [19.374, 17.873, 17.859, 20.407, 24.216][index],
+          "BlackRock annual report / SEC 10-K",
+          year <= 2023 ? blackrock2021To2023Filing : blackrock2024To2025Filing,
+          "Consolidated revenue in USD billions; FY2021-FY2023 use the former BlackRock registrant filing and FY2024-FY2025 use the current registrant filing after the 2024 entity rename.",
+        ),
+      ),
+    },
+    roe: {
+      metric: "roe",
+      firm: "blackrock",
+      unit: metricMeta.roe.unit,
+      definition: metricMeta.roe.definition,
+      points: trendYears.map((year, index) =>
+        auditedPeerPoint(
+          year,
+          [16.172, 13.728, 14.274, 14.668, 10.743][index],
+          "BlackRock annual report / SEC 10-K",
+          year <= 2023 ? blackrock2021To2023Filing : blackrock2024To2025Filing,
+          "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals.",
+        ),
+      ),
+    },
+  },
+  invesco: {
+    revenue: {
+      metric: "revenue",
+      firm: "invesco",
+      unit: metricMeta.revenue.unit,
+      definition: metricMeta.revenue.definition,
+      points: trendYears.map((year, index) =>
+        auditedPeerPoint(
+          year,
+          [6.8945, 6.0489, 5.7164, 6.067, 6.3771][index],
+          "Invesco annual report / SEC 10-K",
+          invescoFilings[year],
+          "Consolidated revenue in USD billions.",
+        ),
+      ),
+    },
+    roe: {
+      metric: "roe",
+      firm: "invesco",
+      unit: metricMeta.roe.unit,
+      definition: metricMeta.roe.definition,
+      points: trendYears.map((year, index) =>
+        auditedPeerPoint(
+          year,
+          [9.331, 4.454, -2.239, 3.69, -1.305][index],
+          "Invesco annual report / SEC 10-K",
+          invescoFilings[year],
+          "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals.",
+        ),
+      ),
+    },
+  },
+};
 
 const allSeries: MetricSeries[] = [
   vanguardAum,

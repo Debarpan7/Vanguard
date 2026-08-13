@@ -18,7 +18,7 @@
  *       network.
  */
 
-import type { MetricId } from "@/lib/fact-base";
+import type { FirmId, MetricId } from "@/lib/fact-base";
 import {
   firmMeta,
   headlineMetrics,
@@ -34,6 +34,17 @@ import {
 } from "@/data/analysis";
 import { formatAsOf, formatValue } from "@/lib/format";
 import { ownershipCaveat } from "@/lib/peer-set";
+
+const PEER_QUERY_NAMES: readonly {
+  firm: Exclude<FirmId, "vanguard">;
+  patterns: readonly string[];
+}[] = [
+  { firm: "blackrock", patterns: ["blackrock"] },
+  { firm: "fidelity", patterns: ["fidelity"] },
+  { firm: "state-street", patterns: ["state street", "ssga"] },
+  { firm: "invesco", patterns: ["invesco"] },
+  { firm: "amundi", patterns: ["amundi"] },
+];
 
 export interface ChatbotSource {
   name: string;
@@ -145,7 +156,7 @@ interface ChatbotIntent {
   /** Substring keywords scored against the normalized query. */
   keywords: readonly string[];
   /** Answer builder — facts rendered through fact-base accessors. */
-  answer: (metric: MetricId | undefined) => ChatbotResponse;
+  answer: (metric: MetricId | undefined, query?: string) => ChatbotResponse;
 }
 
 function metricAnswer(metric: MetricId | undefined): ChatbotResponse {
@@ -180,20 +191,32 @@ function trendAnswer(metric: MetricId | undefined): ChatbotResponse {
   };
 }
 
-function benchmarkAnswer(metric: MetricId | undefined): ChatbotResponse {
+function benchmarkAnswer(
+  metric: MetricId | undefined,
+  query = "",
+): ChatbotResponse {
   const peers = peerFirms.map((firm) => firmMeta[firm].name).join(", ");
   if (!metric) {
     return {
-      text: `I compare Vanguard against its peer set — ${peers}. Peer data is pending collection, so comparisons are not yet computable. ${ownershipCaveat}`,
+      text: `I compare Vanguard against its peer set — ${peers}. Audited BlackRock and Invesco revenue and RoE values are available; unsupported peer metrics remain pending collection. ${ownershipCaveat}`,
       sources: [],
     };
   }
-  const vanguardPoint = latestPublishedPoint(metric, "vanguard");
+  const requestedPeer = PEER_QUERY_NAMES.find(({ patterns }) =>
+    patterns.some((pattern) => query.includes(pattern)),
+  );
+  const peerText = requestedPeer
+    ? `${firmMeta[requestedPeer.firm].name}: ${describePeerLatest(metric, requestedPeer.firm)}`
+    : `Audited BlackRock and Invesco revenue and RoE are available; other ${peers} metric series remain pending collection`;
+  const sources = requestedPeer
+    ? [
+        sourceForPointOrGap(metric, "vanguard"),
+        sourceForPointOrGap(metric, requestedPeer.firm),
+      ]
+    : [];
   return {
-    text: `Vanguard ${metricMeta[metric].name}: ${describeLatest(metric)}. Peer data (${peers}) is pending collection — the quarterly pipeline will add comparisons. ${ownershipCaveat}`,
-    sources: vanguardPoint
-      ? [{ name: vanguardPoint.source, url: vanguardPoint.sourceUrl }]
-      : [notPublishedSource(metric)],
+    text: `Vanguard ${metricMeta[metric].name}: ${describeLatest(metric)}. ${peerText}. ${ownershipCaveat}`,
+    sources: dedupe(sources),
   };
 }
 
@@ -339,6 +362,16 @@ function describeLatest(metric: MetricId): string {
   return `${formatValue(metric, point.value)}${asOf}`;
 }
 
+function describePeerLatest(
+  metric: MetricId,
+  firm: Exclude<FirmId, "vanguard">,
+): string {
+  const point = latestPublishedPoint(metric, firm);
+  if (!point) return "pending collection";
+  const asOf = point.asOf ? ` as of ${formatAsOf(point.asOf)}` : "";
+  return `${formatValue(metric, point.value)}${asOf}`;
+}
+
 function dedupe(sources: readonly ChatbotSource[]): ChatbotSource[] {
   const seen = new Set<string>();
   return sources.filter((source) => {
@@ -352,7 +385,13 @@ function dedupe(sources: readonly ChatbotSource[]): ChatbotSource[] {
 /** The source recorded on a metric's series even when every point is a gap
  * (e.g., Vanguard revenue/RoE — "No publication found (research asset 01)"). */
 function notPublishedSource(metric: MetricId): ChatbotSource {
-  const point = seriesFor(metric, "vanguard").points[0];
+  return sourceForPointOrGap(metric, "vanguard");
+}
+
+/** Returns the latest published source, or the recorded source for an
+ * explicit gap so grounded answers retain provenance even without a value. */
+function sourceForPointOrGap(metric: MetricId, firm: FirmId): ChatbotSource {
+  const point = latestPublishedPoint(metric, firm) ?? seriesFor(metric, firm).points[0];
   return { name: point.source, url: point.sourceUrl };
 }
 
@@ -387,7 +426,7 @@ export function answerChat(rawQuery: string): ChatbotResponse {
   }
 
   if (bestIntent && bestScore >= 1) {
-    return bestIntent.answer(metric);
+    return bestIntent.answer(metric, query);
   }
   return { text: refusalOutOfFactBase, sources: [] };
 }

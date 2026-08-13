@@ -18,6 +18,51 @@ import {
 } from "../src/lib/fact-base-repository";
 
 test.describe("database-backed fact base", () => {
+  test("contains audited BlackRock and Invesco revenue and RoE observations", () => {
+    const blackrockRevenue = seriesFor("revenue", "blackrock");
+    const blackrockRoe = seriesFor("roe", "blackrock");
+    const invescoRevenue = seriesFor("revenue", "invesco");
+    const invescoRoe = seriesFor("roe", "invesco");
+
+    expect(blackrockRevenue.points.map((point) => point.value)).toEqual([
+      19.374,
+      17.873,
+      17.859,
+      20.407,
+      24.216,
+    ]);
+    expect(blackrockRoe.points.map((point) => point.value)).toEqual([
+      16.172,
+      13.728,
+      14.274,
+      14.668,
+      10.743,
+    ]);
+    expect(invescoRevenue.points.map((point) => point.value)).toEqual([
+      6.8945,
+      6.0489,
+      5.7164,
+      6.067,
+      6.3771,
+    ]);
+    expect(invescoRoe.points.map((point) => point.value)).toEqual([
+      9.331,
+      4.454,
+      -2.239,
+      3.69,
+      -1.305,
+    ]);
+    for (const series of [
+      blackrockRevenue,
+      blackrockRoe,
+      invescoRevenue,
+      invescoRoe,
+    ]) {
+      expect(series.points.every((point) => point.verification === "verified-from-url")).toBe(true);
+      expect(series.points.every((point) => point.sourceUrl.includes("sec.gov/Archives/edgar/data/"))).toBe(true);
+    }
+  });
+
   test("round-trips the static baseline with provenance and audit records", () => {
     const database = new DatabaseSync(":memory:");
     createFactBaseSchema(database);

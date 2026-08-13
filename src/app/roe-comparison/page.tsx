@@ -20,8 +20,8 @@ export default function RoeComparisonPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Seeded from the fact base: Vanguard publishes no firm-level
           statements, so its RoE renders as an explicit not-published gap —
-          figures are never invented. Peer RoE and industry-representative
-          cells arrive with the peer-set expansion (ticket 17).
+          figures are never invented. Audited BlackRock and Invesco RoE now
+          include filing-level sources; remaining peer gaps stay explicit.
         </p>
       </header>
 

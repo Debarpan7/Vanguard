@@ -138,12 +138,17 @@ test("every headline metric exists for Vanguard and every peer with full year co
     for (const metric of metrics) {
       const series = seriesFor(metric, firm);
       expect(series.points.map((p) => p.year)).toEqual(YEARS);
-      // Peer rows must be marked pending-collection, not silent holes.
-      // (Vanguard may carry a deliberate `unverified` point where a value is
-      // asset-sourced but no capture documents it — see cost-ratio FY2024.)
-      if (firm !== "vanguard") {
-        for (const p of series.points) {
-          expect(p.verification).toBe("pending-collection");
+      if (firm === "blackrock" || firm === "invesco") {
+        const expectedVerification =
+          metric === "revenue" || metric === "roe"
+            ? "verified-from-url"
+            : "pending-collection";
+        for (const point of series.points) {
+          expect(point.verification).toBe(expectedVerification);
+        }
+      } else if (firm !== "vanguard") {
+        for (const point of series.points) {
+          expect(point.verification).toBe("pending-collection");
         }
       }
     }

@@ -1,5 +1,5 @@
 import { BenchmarkTable } from "@/components/benchmark-table";
-import { firmMeta } from "@/lib/fact-base";
+import { firmMeta, latestPublishedPoint } from "@/lib/fact-base";
 import type { LobRepresentative } from "@/data/roe-comparison";
 import {
   lobComparisonDerivationDisclosure,
@@ -7,13 +7,14 @@ import {
 } from "@/data/roe-comparison";
 import { TablePanel } from "@/components/surface";
 
-/** One representative's display text: firm name, "(voluntary)" for Fidelity.
- * RoE availability is a literal pending-collection gap until ticket 17 —
- * never an invented figure (ticket 06 answers 3B and 4). */
+/** One representative's display text: firm name, availability, and voluntary
+ * status where applicable. */
 function repLabel(rep: LobRepresentative): string {
   const firm = firmMeta[rep.firm].name;
   const voluntary = rep.voluntary ? " (voluntary)" : "";
-  return `${firm}${voluntary} — Pending collection`;
+  const point = latestPublishedPoint("roe", rep.firm);
+  const value = point ? `${point.value?.toFixed(1)}% FY${point.year}` : "Pending collection";
+  return `${firm}${voluntary} — ${value}`;
 }
 
 /**

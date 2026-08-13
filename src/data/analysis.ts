@@ -11,8 +11,8 @@ import type { MetricId } from "@/data/fact-base";
  * `.scratch/vanguard-intelligence/issues/17-task-analysis-pipeline.md`).
  *
  * Grounding rules (ticket 03 exclusions): every claim traces to a fact-base
- * metric or an explicit gap — Vanguard gaps render as "not published", peer
- * data stays "pending collection" (ticket 17 answer 1). Nothing is invented.
+ * metric or an explicit gap. Unsupported metrics remain explicit
+ * "pending-collection" gaps, and nothing is invented.
  */
 
 /** One grounded narrative read, e.g. "cost leadership". */
@@ -75,7 +75,7 @@ export const analysisNarrative: AnalysisNarrative = {
     },
   ],
   caveat:
-    "Vanguard is client-owned (mutual), so it has no obligation to publish income statements; the profitability gap is structural, not a disclosure slip. Peer data stays pending collection (ticket 17, answer 1) — no peer-relative claim is made in this narrative.",
+    "Vanguard is client-owned (mutual), so it has no obligation to publish income statements; the profitability gap is structural, not a disclosure slip. Audited BlackRock and Invesco revenue and RoE series are available with filing-level sources; unsupported peer metrics remain explicit pending-collection gaps.",
 };
 
 export const analysisOpportunities: readonly AnalysisOpportunity[] = [

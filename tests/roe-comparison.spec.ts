@@ -105,7 +105,7 @@ test("roe is an audited metric — Fidelity is excluded from the peer-set table"
   expect(isAuditedMetric("roe")).toBe(true);
 });
 
-test("peer-set RoE availability: Vanguard not-published, peers pending-collection until ticket 17", () => {
+test("peer-set RoE availability: Vanguard gap, audited peers populated, voluntary peers pending", () => {
   const vanguard = seriesFor("roe", "vanguard");
   expect(vanguard.points).toHaveLength(trendYears.length);
   for (const point of vanguard.points) {
@@ -117,9 +117,16 @@ test("peer-set RoE availability: Vanguard not-published, peers pending-collectio
     for (const rep of lob.representatives) {
       const series = seriesFor("roe", rep.firm);
       expect(series.points).toHaveLength(trendYears.length);
-      for (const point of series.points) {
-        expect(point.value).toBeNull();
-        expect(point.verification).toBe("pending-collection");
+      if (rep.firm === "blackrock" || rep.firm === "invesco") {
+        expect(series.points.every((point) => point.value !== null)).toBe(true);
+        expect(
+          series.points.every((point) => point.verification === "verified-from-url"),
+        ).toBe(true);
+      } else {
+        for (const point of series.points) {
+          expect(point.value).toBeNull();
+          expect(point.verification).toBe("pending-collection");
+        }
       }
     }
   }

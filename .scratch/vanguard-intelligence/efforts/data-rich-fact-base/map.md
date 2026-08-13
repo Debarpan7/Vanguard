@@ -28,6 +28,7 @@ A decision-complete, executable specification for replacing the site’s sparse 
 - [Grilling: authoritative fact-base cutover contract](issues/34-grilling-site-cutover-contract.md) — Repository-backed accessor parity, server-serialized chatbot payload, expand/shadow-verify/promote/contract migration, immutable static fixture, last-known-good serving, and published-run data-as-of ownership.
 - [Expand fact-base access boundary](issues/35-expand-fact-base-access-boundary.md) — Added a persistence-agnostic boundary and routed all application, library, refresh, and test consumers through it; the static dataset remains the compatibility implementation.
 - [Publish database-backed baseline fact base](issues/36-publish-database-backed-baseline.md) — Added the embedded SQLite baseline, typed publication gate, durable audit records, generated serialized read model, and last-known-good candidate behavior.
+- [Publish audited BlackRock and Invesco series](issues/37-publish-blackrock-invesco-series.md) — Published FY2021–FY2025 consolidated revenue and calculated RoE with SEC filing provenance; AUM, clients, and cost-ratio remain explicit collection gaps.
 - [Grilling: ingestion, validation, and quarterly-refresh contract](issues/33-grilling-ingestion-validation-refresh.md) — Source-priority collection, corroborated aggregator leads, review for interpretive facts, deterministic reruns, immutable candidate runs, atomic promotion, strict provenance/scope validation, and rollback to the prior publication.
 
 ## Not yet specified

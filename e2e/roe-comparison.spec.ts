@@ -29,14 +29,18 @@ test("the peer-set RoE table renders over the 5 years with explicit gaps and the
     ).toHaveText("Not published");
   }
 
-  // Every peer renders pending-collection until the peer-set expansion
-  // (ticket 17) — all four audited peers, all 5 years.
+  // BlackRock and Invesco now render audited RoE; the remaining listed peers
+  // remain explicit pending-collection gaps.
   for (const firm of ["blackrock", "state-street", "invesco", "amundi"]) {
     const row = table.getByTestId(`benchmark-row-${firm}`);
     for (const year of [2021, 2022, 2023, 2024, 2025]) {
-      await expect(row.getByTestId(`benchmark-cell-${firm}-${year}`)).toHaveText(
-        "Pending collection",
-      );
+      const expected =
+        firm === "blackrock"
+          ? ["16.2%", "13.7%", "14.3%", "14.7%", "10.7%"][year - 2021]
+          : firm === "invesco"
+            ? ["9.3%", "4.5%", "-2.2%", "3.7%", "-1.3%"][year - 2021]
+            : "Pending collection";
+      await expect(row.getByTestId(`benchmark-cell-${firm}-${year}`)).toHaveText(expected);
     }
   }
 

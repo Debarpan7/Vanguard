@@ -60,13 +60,21 @@ test("a trend query renders the full 5-year series with explicit gap labels", ()
   expect(response.text).toMatch(/2025: Not published/);
 });
 
-test("a benchmarking query answers with Vanguard's value, the pending-collection peer note, and the ownership caveat", () => {
+test("a benchmarking query answers with Vanguard's value, the named peer value, and the ownership caveat", () => {
   const response = answerChat("compare vanguard aum to blackrock");
   expect(response.text).toMatch(/\$8\.1T/);
   expect(response.text).toMatch(/pending collection/i);
   // Ownership caveat is auto-appended on benchmarking answers (decision 4).
   expect(response.text).toMatch(/client-owned \(mutual\)/);
-  expect(response.sources.length).toBeGreaterThan(0);
+  expect(response.sources.length).toBe(2);
+  expect(response.sources.some((source) => /blackrock/i.test(source.name))).toBe(true);
+});
+
+test("a named peer RoE query uses the published peer value and filing source", () => {
+  const response = answerChat("what is blackrock's roe");
+  expect(response.text).toMatch(/BlackRock.*10\.7%/);
+  expect(response.text).not.toMatch(/peer data.*pending collection/i);
+  expect(response.sources.some((source) => source.url.includes("sec.gov/Archives/edgar/data/"))).toBe(true);
 });
 
 test("an RoE query answers with the not-computable gap and the ownership caveat", () => {
