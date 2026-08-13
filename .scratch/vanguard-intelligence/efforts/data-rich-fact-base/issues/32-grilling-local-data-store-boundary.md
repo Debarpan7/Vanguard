@@ -17,6 +17,6 @@ Use **SQLite with a typed SQL layer** as the local-first authoritative store. Th
 
 The Next.js application reads through a server-side typed repository. Client-side features, including the deterministic chatbot, receive only a serialized read model or explicitly shaped data required for their interaction; no client code receives database credentials or arbitrary query access. Existing fact-base accessors remain the compatibility boundary during migration.
 
-Run SQLite as a containerized local service with a persistent volume. Document volume backup/restore and database export as part of the refresh/runbook work. Managed/shared hosting is deferred to a future decision, triggered by collaboration needs, scale, backup/recovery requirements, or deployment constraints that exceed the local service boundary.
+The Next.js process opens the SQLite database file directly; no separate local database service is required. Document file backup/restore and database export as part of the refresh/runbook work. Managed/shared hosting is deferred to a future decision, triggered by collaboration needs, scale, backup/recovery requirements, or deployment constraints that exceed the embedded-file boundary. This amends the earlier container-service option selected during the initial question round.
 
 Verification: resolved through the interactive decision round on 2026-08-13; no application code changed.
