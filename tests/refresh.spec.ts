@@ -80,12 +80,12 @@ test("seriesIssues flags a point with a missing source (provenance gap)", () => 
 });
 
 test("seriesIssues flags an invented value on a gap point — nothing invented", () => {
-  // Vanguard AUM 2023 is a not-published gap (value null). Inventing a value
-  // must be caught by the gate.
-  const aum = seriesFor("aum", "vanguard");
+  // Vanguard revenue 2023 is a not-published gap. Inventing a value must be
+  // caught by the gate.
+  const revenue = seriesFor("revenue", "vanguard");
   const tampered: MetricSeries = {
-    ...aum,
-    points: aum.points.map((p) => (p.year === 2023 ? { ...p, value: 9.0 } : p)),
+    ...revenue,
+    points: revenue.points.map((p) => (p.year === 2023 ? { ...p, value: 9.0 } : p)),
   };
   const issues = seriesIssues(tampered);
   expect(issues.some((i) => i.includes("2023") && i.includes("gap"))).toBe(true);

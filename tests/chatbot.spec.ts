@@ -57,7 +57,7 @@ test("a trend query renders the full 5-year series with explicit gap labels", ()
   const response = answerChat("aum trend over 5 years");
   expect(response.text).toMatch(/2021: \$8\.0T/);
   expect(response.text).toMatch(/2022: \$8\.1T/);
-  expect(response.text).toMatch(/2023: Not published/);
+  expect(response.text).toMatch(/2023: \$6\.6T/);
   expect(response.text).toMatch(/2025: \$10\.2T/);
 });
 

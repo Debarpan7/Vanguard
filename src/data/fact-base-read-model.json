@@ -118,19 +118,27 @@
         },
         {
           "year": 2023,
-          "value": null,
-          "source": "No publication found (research asset 01)",
-          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
-          "verification": "not-published",
-          "note": "Firm AUM unpublished on vanguard.com after Mar 31, 2022; regulatory AUM in Form ADV (PDF not read — asset 01)."
+          "value": 6.649219111273,
+          "asOf": "2023-08-15",
+          "source": "SEC Investment Adviser Public Disclosure — historical Form ADV filing data",
+          "sourceUrl": "https://www.sec.gov/files/adv-filing-data-20111105-20241231-part1.zip",
+          "verification": "verified-from-url",
+          "sourceCurrency": "USD",
+          "issuerScope": "The Vanguard Group, Inc. SEC-registered investment adviser (CRD 105958)",
+          "comparabilityClassification": "display-only-regulatory-aum",
+          "note": "Total regulatory assets under management reported in Form ADV Item 5.F.2.c; filing date 2023-08-15 is used as the observation date because the historical archive does not expose a separate AUM valuation date. Regulatory adviser AUM is not a corporate financial-statement measure and is excluded from audited financial comparisons."
         },
         {
           "year": 2024,
-          "value": null,
-          "source": "No publication found (research asset 01)",
-          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
-          "verification": "not-published",
-          "note": "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01)."
+          "value": 7.909760294676,
+          "asOf": "2024-12-18",
+          "source": "SEC Investment Adviser Public Disclosure — historical Form ADV filing data",
+          "sourceUrl": "https://www.sec.gov/files/adv-filing-data-20111105-20241231-part1.zip",
+          "verification": "verified-from-url",
+          "sourceCurrency": "USD",
+          "issuerScope": "The Vanguard Group, Inc. SEC-registered investment adviser (CRD 105958)",
+          "comparabilityClassification": "display-only-regulatory-aum",
+          "note": "Total regulatory assets under management reported in Form ADV Item 5.F.2.c; filing date 2024-12-18 is used as the observation date because the historical archive does not expose a separate AUM valuation date. Regulatory adviser AUM is not a corporate financial-statement measure and is excluded from audited financial comparisons."
         },
         {
           "year": 2025,

@@ -6,6 +6,8 @@
  * `not-published` or `pending-collection` — never invented.
  */
 
+import { vanguardHistoricalRegulatoryAum } from "./adviserinfo.ts";
+
 export type FirmId =
   | "vanguard"
   | "blackrock"
@@ -264,14 +266,7 @@ const vanguardAum: MetricSeries = {
       verification: "verified-from-url",
       note: "$8.1T as of Mar 31, 2022 — last firm AUM published on vanguard.com.",
     },
-    notPublished(
-      2023,
-      "Firm AUM unpublished on vanguard.com after Mar 31, 2022; regulatory AUM in Form ADV (PDF not read — asset 01).",
-    ),
-    notPublished(
-      2024,
-      "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01).",
-    ),
+    ...vanguardHistoricalRegulatoryAum,
     notPublished(
       2025,
       "Firm AUM unpublished on vanguard.com; regulatory AUM for the 2025 filing is published separately as adviser-level display-only data.",

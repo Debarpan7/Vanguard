@@ -438,7 +438,12 @@ function validateCandidate(database: DatabaseSync, runId: string): string[] {
       String(row.comparability_classification) ===
         "display-only-regulatory-aum" &&
       (String(row.source).toLowerCase().includes("form adv") === false ||
-        !String(row.url).includes("adviserinfo.sec.gov") ||
+        ![
+          "sec.gov",
+          "www.sec.gov",
+          "adviserinfo.sec.gov",
+          "reports.adviserinfo.sec.gov",
+        ].includes(new URL(String(row.url)).hostname) ||
         !String(row.issuer_scope).includes("CRD 105958"))
     ) {
       issues.push(

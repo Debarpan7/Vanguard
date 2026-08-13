@@ -35,12 +35,19 @@ test("Vanguard AUM series traces to its published points with the correct covera
   expect(p2022.asOf).toBe("2022-03-31");
   expect(p2022.verification).toBe("verified-from-url");
 
-  // FY2023–FY2024: unpublished on vanguard.com — gaps, never invented.
-  for (const year of [2023, 2024]) {
-    const p = byYear.get(year)!;
-    expect(p.value).toBeNull();
-    expect(p.verification).toBe("not-published");
-  }
+  // FY2023–FY2024: regulatory AUM from the official historical Form ADV archive.
+  expect(byYear.get(2023)).toMatchObject({
+    value: 6.649219111273,
+    asOf: "2023-08-15",
+    verification: "verified-from-url",
+    comparabilityClassification: "display-only-regulatory-aum",
+  });
+  expect(byYear.get(2024)).toMatchObject({
+    value: 7.909760294676,
+    asOf: "2024-12-18",
+    verification: "verified-from-url",
+    comparabilityClassification: "display-only-regulatory-aum",
+  });
 
   const p2025 = byYear.get(2025)!;
   expect(p2025.value).toBe(10.246596045633);

@@ -63,6 +63,29 @@ test.describe("database-backed fact base", () => {
     }
   });
 
+  test("publishes historical Vanguard regulatory AUM with filing-date provenance", () => {
+    const aum = seriesFor("aum", "vanguard");
+
+    expect(aum.points.map((point) => point.value)).toEqual([
+      8,
+      8.1,
+      6.649219111273,
+      7.909760294676,
+      10.246596045633,
+    ]);
+    expect(aum.points.slice(2, 4).every((point) =>
+      point.verification === "verified-from-url" &&
+      point.comparabilityClassification === "display-only-regulatory-aum" &&
+      point.issuerScope?.includes("CRD 105958") &&
+      point.sourceUrl.includes("sec.gov/files/adv-filing-data-20111105-20241231-part1.zip") &&
+      point.asOf,
+    )).toBe(true);
+    expect(aum.points.slice(2, 4).map((point) => point.asOf)).toEqual([
+      "2023-08-15",
+      "2024-12-18",
+    ]);
+  });
+
   test("round-trips the static baseline with provenance and audit records", () => {
     const database = new DatabaseSync(":memory:");
     createFactBaseSchema(database);
@@ -345,6 +368,39 @@ test.describe("database-backed fact base", () => {
                   ? {
                       ...point,
                       issuerScope: "Vanguard corporate consolidated",
+                    }
+                  : point,
+              ),
+            }
+          : series,
+      ),
+    });
+
+    expect(() => publishCandidate(database, candidateRunId)).toThrow(
+      "Vanguard regulatory AUM requires an adviser Form ADV citation",
+    );
+  });
+
+  test("rejects Vanguard regulatory AUM from a lookalike SEC hostname", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const candidateRunId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries.map((series) =>
+        series.firm === "vanguard" && series.metric === "aum"
+          ? {
+              ...series,
+              points: series.points.map((point) =>
+                point.year === 2025
+                  ? {
+                      ...point,
+                      sourceUrl: "https://attacker.example/sec.gov/form-adv.zip",
                     }
                   : point,
               ),
