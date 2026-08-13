@@ -146,6 +146,11 @@ test("every headline metric exists for Vanguard and every peer with full year co
         for (const point of series.points) {
           expect(point.verification).toBe(expectedVerification);
         }
+      } else if (firm === "state-street" || firm === "amundi") {
+        const expectedVerification = metric === "revenue" ? "unverified" : "pending-collection";
+        for (const point of series.points) {
+          expect(point.verification).toBe(expectedVerification);
+        }
       } else if (firm !== "vanguard") {
         for (const point of series.points) {
           expect(point.verification).toBe("pending-collection");
@@ -166,6 +171,25 @@ test("peer rows are pending-collection with their primary source identified", ()
     expect(p.verification).toBe("pending-collection");
     expect(p.source).toContain("voluntary");
   }
+});
+
+test("secondary revenue facts remain scoped and display-only", () => {
+  const stateStreet = seriesFor("revenue", "state-street");
+  const amundi = seriesFor("revenue", "amundi");
+
+  expect(stateStreet.unit).toBe("USD billions");
+  expect(stateStreet.points[0]).toMatchObject({
+    verification: "unverified",
+    issuerScope: "State Street Investment Management segment / SSGA-relevant scope",
+    comparabilityClassification: "display-only-segment",
+  });
+  expect(amundi.unit).toBe("EUR billions");
+  expect(amundi.points[0]).toMatchObject({
+    verification: "unverified",
+    sourceCurrency: "EUR",
+    accountingBasis: expect.stringContaining("IFRS"),
+    comparabilityClassification: "display-only-eur-ifrs",
+  });
 });
 
 test("peer set is the ticket-04 core set in display order", () => {

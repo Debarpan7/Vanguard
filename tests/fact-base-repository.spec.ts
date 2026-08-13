@@ -147,6 +147,31 @@ test.describe("database-backed fact base", () => {
     ).toEqual({ state: "display-only" });
   });
 
+  test("round-trips State Street segment scope and unit metadata", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const runId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries,
+    });
+    publishCandidate(database, runId);
+
+    const published = readPublishedSeries(database).find(
+      (current) => current.firm === "state-street" && current.metric === "revenue",
+    );
+    expect(published).toMatchObject({ unit: "USD billions" });
+    expect(published?.points[0]).toMatchObject({
+      issuerScope: "State Street Investment Management segment / SSGA-relevant scope",
+      comparabilityClassification: "display-only-segment",
+    });
+  });
+
   test("rejects an invalid candidate without replacing the active publication", () => {
     const database = new DatabaseSync(":memory:");
     createFactBaseSchema(database);
@@ -249,6 +274,10 @@ test.describe("database-backed fact base", () => {
                       ...point,
                       value: 3.1,
                       verification: "verified-from-url" as const,
+                      sourceCurrency: undefined,
+                      accountingBasis: undefined,
+                      issuerScope: undefined,
+                      comparabilityClassification: undefined,
                     }
                   : point,
               ),
@@ -259,6 +288,40 @@ test.describe("database-backed fact base", () => {
 
     expect(() => publishCandidate(database, candidateRunId)).toThrow(
       "Amundi published point is missing EUR/IFRS scope or comparability metadata",
+    );
+  });
+
+  test("rejects a published State Street point without explicit SSGA segment scope", () => {
+    const database = new DatabaseSync(":memory:");
+    createFactBaseSchema(database);
+    const allSeries = allFirms.flatMap((firm) =>
+      headlineMetrics.map((metric) => seriesFor(metric, firm)),
+    );
+    const candidateRunId = backfillStaticFactBase(database, {
+      asOf: "2026-08-13",
+      firms: firmMeta,
+      metrics: metricMeta,
+      periods: trendYears,
+      series: allSeries.map((series) =>
+        series.firm === "state-street" && series.metric === "revenue"
+          ? {
+              ...series,
+              points: series.points.map((point, index) =>
+                index === 0
+                  ? {
+                      ...point,
+                      issuerScope: "State Street consolidated",
+                      comparabilityClassification: "comparable",
+                    }
+                  : point,
+              ),
+            }
+          : series,
+      ),
+    });
+
+    expect(() => publishCandidate(database, candidateRunId)).toThrow(
+      "State Street published point is missing explicit Investment Management segment scope",
     );
   });
 });

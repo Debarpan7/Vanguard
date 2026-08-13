@@ -405,9 +405,8 @@ const vanguardRoe: MetricSeries = {
 };
 
 /* ------------------------------------------------------------------ *
- * Peer series — audited financials are populated where collected; operating *
- * metrics remain explicit pending-collection gaps until their primary-source *
- * extraction tickets are complete.                                          *
+ * Peer series — audited and explicitly unverified secondary-source facts are *
+ * populated where collected; unsupported metrics remain explicit gaps.       *
  * ------------------------------------------------------------------ */
 
 const peerPrimarySource: Record<Exclude<FirmId, "vanguard">, string> = {
@@ -430,8 +429,8 @@ const peerSeries = (
   firm: Exclude<FirmId, "vanguard">,
 ): MetricSeries => {
   if (metric === "revenue" || metric === "roe") {
-    const auditedSeries = auditedPeerSeries[firm]?.[metric];
-    if (auditedSeries) return auditedSeries;
+    const collectedSeries = auditedPeerSeries[firm]?.[metric];
+    if (collectedSeries) return collectedSeries;
   }
 
   return {
@@ -461,6 +460,30 @@ const auditedPeerPoint = (
   note,
 });
 
+const secondaryPeerPoint = (
+  year: number,
+  value: number,
+  source: string,
+  sourceUrl: string,
+  note: string,
+  metadata: Pick<
+    SeriesPoint,
+    | "sourceCurrency"
+    | "accountingBasis"
+    | "issuerScope"
+    | "comparabilityClassification"
+  >,
+): SeriesPoint => ({
+  year,
+  value,
+  asOf: `${year}-12-31`,
+  source,
+  sourceUrl,
+  verification: "unverified",
+  note,
+  ...metadata,
+});
+
 const blackrock2021To2023Filing =
   "https://www.sec.gov/Archives/edgar/data/1364742/000095017024019271/blk-20231231.htm";
 const blackrock2024To2025Filing =
@@ -472,6 +495,10 @@ const invescoFilings: Record<number, string> = {
   2024: "https://www.sec.gov/Archives/edgar/data/914208/000091420825000114/ivz-20241231.htm",
   2025: "https://www.sec.gov/Archives/edgar/data/914208/000091420826000079/ivz-20251231.htm",
 };
+const secondaryFinancialsSource =
+  "https://stockanalysis.com/quote/epa/AMUN/financials/";
+const stateStreetSecondaryFinancialsSource =
+  "https://stockanalysis.com/stocks/stt/financials/";
 
 const auditedPeerSeries: Partial<
   Record<Exclude<FirmId, "vanguard">, Partial<Record<"revenue" | "roe", MetricSeries>>>
@@ -536,6 +563,52 @@ const auditedPeerSeries: Partial<
           "Invesco annual report / SEC 10-K",
           invescoFilings[year],
           "Calculated as consolidated net income divided by average beginning and ending stockholders' equity; percentage rounded to three decimals.",
+        ),
+      ),
+    },
+  },
+  "state-street": {
+    revenue: {
+      metric: "revenue",
+      firm: "state-street",
+      unit: "USD billions",
+      definition: "Investment Management segment revenue, not State Street consolidated revenue.",
+      points: trendYears.map((year, index) =>
+        secondaryPeerPoint(
+          year,
+          [2.119, 1.986, 2.079, 2.344, 2.634][index],
+          "Stock Analysis — State Street financials / Investment Management segment",
+          stateStreetSecondaryFinancialsSource,
+          "Secondary-source segment revenue in USD billions. Scope is State Street Investment Management, used as an SSGA-relevant display-only series; it is not a standalone SSGA financial statement.",
+          {
+            sourceCurrency: "USD",
+            accountingBasis: "US GAAP segment disclosure as presented by secondary source",
+            issuerScope: "State Street Investment Management segment / SSGA-relevant scope",
+            comparabilityClassification: "display-only-segment",
+          },
+        ),
+      ),
+    },
+  },
+  amundi: {
+    revenue: {
+      metric: "revenue",
+      firm: "amundi",
+      unit: "EUR billions",
+      definition: "Amundi consolidated revenue, reported in EUR by the secondary source.",
+      points: trendYears.map((year, index) =>
+        secondaryPeerPoint(
+          year,
+          [3.136044, 3.055527, 3.122209, 3.405853, 3.341676][index],
+          "Stock Analysis — Amundi financials",
+          secondaryFinancialsSource,
+          "Secondary-source consolidated revenue in EUR billions. IFRS/issuer perimeter and exact annual-report reconciliation require follow-up review; no FX conversion has been applied.",
+          {
+            sourceCurrency: "EUR",
+            accountingBasis: "IFRS as reported by Amundi / secondary-source financial statement mapping",
+            issuerScope: "Amundi consolidated",
+            comparabilityClassification: "display-only-eur-ifrs",
+          },
         ),
       ),
     },

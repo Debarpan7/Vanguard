@@ -32,7 +32,7 @@ import {
   analysisOpportunities,
   improvementLens,
 } from "@/data/analysis";
-import { formatAsOf, formatValue } from "@/lib/format";
+import { formatAsOf, formatValue, qualificationText } from "@/lib/format";
 import { ownershipCaveat } from "@/lib/peer-set";
 
 const PEER_QUERY_NAMES: readonly {
@@ -179,7 +179,7 @@ function trendAnswer(metric: MetricId | undefined): ChatbotResponse {
   if (!metric) return { text: promptMetric, sources: [] };
   const series = seriesFor(metric, "vanguard");
   const parts = series.points.map(
-    (point) => `${point.year}: ${formatValue(metric, point.value)}`,
+    (point) => `${point.year}: ${formatValue(metric, point.value, series.unit)}`,
   );
   return {
     text: `${metricMeta[metric].name} — 5-year trend: ${parts.join("; ")}.`,
@@ -369,7 +369,8 @@ function describePeerLatest(
   const point = latestPublishedPoint(metric, firm);
   if (!point) return "pending collection";
   const asOf = point.asOf ? ` as of ${formatAsOf(point.asOf)}` : "";
-  return `${formatValue(metric, point.value)}${asOf}`;
+  const qualification = qualificationText(point);
+  return `${formatValue(metric, point.value, seriesFor(metric, firm).unit)}${asOf}${qualification === "Verified source" ? "" : ` (${qualification.toLowerCase()})`}`;
 }
 
 function dedupe(sources: readonly ChatbotSource[]): ChatbotSource[] {

@@ -77,6 +77,12 @@ test("a named peer RoE query uses the published peer value and filing source", (
   expect(response.sources.some((source) => source.url.includes("sec.gov/Archives/edgar/data/"))).toBe(true);
 });
 
+test("secondary peer answers disclose their display-only qualification", () => {
+  const response = answerChat("what is amundi's revenue");
+  expect(response.text).toMatch(/display-only EUR\/IFRS; unverified/i);
+  expect(response.text).toMatch(/3\.3/);
+});
+
 test("an RoE query answers with the not-computable gap and the ownership caveat", () => {
   const response = answerChat("what is vanguard's roe");
   expect(response.text).toMatch(/not computable|not published/i);

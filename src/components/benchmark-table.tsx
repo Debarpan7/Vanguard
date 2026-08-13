@@ -10,7 +10,7 @@ import {
   type MetricId,
   type SeriesPoint,
 } from "@/lib/fact-base";
-import { formatValue } from "@/lib/format";
+import { formatValue, qualificationText } from "@/lib/format";
 import {
   ownershipCaveat,
   ownershipLabel,
@@ -31,11 +31,11 @@ interface BenchmarkTableProps {
 
 /** Cell text distinguishes the two gap kinds: peers are pending collection
  * (ticket 17 pipeline), Vanguard gaps are not published. Never invented. */
-function cellText(metric: MetricId, point: SeriesPoint): string {
+function cellText(metric: MetricId, point: SeriesPoint, unit: string): string {
   if (point.value === null && point.verification === "pending-collection") {
     return "Pending collection";
   }
-  return formatValue(metric, point.value);
+  return formatValue(metric, point.value, unit);
 }
 
 /**
@@ -59,17 +59,29 @@ export function BenchmarkTable({
       firmMeta[firm].name.toLowerCase().includes(query),
   );
 
-  const csvHeaders = ["Firm", "Ownership", ...trendYears.map((y) => `FY${y}`)];
+  const csvHeaders = [
+    "Firm",
+    "Ownership",
+    "Qualification",
+    "Scope",
+    "Unit",
+    ...trendYears.map((y) => `FY${y}`),
+  ];
   const csvRows = firms.map((firm) => {
     const series = seriesFor(metric, firm);
+    const representativePoint =
+      series.points.find((point) => point.value !== null) ?? series.points[0];
     // Key by year rather than index — points stay aligned however the fact
     // base is reordered (review note: index coupling).
     const cellByYear = new Map(
-      series.points.map((point) => [point.year, cellText(metric, point)]),
+      series.points.map((point) => [point.year, cellText(metric, point, series.unit)]),
     );
     return [
       firmMeta[firm].name,
       ownershipLabel[firmMeta[firm].ownership],
+      qualificationText(representativePoint),
+      representativePoint.issuerScope ?? "",
+      series.unit,
       ...trendYears.map((year) => cellByYear.get(year) ?? ""),
     ];
   });
@@ -141,6 +153,15 @@ export function BenchmarkTable({
                       {ownershipLabel[firmMeta[firm].ownership]} —{" "}
                       {firmMeta[firm].note}
                     </span>
+                    <span className="block text-xs font-medium leading-5 text-amber-700 dark:text-amber-300">
+                      {qualificationText(
+                        series.points.find((point) => point.value !== null) ??
+                          series.points[0],
+                      )}
+                      {series.points[0].issuerScope
+                        ? ` — ${series.points[0].issuerScope}`
+                        : ""}
+                    </span>
                   </th>
                   {series.points.map((point) => (
                     <td
@@ -152,7 +173,7 @@ export function BenchmarkTable({
                           : "font-medium text-zinc-900 dark:text-zinc-100"
                       }`}
                     >
-                      {cellText(metric, point)}
+                        {cellText(metric, point, series.unit)}
                     </td>
                   ))}
                 </tr>

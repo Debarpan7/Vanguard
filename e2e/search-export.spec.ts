@@ -58,7 +58,7 @@ test("benchmarking CSV export downloads the comparison table", async ({
 
   const stream = await download.createReadStream();
   const content = await readStream(stream);
-  expect(content).toContain("Firm,Ownership,FY2021");
+  expect(content).toContain("Firm,Ownership,Qualification,Scope,Unit,FY2021");
   expect(content).toContain("Vanguard");
   expect(content).toContain("BlackRock");
   expect(content).toContain("Pending collection");
