@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test:e2e": "playwright test",
     "test:unit": "playwright test --config playwright.unit.config.ts",
-    "refresh:validate": "playwright test --config playwright.unit.config.ts tests/refresh.spec.ts"
+    "refresh:validate": "playwright test --config playwright.unit.config.ts tests/refresh.spec.ts",
+    "fact-base:generate": "node --experimental-strip-types scripts/generate-fact-base-baseline.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",

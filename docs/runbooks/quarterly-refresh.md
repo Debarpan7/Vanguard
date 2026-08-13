@@ -6,9 +6,10 @@ provenance: each number stays traceable to its public source, gaps stay
 gaps, and the data-as-of marker on the site is updated and visible
 (spec story 31).
 
-The pipeline is: **data collection → fact base → re-analysis → validate →
-stamp data-as-of → redeploy → verify**. Steps 1–3 change data; step 4 is
-the automated gate; steps 5–7 ship it.
+The pipeline is: **data collection → candidate database → validate → publish
+read model → re-analysis → stamp data-as-of → redeploy → verify**. The
+database publication is atomic; the previous published run remains active
+when validation fails.
 
 ## 0. Prerequisites
 
@@ -31,10 +32,22 @@ releases, peers' 10-Ks). Provenance rules:
 - Research notes from prior rounds live in
   `.scratch/vanguard-intelligence/assets/` — follow their formats.
 
-## 2. Update the fact base
+## 2. Build the candidate database
 
-Edit `src/data/fact-base.ts`: add or correct `SeriesPoint`s in the metric
-series. Keep the invariants the gate checks (step 4):
+The TypeScript fact base is an immutable migration fixture. Build a candidate
+SQLite publication and its client-safe serialized read model with:
+
+```bash
+npm run fact-base:generate
+```
+
+The generator records firms, metrics, periods, observations, sources,
+citations, verification events, comparability state, collection runs, and
+revision links in `data/fact-base.sqlite`. The site boundary reads the
+published run through `src/data/fact-base-read-model.json`; do not hand-edit
+that generated file.
+
+Keep the invariants the gate checks:
 
 - Every series covers the 5 trend years (2021–2025) in order.
 - Every point has a non-empty `source`, `sourceUrl`, and valid
@@ -42,7 +55,7 @@ series. Keep the invariants the gate checks (step 4):
 - Gap semantics: a gap tag (`not-published`, `pending-collection`,
   `pdf-not-read`, `blocked-unavailable`) carries `value: null`; a published
   tag (`verified-from-url`, `unverified`, `voluntary`) carries a value.
-- Never change `allSeries`' export status or the accessor contract —
+- The generated read model preserves the existing accessor contract —
   `seriesFor` stays the only way the rest of the site reads data.
 
 ## 3. Re-analysis
@@ -67,7 +80,8 @@ well-formed, stamp valid:
 npm run refresh:validate
 ```
 
-Zero failures = the gate passes. A failing test names the exact issue
+Run the generator before the gate whenever the candidate data changes. Zero
+failures = the publication gate passes. A failing test names the exact issue
 (e.g. "gap point ... must carry no value — nothing invented"). Fix the
 data in steps 2–3, never weaken the gate. Also run the full check suite:
 
@@ -122,18 +136,23 @@ if ($conn) { $conn | Select-Object -ExpandProperty OwningProcess -Unique | ForEa
 npx playwright test --config playwright.config.ts --workers=2
 ```
 
-## 8. Rollback
+## 8. Backup and rollback
 
-- If the gate (step 4) fails and cannot be resolved: revert the data
-  changes (`git checkout -- src/data/fact-base.ts src/data/analysis.ts`)
-  and restore the previous stamp — the previous build keeps serving.
+- Before a refresh, copy `data/fact-base.sqlite` to an approved backup
+  location. Keep the matching `src/data/fact-base-read-model.json` beside the
+  backup or regenerate it from the restored database.
+- If the gate (step 4) fails and cannot be resolved, do not publish the
+  candidate. The previous published database run keeps serving.
+- If a published deployment regresses, restore the database and read-model
+  pair from the last-known-good backup, then rebuild and restore the previous
+  stamp.
 - If the deployed site regresses: redeploy the last green commit
   (`git checkout <last-green-commit>` then steps 6–7).
 
 ## Checklist (one line per run)
 
 - [ ] Data collected from primary sources, provenance noted (step 1)
-- [ ] Fact base updated, gaps stay gaps (step 2)
+- [ ] Candidate database generated, gaps stay gaps (step 2)
 - [ ] Analysis re-run, claims grounded (step 3)
 - [ ] `npm run refresh:validate` passes (step 4)
 - [ ] `dataAsOf` stamped with this run's date (step 5)

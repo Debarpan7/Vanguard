@@ -1,0 +1,1550 @@
+{
+  "headlineMetrics": [
+    "aum",
+    "clients",
+    "cost-ratio",
+    "revenue",
+    "roe"
+  ],
+  "auditedMetrics": [
+    "revenue",
+    "roe"
+  ],
+  "trendYears": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "peerFirms": [
+    "blackrock",
+    "fidelity",
+    "state-street",
+    "invesco",
+    "amundi"
+  ],
+  "allFirms": [
+    "vanguard",
+    "blackrock",
+    "fidelity",
+    "state-street",
+    "invesco",
+    "amundi"
+  ],
+  "metricMeta": {
+    "aum": {
+      "name": "Assets under management",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates."
+    },
+    "clients": {
+      "name": "Number of clients",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures."
+    },
+    "cost-ratio": {
+      "name": "Cost ratio",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition)."
+    },
+    "revenue": {
+      "name": "Revenue",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other)."
+    },
+    "roe": {
+      "name": "Return on equity",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published)."
+    }
+  },
+  "firmMeta": {
+    "vanguard": {
+      "name": "Vanguard",
+      "ownership": "mutual",
+      "note": "Client-owned (mutual). RoE is a labeled proxy — no net income or equity published."
+    },
+    "blackrock": {
+      "name": "BlackRock",
+      "ownership": "listed",
+      "note": "Revenue includes Aladdin technology fees — revenue-model caveat."
+    },
+    "fidelity": {
+      "name": "Fidelity",
+      "ownership": "private",
+      "note": "Voluntary data only — no audited statements; excluded from audited-metric comparisons (e.g., RoE)."
+    },
+    "state-street": {
+      "name": "State Street (SSGA)",
+      "ownership": "listed",
+      "note": "SSGA asset-management segment isolated from parent custody and net-interest income."
+    },
+    "invesco": {
+      "name": "Invesco",
+      "ownership": "listed",
+      "note": "Listed, Dec-31 FYE."
+    },
+    "amundi": {
+      "name": "Amundi",
+      "ownership": "listed",
+      "note": "IFRS, EUR-reported — converted at period FX (date noted); bancassurance revenue model."
+    }
+  },
+  "series": [
+    {
+      "metric": "aum",
+      "firm": "vanguard",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": 8,
+          "asOf": "2021-09-30",
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20220117222753/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "$8.0T as of Sep 30, 2021. Earlier snapshot: ~$7.2T as of Jan 31, 2021 (about.vanguard.com fast-facts)."
+        },
+        {
+          "year": 2022,
+          "value": 8.1,
+          "asOf": "2022-03-31",
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20220504030848/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "$8.1T as of Mar 31, 2022 — last firm AUM published on vanguard.com."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "Firm AUM unpublished on vanguard.com after Mar 31, 2022; regulatory AUM in Form ADV (PDF not read — asset 01)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "Firm AUM unpublished on vanguard.com; regulatory AUM in Form ADV (PDF not read — asset 01)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "vanguard",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": 30,
+          "asOf": "2021-01-31",
+          "source": "Vanguard — Fast facts (about.vanguard.com, Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20210902071520/https://about.vanguard.com/who-we-are/fast-facts/",
+          "verification": "verified-from-url",
+          "note": "30M+ investors in ~170 countries, as of Jan 31, 2021."
+        },
+        {
+          "year": 2022,
+          "value": 30,
+          "asOf": "2022-11-30",
+          "source": "Vanguard corporate — Facts and figures (Wayback captures)",
+          "sourceUrl": "https://web.archive.org/web/20221225104159/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "30M+ as of Nov 30, 2022; persisted through early 2023 captures."
+        },
+        {
+          "year": 2023,
+          "value": 50,
+          "asOf": "2022-12-31",
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20231020161441/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "50M+ as of Dec 31, 2022 (Oct 2023 page). Methodology break: 30M+ → 50M+ (2023) reflects a counting change, not organic growth (asset 01)."
+        },
+        {
+          "year": 2024,
+          "value": 50,
+          "asOf": "2023-12-31",
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20241213021319/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "50M+ as of Dec 31, 2023 (Dec 2024 page)."
+        },
+        {
+          "year": 2025,
+          "value": 50,
+          "asOf": "2025-12-31",
+          "source": "Vanguard corporate — Facts and figures (current page)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "50M+ investors, as of Dec 31, 2025."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "vanguard",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": 0.09,
+          "source": "Vanguard — Fast facts (about.vanguard.com, Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20210902071520/https://about.vanguard.com/who-we-are/fast-facts/",
+          "verification": "verified-from-url",
+          "note": "0.09% asset-weighted avg US fund expenses, share of 2020 avg net assets."
+        },
+        {
+          "year": 2022,
+          "value": 0.08,
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20231020161441/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "0.08% — share of 2022 average net US assets (Oct 2023 page)."
+        },
+        {
+          "year": 2023,
+          "value": 0.08,
+          "source": "Vanguard corporate — Facts and figures (Wayback capture)",
+          "sourceUrl": "https://web.archive.org/web/20241213021319/https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "0.08% — share of 2023 average net US assets (Dec 2024 page)."
+        },
+        {
+          "year": 2024,
+          "value": 0.07,
+          "source": "Vanguard corporate — Facts and figures (current page)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "unverified",
+          "note": "0.07% per asset 01 (0.07% for 2024–25). No capture documents the 2024 measure directly — cited page states the 2025 measure (share of 2025 average net US assets)."
+        },
+        {
+          "year": 2025,
+          "value": 0.07,
+          "source": "Vanguard corporate — Facts and figures (current page)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "verified-from-url",
+          "note": "0.07% — share of 2025 average net US assets (page wording: 'combined mutual fund and ETF expenses'). 2026 press materials cite 0.06% for the fund lineup — a different measure (asset 01)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "vanguard",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "No firm revenue published. Bottom-up proxy possible from fund N-CSR advisory fees, but excluded (ticket 03 exclusion 3)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "No firm revenue published. Bottom-up proxy possible from fund N-CSR advisory fees, but excluded (ticket 03 exclusion 3)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "No firm revenue published. Bottom-up proxy possible from fund N-CSR advisory fees, but excluded (ticket 03 exclusion 3)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "No firm revenue published. Bottom-up proxy possible from fund N-CSR advisory fees, but excluded (ticket 03 exclusion 3)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "No firm revenue published. Bottom-up proxy possible from fund N-CSR advisory fees, but excluded (ticket 03 exclusion 3)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "vanguard",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "RoE not computable from published data (no net income or equity published — asset 01). Proxy design pending tickets 05/06."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "RoE not computable from published data (no net income or equity published — asset 01). Proxy design pending tickets 05/06."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "RoE not computable from published data (no net income or equity published — asset 01). Proxy design pending tickets 05/06."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "RoE not computable from published data (no net income or equity published — asset 01). Proxy design pending tickets 05/06."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "No publication found (research asset 01)",
+          "sourceUrl": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/why-vanguard/who-we-are/facts-and-figures.html",
+          "verification": "not-published",
+          "note": "RoE not computable from published data (no net income or equity published — asset 01). Proxy design pending tickets 05/06."
+        }
+      ]
+    },
+    {
+      "metric": "aum",
+      "firm": "blackrock",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "blackrock",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "blackrock",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "blackrock",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "blackrock",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for blackrock not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "aum",
+      "firm": "fidelity",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "fidelity",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "fidelity",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "fidelity",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "fidelity",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for fidelity not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "aum",
+      "firm": "state-street",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "state-street",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "state-street",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "state-street",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "state-street",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for state-street not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "aum",
+      "firm": "invesco",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "invesco",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "invesco",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "invesco",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "invesco",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for invesco not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "aum",
+      "firm": "amundi",
+      "unit": "USD trillions",
+      "definition": "Assets under management, period-end. Vanguard's published points are quarter-end as-of dates.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "clients",
+      "firm": "amundi",
+      "unit": "Millions of investors",
+      "definition": "Number of investors (not accounts), period-end. Vanguard publishes rounded figures.",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "cost-ratio",
+      "firm": "amundi",
+      "unit": "% of average net assets",
+      "definition": "Asset-weighted average US fund expenses as a share of prior-year average net US assets (Vanguard's published definition).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "revenue",
+      "firm": "amundi",
+      "unit": "USD billions",
+      "definition": "Total firm revenue as reported in audited statements (management/advisory fees + other).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    },
+    {
+      "metric": "roe",
+      "firm": "amundi",
+      "unit": "%",
+      "definition": "Net income ÷ average equity, per audited statements. Vanguard: labeled proxy only (no net income or equity published).",
+      "points": [
+        {
+          "year": 2021,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2022,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2023,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2024,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        },
+        {
+          "year": 2025,
+          "value": null,
+          "source": "Pending collection — Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)",
+          "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+          "verification": "pending-collection",
+          "note": "Series for amundi not yet collected from primary source (ticket 17 — analysis pipeline)."
+        }
+      ]
+    }
+  ],
+  "primarySources": {
+    "blackrock": "BlackRock 10-K (EDGAR CIK 0001364742, FYE Dec 31)",
+    "fidelity": "Fidelity voluntary stats only — no audited statements (ticket 04: voluntary-data core member)",
+    "state-street": "State Street 10-K (EDGAR CIK 0000093751, FYE Dec 31) — SSGA segment isolated",
+    "invesco": "Invesco 10-K (EDGAR CIK 0000914208, FYE Dec 31)",
+    "amundi": "Amundi Universal Registration Document (IFRS, EUR — FYE to confirm at collection)"
+  }
+}
