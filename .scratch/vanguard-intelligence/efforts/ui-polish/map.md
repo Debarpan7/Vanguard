@@ -31,6 +31,8 @@ A production-ready Vanguard Intelligence website using Take B mode 2 as the lock
 
 - Ticket 22 — firm marks: hand-rendered SVG per fact-base firm id via the shared `FirmMark` component (size/color props + monochrome variant, legible 24–32px); component and tests are JSX-free because Playwright's unit-test transform compiles JSX to its own `playwright/jsx-runtime` (marker objects, not React elements) and Node 26's native TS loader rejects JSX in `.ts` files — `createElement` sidesteps both. Sources: `assets/01-firm-mark-references.md`.
 - Ticket 27 — card composition: shared `SurfaceCard`, `SurfaceGrid`, and `TablePanel` primitives establish framed content groups, responsive grids, and semantic responsive table boundaries across route components; list/table semantics and existing contracts remain intact.
+- Ticket 28 — responsive rail + theme: theme behavior already satisfied by the Take B shell (light default, authoritative in-app toggle persisting to `vanguard-take-b-theme`, no OS-preference read); the compact mobile top menu is out of scope per the user's "skip mobile" instruction — no mobile markup written. Desktop rail + theme complete.
+- Ticket 29 — client-side metric switching: already satisfied by `TakeBBenchmarking` (Next.js `Link` tab navigation is client-side; `firmFilter` in `useState` survives the switch); closed the coverage gap with an E2E test in `e2e/benchmarking.spec.ts` asserting firm-search survival + stable `?metric=` URL.
 
 ## Not yet specified
 
@@ -43,6 +45,7 @@ A production-ready Vanguard Intelligence website using Take B mode 2 as the lock
 - Firm logos in the RoE tree drilldown (decided in charting).
 - Table animations of any kind (decided in charting).
 - Reintroducing alternate Take B layouts; mode 2/rail is locked for this effort.
+- The compact mobile top menu — explicitly skipped per the user's "skip mobile and all its implementation" instruction (ticket 28's theme behavior stayed in scope; the mobile markup did not).
 - Gold as a primary accent in new UI; legacy token compatibility may remain until unused.
 - Client-facing delivery — the site is internal reference only (carried from the site effort).
 - Paid / premium data sources — public data only (carried).

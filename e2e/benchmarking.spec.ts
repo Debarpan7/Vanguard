@@ -132,3 +132,35 @@ test("metric filter narrows the view with a stable shareable URL", async ({
   await expect(page.getByTestId("benchmark-table-aum")).toBeVisible();
   await expect(page.getByTestId("benchmark-table-cost-ratio")).toHaveCount(0);
 });
+
+test("firm search state survives metric switching without a document reload", async ({
+  page,
+}) => {
+  await page.goto("/benchmarking");
+
+  // Type a firm filter, then switch metric via the in-place tab (ticket 29).
+  await page.getByTestId("benchmarking-firm-search").fill("BlackRock");
+  await page.getByRole("link", { name: "Cost ratio" }).click();
+
+  // Client-side navigation: the URL carries the shareable metric, and the
+  // firm-search input keeps its value — a full document reload would reset it.
+  await expect(page).toHaveURL(/\/benchmarking\?metric=cost-ratio$/);
+  await expect(page.getByTestId("benchmarking-firm-search")).toHaveValue(
+    "BlackRock",
+  );
+
+  // The filtered table still applies the firm filter: only BlackRock remains.
+  const table = page.getByTestId("benchmark-table-cost-ratio");
+  await expect(table.getByTestId("benchmark-row-blackrock")).toBeVisible();
+  await expect(table.getByTestId("benchmark-row-vanguard")).toHaveCount(0);
+
+  // Back to "All metrics" restores every comparison while keeping the filter.
+  await page.getByRole("link", { name: "All metrics" }).click();
+  await expect(page).toHaveURL(/\/benchmarking$/);
+  await expect(page.getByTestId("benchmarking-firm-search")).toHaveValue(
+    "BlackRock",
+  );
+  for (const metric of ["aum", "clients", "cost-ratio", "revenue", "roe"]) {
+    await expect(page.getByTestId(`benchmark-table-${metric}`)).toBeVisible();
+  }
+});
