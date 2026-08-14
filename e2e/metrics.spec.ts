@@ -19,7 +19,9 @@ test("metrics dashboard shows headline metrics with definitions, sources, and 5-
   ).toBeVisible();
   await expect(aum.getByTestId("trend-2021")).toContainText("$8.0T");
   await expect(aum.getByTestId("trend-2022")).toContainText("$8.1T");
-  await expect(aum.getByTestId("trend-2023")).toContainText("Not published");
+  // FY2023 is the historical regulatory AUM published from Form ADV (eaf69c3),
+  // not a gap.
+  await expect(aum.getByTestId("trend-2023")).toContainText("$6.6T");
   await expect(aum.getByTestId("trend-2025").locator("a")).toHaveAttribute(
     "href",
     /adviserinfo\.sec\.gov/,

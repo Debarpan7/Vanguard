@@ -71,6 +71,14 @@ if (fs.existsSync(filingTypesFile)) {
       fiscalYearByFilingId.set(filingId, String(fiscalYear));
     }
   }
+} else {
+  // Without the filing-types table, selectBestRawFiling can only fall back to
+  // the latest submission date — a same-month other-than-annual amendment
+  // could then beat the authoritative annual amendment. Loud, not silent.
+  console.warn(
+    `ADV_Filing_Types_${archiveStart}_${archiveEnd}.csv not found in ADV_SOURCE_DIR; ` +
+      "best-filing selection falls back to latest submission date, and fiscalYearAsOf stays null.",
+  );
 }
 
 // Match each filing row to a raw target (CRD-first, name fallback), keeping

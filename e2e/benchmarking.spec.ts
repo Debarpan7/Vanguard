@@ -47,13 +47,14 @@ test("comparison tables render seeded values for Vanguard and pending-collection
     await expect(page.getByTestId(`benchmark-table-${metric}`)).toBeVisible();
   }
 
-  // AUM: Vanguard's seeded points, then explicit gaps; peers pending.
+  // AUM: Vanguard's published points (incl. historical regulatory AUM); peers pending.
   const aum = page.getByTestId("benchmark-table-aum");
   const vg = aum.getByTestId("benchmark-row-vanguard");
   await expect(vg.getByTestId("benchmark-cell-vanguard-2021")).toHaveText("$8.0T");
   await expect(vg.getByTestId("benchmark-cell-vanguard-2022")).toHaveText("$8.1T");
+  // FY2023 is the historical regulatory AUM published from Form ADV (eaf69c3).
   await expect(vg.getByTestId("benchmark-cell-vanguard-2023")).toHaveText(
-    "Not published",
+    "$6.6T",
   );
   const blk = aum.getByTestId("benchmark-row-blackrock");
   await expect(blk.getByTestId("benchmark-cell-blackrock-2021")).toHaveText(

@@ -44,7 +44,8 @@ test("metric card CSV export downloads the 5-year series", async ({ page }) => {
   expect(content).toContain("Fiscal year,Value,Unit,Source,Note");
   expect(content).toContain("2021,$8.0T");
   expect(content).toContain("2022,$8.1T");
-  expect(content).toContain("2023,Not published");
+  // FY2023 is the historical regulatory AUM published from Form ADV (eaf69c3).
+  expect(content).toContain("2023,$6.6T");
 });
 
 test("benchmarking CSV export downloads the comparison table", async ({
