@@ -35,6 +35,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# downloaded SEC Form ADV bulk archives (research working copies)
+.scratch/working/adv-archive-*/
+
 # vercel
 .vercel
 
